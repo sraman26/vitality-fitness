@@ -34,7 +34,7 @@ POST: /api/accounts/
     confirm_password: string
 
     Response: Account information of new account
-    * Response shape (JSON):
+    Response shape (JSON):
         {
             “Success”: “Account created successfully”
         }
@@ -50,7 +50,7 @@ PUT: /api/accounts/<int:id>/
     password: string
     confirm_password: string
     Response: Account information of updated account
-    * Response shape (JSON):
+    Response shape (JSON):
         {
             “Success”: “Account updated successfully”
         }
