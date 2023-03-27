@@ -21,3 +21,7 @@ Completed second draft of wireframes
 Cloned Git Repository
 Wireframes and APIs added to repository
 Journals started
+
+3/27/23:
+Docker container built
+Authentication started
