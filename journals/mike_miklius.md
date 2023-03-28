@@ -15,3 +15,13 @@ helps me use this for recruiters
 3.23.23: Wireframe changes: more detail, more funcitonality shown, more detailed look into how pages connect
 
 3.24.23: downloaded project repo; inserted wireframe and API path docs into project files; created journals and filled out first week of dev notes
+
+3.25.23-3.26.23: Weekend, days off
+
+3.27.23: Worked on auithentication via 4-person partner programming; our team programmed in login, logout, and signup functionality
+
+3.28.23: 
+
+3.29.23: 
+
+3.30.23: 
