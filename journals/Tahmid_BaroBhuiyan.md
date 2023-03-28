@@ -11,3 +11,10 @@ Completed Endpoints for API, received feedback from SEIRS regarding wireframe
 
 3/23
 Revised wireframe based on feedback given and requested a review from Jimmy.
+
+3/24
+Downloaded project repo and added the wireframe and API Endpoints documents to the library. ReadME for each member also developed
+
+3/27
+Setup Mongo Database and began working on authentication setup process. Served as assistant coder to main coder of the day and navigator
+
