@@ -2,21 +2,26 @@ from pydantic import BaseModel
 from pymongo.errors import DuplicateKeyError
 from .client import Queries
 
+
 class DuplicateAccountError(ValueError):
     pass
+
 
 class AccountIn(BaseModel):
     email: str
     password: str
     full_name: str
 
+
 class AccountOut(BaseModel):
     id: str
     email: str
     full_name: str
 
+
 class AccountOutWithPassword(AccountOut):
     hash_password: str
+
 
 class AccountQueries(Queries):
     COLLECTION = "mongo-data"
