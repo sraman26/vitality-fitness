@@ -7,6 +7,7 @@ from bson.objectid import ObjectId
 class CardioQueries(Queries):
     COLLECTION = "cardio"
 
+
     def create(self, info: CardioExerciseIn) -> CardioExerciseOut:
         props = info.dict()
         self.collection.insert_one(props)
@@ -18,17 +19,33 @@ class CardioQueries(Queries):
         CardioExercises = []
         for exercise in self.collection.find():
             exercise["id"] = str(exercise["_id"])
-            print((exercise["_id"]))
             CardioExercises.append(CardioExerciseOut(**exercise))
         return CardioExercises
-
         # try:
-
         # except:
         #     return "Error Creating Cardio Workout"
 
+
     def get_one(self, id: str) -> CardioExerciseOut :
-        print(self.collection.find_one({"_id": ObjectId(id)}))
         result = self.collection.find_one({"_id": ObjectId(id)})
         result["id"] = str(result["_id"])
         return result
+
+
+    def delete_one(self, id: str) -> bool:
+        result = self.collection.delete_one({"_id": ObjectId(id)})
+        return result.deleted_count == 1
+
+
+    def update(self, id: str, exercise: CardioExerciseIn) -> bool:
+        result = self.collection.find_one({"_id": ObjectId(id)})
+        temp = exercise.dict()
+        result["id"] = str(result["_id"])
+        result["name"] = temp["name"]
+        newvalues = {"$set": result}
+
+        output = (self.collection.update_one({
+            "_id": ObjectId(id),
+            }, newvalues))
+
+        return output.matched_count == 1

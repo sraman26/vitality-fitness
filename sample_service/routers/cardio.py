@@ -27,3 +27,20 @@ def get_cardio_exercise(
     queries: CardioQueries = Depends()
 ):
     return queries.get_one(id)
+
+
+@router.put('/api/exercise/cardio/{id}/', response_model=bool)
+def update_cardio_exercise(
+    id: str,
+    exercise: CardioExerciseIn,
+    queries: CardioQueries = Depends(),
+):
+    return queries.update(id, exercise)
+
+
+@router.delete('/api/exercise/cardio/{id}/', response_model=bool)
+def delete_cardio_exercise(
+    id: str,
+    queries: CardioQueries = Depends()
+):
+    return queries.delete_one(id)
