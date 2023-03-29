@@ -5,16 +5,25 @@ from models import CardioExerciseIn, CardioExerciseOut, CardioList, CardioWorkou
 
 router = APIRouter()
 
-@router.post('/api/workouts/cardio/', response_model=CardioExerciseOut)
-def create_cardio_workout(
+@router.post('/api/exercise/cardio/', response_model=CardioExerciseOut)
+def create_cardio_exercise(
     params: CardioExerciseIn,
     queries: CardioQueries = Depends()
 ):
     return queries.create(params)
 
 
-@router.get('/api/workouts/cardio/', response_model=CardioList)
-def get_all_cardio_workouts(
+@router.get('/api/exercise/cardio/', response_model=CardioList)
+def get_all_cardio_exercises(
     queries: CardioQueries = Depends(),
 ):
     return {"exercises": queries.get_all()}
+
+
+@router.get('/api/exercise/cardio/{id}/', response_model=CardioExerciseOut
+)
+def get_cardio_exercise(
+    id: str,
+    queries: CardioQueries = Depends()
+):
+    return queries.get_one(id)
