@@ -4,6 +4,10 @@ from typing import Optional
 from typing import List
 
 
+class Error(BaseModel):
+    message: str
+
+
 class CardioExerciseIn(BaseModel):
     name: str
 
@@ -11,6 +15,7 @@ class CardioExerciseIn(BaseModel):
 class CardioExerciseOut(BaseModel):
     name: str
     id: str
+    user_id: str
 
 
 class CardioList(BaseModel):
