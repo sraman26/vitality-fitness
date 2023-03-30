@@ -18,10 +18,11 @@ helps me use this for recruiters
 
 3.25.23-3.26.23: Weekend, days off
 
-3.27.23: Worked on auithentication via 4-person partner programming; our team programmed in login, logout, and signup functionality
+3.27.23: Worked on authentication via 4-person partner programming; our team programmed in login, logout, and signup functionality. Sitara was our group coder.
 
-3.28.23: 
+3.28.23: Built cardio pydantic models and implementing third party APIs; I specifically was the coder today (we are taking turns)
 
-3.29.23: 
+3.29.23: Built full CRUD functionality for Cardio exercises and implemented authentication for those routes. Aaron was our group coder today.
 
-3.30.23: 
+3.30.23: Finished crud routes (authentication, error handling, functionality) for cardio workouts; Tahmid was our group coder today.
+
