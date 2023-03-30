@@ -25,3 +25,19 @@ Journals started
 3/27/23:
 Docker container built
 Authentication started
+(Sitara in chair)
+
+3/28/23:
+Configured 3rd party API
+Built Pydantic models for exercise and cardio
+(Mike in chair)
+
+3/29/23:
+CRUD methods for exercise
+Authentication for exercise
+(Aaron in chair)
+
+3/30/23:
+CRUD method for cardio exercise workout
+Authentication for cardio exercise workout
+(Tahmid in chair)
