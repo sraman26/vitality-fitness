@@ -12,3 +12,15 @@ March 23th, 2023:
 
 March 24th, 2023:
     Downloaded the project repository and inserted the wireframe and API path documents into the appropriate directories. We also created journals to keep track of our progress and filled out the first week of development notes.
+
+March 27th, 2023:
+    Set up the authentication process to create accounts along with logins and log outs.
+
+March 28th, 2023:
+    Started making pydantic models and experimented with our third party API
+
+March 29th, 2023:
+    Finished all the CRUD methods and authentication for the Cardio side of our Application
+
+March 30th, 2023:
+    Designed CRUD and authentication methods for Cardio Workouts
