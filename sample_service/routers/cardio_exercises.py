@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, Response
-from queries.cardio import CardioQueries
+from queries.cardio_exercises import CardioQueries
 from models import CardioExerciseIn, CardioExerciseOut, CardioList, CardioWorkoutIn, CardioWorkoutOut, Error
 from auth import authenticator
 from typing import Union
@@ -45,10 +45,10 @@ def update_cardio_exercise(
     return queries.update(id, exercise, user_id=account_data["id"])
 
 
-@router.delete('/api/exercise/cardio/{id}/', response_model=bool)
+@router.delete('/api/exercise/cardio/{id}/', response_model=Union[bool,Error])
 def delete_cardio_exercise(
     id: str,
     queries: CardioQueries = Depends(),
     account_data: dict = Depends(authenticator.get_current_account_data)
 ):
-    return queries.delete_one(id, user_id=account_data["id"])
+    return queries.delete(id, user_id=account_data["id"])

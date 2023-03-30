@@ -35,7 +35,7 @@ class CardioQueries(Queries):
         except Exception as e:
             raise HTTPException(
                 status_code = status.HTTP_400_BAD_REQUEST,
-                detail = "Could not find id"
+                detail = "Bad Request, could not find Workout ID."
             )
 
 
@@ -54,10 +54,16 @@ class CardioQueries(Queries):
         except Exception as e:
             raise HTTPException(
                 status_code = status.HTTP_400_BAD_REQUEST,
-                detail = "Could not Update.  Confirm response model and user id."
+                detail = "Bad Request, could not find Workout ID."
             )
 
 
-    def delete_one(self, id: str, user_id: str) -> bool:
-        result = self.collection.delete_one({"_id": ObjectId(id), "user_id": user_id})
-        return result.deleted_count == 1
+    def delete(self, id: str, user_id: str) -> Union[bool, Error]:
+        try:
+            result = self.collection.delete_one({"_id": ObjectId(id), "user_id": user_id})
+            return result.deleted_count == 1
+        except:
+            raise HTTPException(
+                status_code = status.HTTP_400_BAD_REQUEST,
+                detail = "Bad Request, could not find Workout ID."
+            )

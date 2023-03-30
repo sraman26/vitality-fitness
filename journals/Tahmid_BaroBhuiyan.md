@@ -15,6 +15,17 @@ Revised wireframe based on feedback given and requested a review from Jimmy.
 3/24
 Downloaded project repo and added the wireframe and API Endpoints documents to the library. ReadME for each member also developed
 
+---
+
 3/27
-Setup Mongo Database and began working on authentication setup process. Served as assistant coder to main coder of the day and navigator
+Setup Mongo Database and set up authentication setup process. Served as assistant coder to main coder of the day and navigator. Sitara was the coder.
+
+3/28
+Made Cardio Pydantic Models and learned how to implement API into backend CRUD methods. Mike was the coder.
+
+3/29
+Designed CRUD methods for Cardio Excercises and implemented Authentication with basic error handling. Aaron was the coder.
+
+3/30
+Designed CRUD methods for Cardio Workouts and factored in Authentication with basic error handling. Cleaned up function naming convention on certain requests. I was the coder today.
 
