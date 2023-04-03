@@ -20,6 +20,7 @@ services:
     environment:
       MONGO_URL: mongodb://admin:password@mongo
       SIGNING_KEY: ${SIGNING_KEY}
+      API_KEY: ${API_KEY}
       WAIT_HOSTS: mongo:27017
       WAIT_BEFORE: 5
       WAIT_TIMEOUT: 60

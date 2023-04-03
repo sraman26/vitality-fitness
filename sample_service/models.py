@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from datetime import date
-from typing import Optional
+from typing import Optional, List
 
 
 class Error(BaseModel):
@@ -37,3 +37,32 @@ class CardioWorkoutOut(CardioWorkoutIn):
 
 class CardioWorkoutList(BaseModel):
     workouts : list[CardioWorkoutOut]
+
+class StrengthExerciseOut(BaseModel):
+    workouts: List
+
+
+class StrengthExercise(BaseModel):
+    name: str
+    muscle: str
+    notes: Optional[str]
+    reps: str
+
+class StrengthWorkoutIn(BaseModel):
+    workout_name: str
+    exercises: list[StrengthExercise]
+    date: date
+    type: str
+
+class StrengthWorkoutOut(StrengthWorkoutIn):
+    id: str
+    user_id: str
+
+class StrengthWorkoutReduce(BaseModel):
+    id: str
+    workout_name: str
+    date: date
+    type: str
+
+class StrengthWorkoutList(BaseModel):
+    workouts: list[StrengthWorkoutReduce]
