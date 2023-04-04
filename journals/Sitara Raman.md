@@ -38,6 +38,15 @@ Authentication for exercise
 (Aaron in chair)
 
 3/30/23:
-CRUD method for cardio exercise workout
+CRUD methods for cardio exercise workout
 Authentication for cardio exercise workout
 (Tahmid in chair)
+
+4/3/23:
+CRUD methods for strength exercise and workout
+Authentication for strength exercise and workout
+(Sitara in chair)
+
+4/4/23:
+Moved queries to router side
+Third-party API integration
