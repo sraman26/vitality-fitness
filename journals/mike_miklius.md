@@ -26,3 +26,6 @@ helps me use this for recruiters
 
 3.30.23: Finished crud routes (authentication, error handling, functionality) for cardio workouts; Tahmid was our group coder today.
 
+4.3.23: Finished back-end code for strength RESTful elements; ready to check back-end and brainstorm front-end design more; Sitara was our coder today
+
+4.4.23: Brainstormed front-end specific design elements (color palette, font, splash image, logo); fixed try-except formatting (moved it from queries to routers); fixed strength third party API formatting

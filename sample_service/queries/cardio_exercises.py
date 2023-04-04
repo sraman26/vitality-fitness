@@ -28,19 +28,12 @@ class CardioQueries(Queries):
 
 
     def get_one(self, id: str, user_id: str) -> Union[CardioExerciseOut, Error]:
-        try:
-            result = self.collection.find_one({"_id": ObjectId(id), "user_id": user_id})
-            result["id"] = str(result["_id"])
-            return result
-        except Exception as e:
-            raise HTTPException(
-                status_code = status.HTTP_400_BAD_REQUEST,
-                detail = "Bad Request, could not find Workout ID."
-            )
-
+        result = self.collection.find_one({"_id": ObjectId(id), "user_id": user_id})
+        result["id"] = str(result["_id"])
+        return result
+        
 
     def update(self, id: str, exercise: CardioExerciseIn, user_id: str) -> Union[CardioExerciseOut, Error]:
-        try:
             result = self.collection.find_one({"_id": ObjectId(id), "user_id": user_id})
             temp = exercise.dict()
             result["id"] = str(result["_id"])
@@ -51,19 +44,8 @@ class CardioQueries(Queries):
                 }, newvalues)
             result = self.collection.find_one({"_id": ObjectId(id), "user_id": user_id})
             return result
-        except Exception as e:
-            raise HTTPException(
-                status_code = status.HTTP_400_BAD_REQUEST,
-                detail = "Bad Request, could not find Workout ID."
-            )
-
+        
 
     def delete(self, id: str, user_id: str) -> Union[bool, Error]:
-        try:
             result = self.collection.delete_one({"_id": ObjectId(id), "user_id": user_id})
             return result.deleted_count == 1
-        except:
-            raise HTTPException(
-                status_code = status.HTTP_400_BAD_REQUEST,
-                detail = "Bad Request, could not find Workout ID."
-            )

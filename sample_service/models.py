@@ -39,7 +39,7 @@ class CardioWorkoutList(BaseModel):
     workouts : list[CardioWorkoutOut]
 
 class StrengthExerciseOut(BaseModel):
-    workouts: List
+    exercises: List
 
 
 class StrengthExercise(BaseModel):
