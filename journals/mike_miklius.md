@@ -1,7 +1,3 @@
-Dont worry about 3.24 and earlier
-
-Start next week
-
 Open journal; keep track of what we've been doing
 Makes grading easier
 helps me use this for recruiters
