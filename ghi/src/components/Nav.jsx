@@ -1,0 +1,31 @@
+import { NavLink } from "react-router-dom"
+import { useLogoutMutation } from "../services/auth"
+import '../App.css'
+
+
+function Nav() {
+    const [logout] = useLogoutMutation()
+
+    return (
+    <nav className="navbar fixed-top navbar-expand-lg navbar-dark navgradient" style={{ backgroundColor: "#FFA624"}}>
+        <div id="logo">
+            <img src={require('../images/turtleicon.png')} style={{width: "50px", height: "50px"}}></img>
+        </div>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav ml-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                    <NavLink className="nav-link active" aria-current="page" to="/Login">Login</NavLink>
+                </li>
+                <li className="nav-item">
+                    <NavLink className="nav-link active" onClick={logout}>Logout</NavLink>
+                </li>
+                <li className="nav-item">
+                    <NavLink className="nav-link active" aria-current="page" to="/Signup">Sign Up!</NavLink>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    )
+    }
+
+export default Nav

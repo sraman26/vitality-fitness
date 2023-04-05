@@ -12,3 +12,17 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.navgradient {
+  background: linear-gradient(0deg, rgb(245, 203, 16) 0%, rgb(189, 38, 38) 100%);
+}
+
+#logo {
+  background-color: "#FFA624";
+}
+
+img {
+  object-fit: fill;
+  height: 100%;
+  width: 100%;
+}

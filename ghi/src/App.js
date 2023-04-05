@@ -4,6 +4,10 @@ import ErrorNotification from './ErrorNotification';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import LoginForm from './components/auth/LoginForm.jsx';
+import Logout from './components/auth/Logout.jsx';
+import Home from './components/Home.jsx';
+import Nav from './components/Nav.jsx';
+
 
 function App() {
   const [launch_info, setLaunchInfo] = useState([]);
@@ -31,13 +35,11 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Nav />
       <Routes>
-        <Route index element={<LoginForm />}/>
+        <Route index element={<Home />} />
+        <Route path="Login" element={<LoginForm />}/>
       </Routes>
-      <div>
-        <ErrorNotification error={error} />
-        <Construct info={launch_info} />
-      </div>
     </BrowserRouter>
   );
 }
