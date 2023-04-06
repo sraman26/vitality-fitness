@@ -28,6 +28,7 @@ class CardioWorkoutIn(BaseModel):
     type: str
     duration: str
     notes: Optional[str]
+    status: Optional[str] = "Incomplete"
 
 
 class CardioWorkoutOut(CardioWorkoutIn):
@@ -53,6 +54,7 @@ class StrengthWorkoutIn(BaseModel):
     exercises: list[StrengthExercise]
     date: date
     type: str
+    status: Optional[str] = "Incomplete"
 
 class StrengthWorkoutOut(StrengthWorkoutIn):
     id: str
@@ -63,6 +65,18 @@ class StrengthWorkoutReduce(BaseModel):
     workout_name: str
     date: date
     type: str
+    status: str
 
 class StrengthWorkoutList(BaseModel):
     workouts: list[StrengthWorkoutReduce]
+
+class Workouts(BaseModel):
+    workout_name: str
+    type: str
+    date: date
+    id: str
+    user_id: str
+    status: str
+
+class WorkoutList(BaseModel):
+    workouts: List

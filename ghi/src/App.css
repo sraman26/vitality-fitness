@@ -26,3 +26,22 @@ img {
   height: 100%;
   width: 100%;
 }
+
+.container-fluid{
+  width: fill;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card{
+  margin: 20px;
+  width: 25%;
+}
+
+.card{
+  justify-content: space-between;
+}
+
+.NavSpacing{
+  margin-top: 66px;
+}

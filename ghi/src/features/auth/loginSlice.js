@@ -8,7 +8,7 @@ const initialState = {
     errorMessage: null
 }
 
-const LoginSlice = createSlice({
+const loginSlice = createSlice({
     name: "login",
     initialState,
     reducers: {
@@ -22,5 +22,5 @@ const LoginSlice = createSlice({
     }
 })
 
-export const { handleUsernameChange, handlePasswordChange, reset } = LoginSlice.actions;
-export default LoginSlice.reducer;
+export const { handleUsernameChange, handlePasswordChange, reset } = loginSlice.actions;
+export default loginSlice.reducer;

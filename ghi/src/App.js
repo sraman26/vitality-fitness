@@ -1,17 +1,15 @@
-import { useEffect, useState } from 'react';
-import Construct from './Construct.js'
-import ErrorNotification from './ErrorNotification';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import LoginForm from './components/auth/LoginForm.jsx';
-import Logout from './components/auth/Logout.jsx';
+import SignupForm from './components/auth/SignupForm.jsx';
+import WorkoutList from './components/WorkoutList';
 import Home from './components/Home.jsx';
 import Nav from './components/Nav.jsx';
 
 
 function App() {
-  const [launch_info, setLaunchInfo] = useState([]);
-  const [error, setError] = useState(null);
+  // const [launch_info, setLaunchInfo] = useState([]);
+  // const [error, setError] = useState(null);
 
   // useEffect(() => {
   //   async function getData() {
@@ -36,10 +34,14 @@ function App() {
   return (
     <BrowserRouter>
       <Nav />
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path="Login" element={<LoginForm />}/>
-      </Routes>
+      <div className="container">
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="Login" element={<LoginForm />}/>
+          <Route path="Signup" element={<SignupForm/>}/>
+          <Route path="workouts" element={<WorkoutList/>}/>
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

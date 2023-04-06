@@ -24,16 +24,27 @@ export const authApi = createApi({
                     credentials: "include"
                 }
             },
-            invalidatesTags: ["Account", { type: "Things", id: "LIST" }]
+            invalidatesTags: ["Account", { type: "Accounts", id: "LIST" }]
+        }),
+        signup: builder.mutation({
+            query: (body) => {
+                return {
+                    url: "/api/accounts",
+                    method: "POST",
+                    body,
+                    credentials: "include"
+                }
+            },
+            invalidatesTags: ["Account", { type: "Accounts", id: "LIST" }]
         }),
         logout: builder.mutation({
             query: () => ({
                 url: "/token",
                 method: "DELETE"
             }),
-            invalidatesTags: ["Account", { type: "Things", id: "LIST" }]
+            invalidatesTags: ["Account", { type: "Accounts", id: "LIST" }]
         })
     })
 })
 
-export const { useGetAccountQuery, useLogoutMutation, useLoginMutation } = authApi;
+export const { useGetAccountQuery, useLogoutMutation, useLoginMutation, useSignupMutation } = authApi;

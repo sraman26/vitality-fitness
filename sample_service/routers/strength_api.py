@@ -29,8 +29,5 @@ def get_muscle(
     account_data: dict = Depends(authenticator.get_current_account_data)
 ):
     base_url = 'https://api.api-ninjas.com/v1/exercises?'
-    
+
     return {"exercises": get_exercise_by_muscle(muscle, base_url)}
-
-
-
