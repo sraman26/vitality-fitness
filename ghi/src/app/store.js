@@ -1,19 +1,19 @@
 import {configureStore} from "@reduxjs/toolkit"
 import loginReducer from "../features/auth/loginSlice"
 import signupReducer from "../features/auth/signupSlice"
+import cardioSliceReducer from "../features/cardio/CreateCardioWorkoutSlice"
 import { setupListeners } from "@reduxjs/toolkit/dist/query"
-import { authApi } from "../services/auth"
-import { workoutApi } from "../services/workouts"
+import { workoutApi } from "../services/workout"
 
 
 export const store=configureStore({
     reducer: {
         login: loginReducer,
         signup: signupReducer,
-        [authApi.reducerPath]: authApi.reducer,
+        cardioForm: cardioSliceReducer,
         [workoutApi.reducerPath]: workoutApi.reducer
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([authApi.middleware, workoutApi.middleware])
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([workoutApi.middleware])
 })
 
 setupListeners(store.dispatch)

@@ -15,7 +15,7 @@ const Workouts = () => {
 
     return (
         <>
-        <div className="NavSpacing">
+        <div className="">
             <div className="row row-cols-2">
                 <div className="shadow p-4 mt-4">
                     <h1>Upcoming Workouts</h1>

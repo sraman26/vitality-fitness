@@ -7,7 +7,7 @@ import {
     , error
     , reset
 } from '../../features/auth/signupSlice'
-import { useSignupMutation } from '../../services/auth'
+import { useSignupMutation } from '../../services/workout'
 
 // Check error message import that Riley had
 

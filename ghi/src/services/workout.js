@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-export const authApi = createApi({
-    reducerPath: "authApi",
+export const workoutApi = createApi({
+    reducerPath: "workoutApi",
     baseQuery: fetchBaseQuery({
         baseUrl: `${process.env.REACT_APP_SAMPLE_SERVICE_API_HOST}`,
         credentials: "include"
@@ -43,8 +43,34 @@ export const authApi = createApi({
                 method: "DELETE"
             }),
             invalidatesTags: ["Account", { type: "Accounts", id: "LIST" }]
+        }),
+        getIncompletedWorkouts: builder.query({
+            query: () => "/api/workouts/incompleted",
+            providesTags: ["Incompleted"]
+        }),
+        getCompletedWorkouts:builder.query({
+            query: () => "/api/workouts/completed/",
+            providesTags: ["Completed"]
+        }),
+        createCardioWorkouts:builder.mutation({
+            query: (body) => {
+                return {
+                url: "/api/workouts/cardio",
+                method: "POST",
+                body,
+                }
+            },
+            invalidatesTags: ["Incompleted", "Completed"]
         })
+
     })
 })
 
-export const { useGetAccountQuery, useLogoutMutation, useLoginMutation, useSignupMutation } = authApi;
+export const {
+useGetAccountQuery,
+useLogoutMutation,
+useLoginMutation,
+useSignupMutation,
+useCreateCardioWorkoutsMutation,
+useGetCompletedWorkoutsQuery,
+useGetIncompletedWorkoutsQuery } = workoutApi;

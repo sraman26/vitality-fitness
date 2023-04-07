@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from "react-router-dom"
-import { useLogoutMutation } from "../services/auth"
+import { useLogoutMutation } from "../services/workout"
 import '../App.css'
 
 
@@ -25,6 +25,12 @@ function Nav() {
                     </li>
                     <li className="nav-item">
                         <NavLink className="nav-link active" aria-current="page" to="/Signup">Sign Up!</NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink className="nav-link active" aria-current="page" to="/Workouts">My Workouts</NavLink>
+                    </li>
+                      <li className="nav-item">
+                        <NavLink className="nav-link active" aria-current="page" to="/CardioWorkoutForm">New Cardio Workout</NavLink>
                     </li>
                 </ul>
             </div>

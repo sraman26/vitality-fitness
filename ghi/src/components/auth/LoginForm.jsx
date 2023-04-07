@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { handlePasswordChange, handleUsernameChange, reset } from '../../features/auth/loginSlice'
-import { useLoginMutation } from '../../services/auth'
+import { useLoginMutation } from '../../services/workout'
 
 
 function LoginForm() {

@@ -43,5 +43,5 @@ img {
 }
 
 .NavSpacing{
-  margin-top: 66px;
+  margin-top: 66px !important;
 }
