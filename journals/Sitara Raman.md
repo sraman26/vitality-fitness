@@ -50,3 +50,21 @@ Authentication for strength exercise and workout
 4/4/23:
 Moved queries to router side
 Third-party API integration
+Feedback from Jimmy
+(Mike in chair)
+
+4/5/23:
+Landing page created
+Login and logout pages created
+(Aaron in chair)
+
+4/6/23:
+Redesigned backend to have single workout query
+Created signup page
+Workout list page
+(Tahmid in chair)
+
+4/7/23:
+Create cardio workout form
+Merged queries into one file
+(Sitara in chair)
