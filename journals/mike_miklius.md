@@ -25,3 +25,9 @@ helps me use this for recruiters
 4.3.23: Finished back-end code for strength RESTful elements; ready to check back-end and brainstorm front-end design more; Sitara was our coder today
 
 4.4.23: Brainstormed front-end specific design elements (color palette, font, splash image, logo); fixed try-except formatting (moved it from queries to routers); fixed strength third party API formatting
+
+4.5.23: Worked through front-end authorization (login, logout, started signup); Aaron was our coder. 
+
+4.6.23: finished coding the signup front-end and verified that login, logout, and signup are working properly. Coded the front page of our website, picked a main image, added cards, and styled our nav bar with a site icon. Tahmid was our coder.
+
+4.7.23: Continued working on main landing page for our website; coded the 'workouts list' page to show completed and upcoming workouts in two side-0by-side tables; created a page to create new cardio workouts
