@@ -29,9 +29,11 @@ class CardioQueries(Queries):
 
     def get_one(self, id: str, user_id: str) -> Union[CardioExerciseOut, Error]:
         result = self.collection.find_one({"_id": ObjectId(id), "user_id": user_id})
+        result = self.collection.find_one({"_id": ObjectId(id), "user_id": user_id})
+        result = self.collection.find_one({"_id": ObjectId(id), "user_id": user_id})
         result["id"] = str(result["_id"])
         return result
-        
+
 
     def update(self, id: str, exercise: CardioExerciseIn, user_id: str) -> Union[CardioExerciseOut, Error]:
             result = self.collection.find_one({"_id": ObjectId(id), "user_id": user_id})
@@ -44,7 +46,7 @@ class CardioQueries(Queries):
                 }, newvalues)
             result = self.collection.find_one({"_id": ObjectId(id), "user_id": user_id})
             return result
-        
+
 
     def delete(self, id: str, user_id: str) -> Union[bool, Error]:
             result = self.collection.delete_one({"_id": ObjectId(id), "user_id": user_id})

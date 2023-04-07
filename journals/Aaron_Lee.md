@@ -24,3 +24,18 @@ March 29th, 2023:
 
 March 30th, 2023:
     Designed CRUD and authentication methods for Cardio Workouts
+
+April 3rd, 2023:
+    Completed the back-end code for the strnegth RESTful elements
+
+April 4th, 2023:
+    Refactored our queries and routers on the backend by moving try-except to routers and formatting third-party API in routers.
+
+April 5th, 2023:
+    Implemented front-end authorization for our login, signup page.  Logout was left as a button without a user interface page.
+
+April 6th, 2023:
+    Touched up HTML/CSS for front-end design and added cards, main image, and nav bar with icon and styling.
+
+April 7th, 2023:
+    Created a page for our create cardio workout
