@@ -1,11 +1,14 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import LoginForm from './components/auth/LoginForm.jsx';
 import SignupForm from './components/auth/SignupForm.jsx';
 import WorkoutList from './components/WorkoutList.jsx';
 import Home from './components/Home.jsx';
 import Nav from './components/Nav.jsx';
 import CardioWorkoutForm from './components/CardioWorkoutForm.jsx';
+import WorkoutDetail from './components/CardioWorkoutDetails';
+import UpdateCardioWorkout from './components/UpdateCardioWorkout';
+
 
 
 function App() {
@@ -35,13 +38,21 @@ function App() {
   return (
     <BrowserRouter>
       <Nav />
-      <div className="container NavSpacing">
+      <div className=" NavSpacing">
         <Routes>
           <Route index element={<Home />} />
           <Route path="Login" element={<LoginForm />}/>
           <Route path="Signup" element={<SignupForm/>}/>
-          <Route path="Workouts" element={<WorkoutList/>}/>
-          <Route path="CardioWorkoutForm" element={<CardioWorkoutForm/>}/>
+          <Route>
+            <Route path="Workouts">
+              <Route index element={<WorkoutList/>}/>
+              <Route path=":workoutId">
+                <Route index element={<WorkoutDetail/>}/>
+                <Route path="Update" element={<UpdateCardioWorkout/>}/>
+              </Route>
+              <Route path="CardioForm" element={<CardioWorkoutForm/>}/>
+            </Route>
+          </Route>
         </Routes>
       </div>
     </BrowserRouter>

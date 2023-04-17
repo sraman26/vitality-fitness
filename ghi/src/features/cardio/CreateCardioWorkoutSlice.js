@@ -5,7 +5,7 @@ const initialState = {
         workout_name: "",
         exercise: "",
         date: "",
-        type: "cardio",
+        type: "Cardio",
         duration: "",
         notes: "",
         status: "Incomplete"

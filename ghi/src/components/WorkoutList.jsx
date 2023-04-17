@@ -1,5 +1,6 @@
 import React from 'react'
-import { useGetCompletedWorkoutsQuery, useGetIncompletedWorkoutsQuery } from '../services/workouts'
+import { useGetCompletedWorkoutsQuery, useGetIncompletedWorkoutsQuery } from '../services/workout'
+import { NavLink } from 'react-router-dom'
 
 // function WorkoutList()
 const Workouts = () => {
@@ -15,7 +16,7 @@ const Workouts = () => {
 
     return (
         <>
-        <div className="">
+        <div className="container">
             <div className="row row-cols-2">
                 <div className="shadow p-4 mt-4">
                     <h1>Upcoming Workouts</h1>
@@ -32,7 +33,7 @@ const Workouts = () => {
                                 incompleted_workouts.workouts.map(workout => {
                                     return (
                                     <tr key={workout.id}>
-                                        <td>{ workout.workout_name }</td>
+                                        <td ><NavLink to={workout.id}>{ workout.workout_name }</NavLink></td>
                                         <td>{ workout.type }</td>
                                         <td>{ workout.date }</td>
                                     </tr>
@@ -57,7 +58,7 @@ const Workouts = () => {
                                 completed_workouts.workouts.map(workout => {
                                     return (
                                     <tr key={workout.id}>
-                                        <td>{ workout.workout_name }</td>
+                                        <td ><NavLink to={workout.id}>{ workout.workout_name }</NavLink></td>
                                         <td>{ workout.type }</td>
                                         <td>{ workout.date }</td>
                                     </tr>
