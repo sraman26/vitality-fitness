@@ -1,5 +1,5 @@
 import React from 'react'
-import { useGetCompletedWorkoutsQuery, useGetIncompletedWorkoutsQuery } from '../services/workouts'
+import { useGetCompletedWorkoutsQuery, useGetIncompletedWorkoutsQuery } from '../services/workout'
 
 // function WorkoutList()
 const Workouts = () => {

@@ -68,3 +68,9 @@ Workout list page
 Create cardio workout form
 Merged queries into one file
 (Sitara in chair)
+
+4/17/23:
+Cardio detail page
+Cardio delete buttons
+Cardio update form
+(Mike in chair)
