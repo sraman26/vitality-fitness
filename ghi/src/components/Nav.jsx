@@ -30,7 +30,7 @@ function Nav() {
                         <NavLink className="nav-link active" aria-current="page" to="/Workouts">My Workouts</NavLink>
                     </li>
                       <li className="nav-item">
-                        <NavLink className="nav-link active" aria-current="page" to="/CardioWorkoutForm">New Cardio Workout</NavLink>
+                        <NavLink className="nav-link active" aria-current="page" to="Workouts/CardioForm">New Cardio Workout</NavLink>
                     </li>
                 </ul>
             </div>

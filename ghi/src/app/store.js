@@ -4,6 +4,7 @@ import signupReducer from "../features/auth/signupSlice"
 import cardioSliceReducer from "../features/cardio/CreateCardioWorkoutSlice"
 import { setupListeners } from "@reduxjs/toolkit/dist/query"
 import { workoutApi } from "../services/workout"
+import updateCardioSliceReducer from "../features/cardio/UpdateCardioWorkoutSlice"
 
 
 export const store=configureStore({

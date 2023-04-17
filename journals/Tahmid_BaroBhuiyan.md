@@ -29,3 +29,17 @@ Designed CRUD methods for Cardio Excercises and implemented Authentication with 
 3/30
 Designed CRUD methods for Cardio Workouts and factored in Authentication with basic error handling. Cleaned up function naming convention on certain requests. I was the coder today.
 
+4/3
+Designed CRUD methods for strength exercise and workout. Finished backend code entirely. Waiting on review from instructor before starting frontend. Mike was the coder.
+
+4/4
+Received feedback and on backend code and made revision. Began brainstorming frontend design. Sitara was the coder.
+
+4/5
+Began creating frontend pages. Designed basic landing page and created Login/Logout pages. Aaron was the coder.
+
+4/6
+Created Signup page and redesigned backend to have single workout query. Also created workout list page. I was the coder.
+
+4/7
+Merge RTKQueries into one file and created Workout Cardio Form. Sitara was the coder.
