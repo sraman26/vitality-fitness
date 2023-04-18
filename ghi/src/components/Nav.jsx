@@ -16,12 +16,12 @@ function Nav() {
                     </NavLink>
             </div>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav ml-auto mb-2 mb-lg-0">
+                <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li className="nav-item">
                         <NavLink className="nav-link active" aria-current="page" to="/Login">Login</NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink className="nav-link active" onClick={logout}>Logout</NavLink>
+                        <NavLink className="nav-link active" onClick={logout} exact="true" to="/">Logout</NavLink>
                     </li>
                     <li className="nav-item">
                         <NavLink className="nav-link active" aria-current="page" to="/Signup">Sign Up!</NavLink>
@@ -29,8 +29,11 @@ function Nav() {
                     <li className="nav-item">
                         <NavLink className="nav-link active" aria-current="page" to="/Workouts">My Workouts</NavLink>
                     </li>
-                      <li className="nav-item">
+                    <li className="nav-item">
                         <NavLink className="nav-link active" aria-current="page" to="Workouts/CardioForm">New Cardio Workout</NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink className="nav-link active" aria-current="page" to="Workouts/StrengthForm">New Strength Workout</NavLink>
                     </li>
                 </ul>
             </div>
