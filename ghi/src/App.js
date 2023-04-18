@@ -8,8 +8,7 @@ import Nav from './components/Nav.jsx';
 import CardioWorkoutForm from './components/CardioWorkoutForm.jsx';
 import WorkoutDetail from './components/CardioWorkoutDetails';
 import UpdateCardioWorkout from './components/UpdateCardioWorkout';
-
-
+import StrengthWorkoutForm from './components/StrengthWorkoutForm';
 
 function App() {
   // const [launch_info, setLaunchInfo] = useState([]);
@@ -51,6 +50,7 @@ function App() {
                 <Route path="Update" element={<UpdateCardioWorkout/>}/>
               </Route>
               <Route path="CardioForm" element={<CardioWorkoutForm/>}/>
+              <Route path="StrengthForm" element={<StrengthWorkoutForm/>}/>
             </Route>
           </Route>
         </Routes>

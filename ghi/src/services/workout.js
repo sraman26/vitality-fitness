@@ -42,8 +42,9 @@ export const workoutApi = createApi({
                 url: "/token",
                 method: "DELETE"
             }),
-            invalidatesTags: ["Account", { type: "Accounts", id: "LIST" }]
+            invalidatesTags: ["Account", "Incompleted", "Completed", "Details", { type: "Accounts", id: "LIST" }]
         }),
+        // ########################################################################################
         getIncompletedWorkouts: builder.query({
             query: () => "/api/workouts/incompleted",
             providesTags: ["Incompleted"]
@@ -52,6 +53,7 @@ export const workoutApi = createApi({
             query: () => "/api/workouts/completed/",
             providesTags: ["Completed"]
         }),
+        // ########################################################################################
         createCardioWorkouts:builder.mutation({
             query: (body) => {
                 return {
@@ -83,7 +85,17 @@ export const workoutApi = createApi({
             },
             invalidatesTags: ["Incompleted", "Completed", "Details"]
         }),
-
+        // ########################################################################################
+        createStrengthWorkouts: builder.mutation({
+            query: (body) => {
+                return {
+                    url: "/api/workouts/strength/",
+                    method: "POST",
+                    body,
+                }
+            },
+            invalidatesTags: ["Incompleted", "Completed"]
+        })
     })
 })
 
@@ -97,5 +109,6 @@ useGetCompletedWorkoutsQuery,
 useGetIncompletedWorkoutsQuery,
 useGetCardioWorkoutDetailsQuery,
 useDeleteCardioWorkoutMutation,
-useUpdateCardioWorkoutsMutation 
+useUpdateCardioWorkoutsMutation,
+useCreateStrengthWorkoutsMutation
 } = workoutApi;
