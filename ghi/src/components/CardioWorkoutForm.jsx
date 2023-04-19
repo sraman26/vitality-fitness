@@ -87,16 +87,15 @@ const CardioWorkoutForm = () =>
                         value={fields.notes}
                         onChange={e => dispatch(handleNotesChange(e.target.value))}  />
                     </div>
-                        <div className="mb-3">
-                        <label htmlFor="status" className='form-label'>
-                            Status:
-                        </label>
-                        <input
-                        className="form-control form-control-sm"
-                        type={`text`}
-                        id='status'
-                        value={fields.status}
-                        onChange={e => dispatch(handleStatusChange(e.target.value))}  />
+                    <div className="mb-3">
+                        <select value={fields.status} onChange={e => dispatch(handleStatusChange(e.target.value))} required name="status" id="status" className="form-select">
+                            <option key="Incomplete">
+                                Incomplete
+                            </option>
+                            <option key="Complete">
+                                Complete
+                            </option>
+                        </select>
                     </div>
                     <button type="submit" className="btn btn-success">Create</button>
                 </form>

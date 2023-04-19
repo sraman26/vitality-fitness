@@ -45,3 +45,18 @@ img {
 .NavSpacing{
   margin-top: 66px !important;
 }
+
+.workoutLink{
+  text-decoration: none !important;
+  color: black;
+  font-weight: 500;
+}
+
+
+.dropdown-potato{
+  color: black !important
+}
+
+.navhead{
+  color: white !important
+}

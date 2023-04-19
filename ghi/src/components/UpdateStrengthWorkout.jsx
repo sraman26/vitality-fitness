@@ -2,6 +2,8 @@ import React from 'react'
 import '../App.css'
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useUpdateStrengthWorkoutsMutation, useGetStrengthWorkoutDetailsQuery} from '../services/workout'
+import { useParams, useNavigate} from 'react-router-dom'
 import {
     handleWorkoutNameChange,
     handleDateChange,
@@ -9,15 +11,14 @@ import {
     reset
 }
 from '../features/strength/CreateStrengthWorkoutSlice'
-import { useCreateStrengthWorkoutsMutation } from '../services/workout'
-import { useNavigate } from 'react-router-dom'
 
 
-const StrengthWorkoutForm = () =>
-{
-    const [inputFields, setInputFields] = useState([
-        { muscle: "", name: "", reps: "", notes: "" }
-        ])
+const UpdateStrengthWorkout = () =>{
+
+    let {workoutId} = useParams()
+    let navigate = useNavigate()
+
+    const [inputFields, setInputFields] = useState([])
 
     const addFields = (e) => {
         let newfield = { muscle: "", name: "", reps: "", notes: "" }
@@ -41,24 +42,37 @@ const StrengthWorkoutForm = () =>
 // ################################DYNAMIC ROWS ABOVE###################################
 
     const dispatch = useDispatch()
-    let navigate = useNavigate()
-    const [strengthworkoutform] = useCreateStrengthWorkoutsMutation()
+    const {data:details, isLoading:Loading} = useGetStrengthWorkoutDetailsQuery(workoutId)
+    const [strengthworkoutform] = useUpdateStrengthWorkoutsMutation()
     const {fields} = useSelector(state => state.strengthForm)
+
+    if(Loading) return <div>Loading the page--just a moment</div>
+    if(details?.length===0) return <div>This workout does not exist</div>
 
     const handleSubmit = (e) => {
         e.preventDefault()
         let update = {...fields, ...{exercises: inputFields}}
-        console.log(update)
-        strengthworkoutform(update)
+
+        const newData = {}
+        for (let key in update){
+            if (update[key] === "" || update[key].length === 0){
+                newData[key] = details[key]
+            } else{
+                newData[key] = update[key]
+            }
+        }
+
+
+        strengthworkoutform({newData, workoutId})
         dispatch(reset())
-        navigate("/Workouts")
+        navigate(`/Workouts/Strength/${workoutId}/`)
     }
 
-    return (
+    return(
         <>
         <div className="card">
             <div className="card-body">
-                <h5 className="card-title">New Strength Workout</h5>
+                <h5 className="card-title">Update Strength Workout</h5>
                 <hr />
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
@@ -70,7 +84,8 @@ const StrengthWorkoutForm = () =>
                         type={`text`}
                         id='workoutName'
                         value={fields.workout_name}
-                        onChange={e => dispatch(handleWorkoutNameChange(e.target.value))} />
+                        placeholder={details.workout_name}
+                        onChange={e => dispatch(handleWorkoutNameChange(e.target.value))}/>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="date" className='form-label'>
@@ -85,12 +100,13 @@ const StrengthWorkoutForm = () =>
                     </div>
                     <div className="mb-3">
                         <select value={fields.status} onChange={e => dispatch(handleStatusChange(e.target.value))} required name="status" id="status" className="form-select">
-                            <option key="Incomplete">
-                                Incomplete
-                            </option>
                             <option key="Complete">
                                 Complete
                             </option>
+                            <option key="Incomplete">
+                                Incomplete
+                            </option>
+
                         </select>
                     </div>
                     <div className="App">
@@ -101,24 +117,28 @@ const StrengthWorkoutForm = () =>
                         name='muscle'
                         placeholder='Muscle'
                         value={input.muscle}
+                        required={true}
                         onChange={event => handleFormChange(index, event)}
                     />
                     <input
                         name='name'
                         placeholder='Exercise Name'
                         value={input.name}
+                        required={true}
                         onChange={event => handleFormChange(index, event)}
                     />
                     <input
                         name='reps'
                         placeholder='Reps'
                         value={input.reps}
+                        required={true}
                         onChange={event => handleFormChange(index, event)}
                     />
                     <input
                         name='notes'
                         placeholder='Notes'
                         value={input.notes}
+                        required={true}
                         onChange={event => handleFormChange(index, event)}
                     />
                     <button onClick={() => removeFields(index)}>Remove</button>
@@ -127,7 +147,7 @@ const StrengthWorkoutForm = () =>
                 })}
                 <button onClick={addFields}>Add More..</button>
                 </div>
-                    <button type="submit" className="btn btn-success">Create</button>
+                    <button type="submit" className="btn btn-success">Update</button>
                 </form>
             </div>
         </div>
@@ -135,4 +155,5 @@ const StrengthWorkoutForm = () =>
     )
 }
 
-export default StrengthWorkoutForm
+
+export default UpdateStrengthWorkout

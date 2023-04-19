@@ -1,13 +1,13 @@
 import React from 'react'
 import { useGetCompletedWorkoutsQuery, useGetIncompletedWorkoutsQuery } from '../services/workout'
 import { NavLink } from 'react-router-dom'
+import '../App.css'
 
 // function WorkoutList()
 const Workouts = () => {
     const { data:incompleted_workouts, isLoading:IncompleteLoading } = useGetIncompletedWorkoutsQuery()
     const { data:completed_workouts, isLoading:CompleteLoading } = useGetCompletedWorkoutsQuery()
 
-    console.log(incompleted_workouts)
     if (IncompleteLoading) return <div>Loading...</div>
     if (incompleted_workouts?.length === 0) return <div>No things</div>
     if (CompleteLoading) return <div>Loading...</div>
@@ -31,9 +31,14 @@ const Workouts = () => {
                         <tbody>
                             {
                                 incompleted_workouts.workouts.map(workout => {
+                                    if (workout.type === "Cardio"){
+                                        var path = `Cardio/${workout.id}`
+                                    }else{
+                                        path = `Strength/${workout.id}`
+                                    }
                                     return (
                                     <tr key={workout.id}>
-                                        <td ><NavLink to={workout.id}>{ workout.workout_name }</NavLink></td>
+                                        <td ><NavLink to={path}><button type="button" className="btn btn-outline-dark workoutLink">{ workout.workout_name }</button></NavLink></td>
                                         <td>{ workout.type }</td>
                                         <td>{ workout.date }</td>
                                     </tr>
@@ -56,9 +61,14 @@ const Workouts = () => {
                         <tbody>
                             {
                                 completed_workouts.workouts.map(workout => {
+                                    if (workout.type === "Cardio"){
+                                        var path = `Cardio/${workout.id}`
+                                    }else{
+                                        path = `Strength/${workout.id}`
+                                    }
                                     return (
                                     <tr key={workout.id}>
-                                        <td ><NavLink to={workout.id}>{ workout.workout_name }</NavLink></td>
+                                        <td ><NavLink to={path}><button type="button" className="btn btn-outline-dark workoutLink">{ workout.workout_name }</button></NavLink></td>
                                         <td>{ workout.type }</td>
                                         <td>{ workout.date }</td>
                                     </tr>

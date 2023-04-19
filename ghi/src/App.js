@@ -6,9 +6,11 @@ import WorkoutList from './components/WorkoutList.jsx';
 import Home from './components/Home.jsx';
 import Nav from './components/Nav.jsx';
 import CardioWorkoutForm from './components/CardioWorkoutForm.jsx';
-import WorkoutDetail from './components/CardioWorkoutDetails';
+import CardioWorkoutDetail from './components/CardioWorkoutDetails';
 import UpdateCardioWorkout from './components/UpdateCardioWorkout';
 import StrengthWorkoutForm from './components/StrengthWorkoutForm';
+import StrengthWorkoutDetail from './components/StrengthWorkoutDetails';
+import UpdateStrengthWorkout from './components/UpdateStrengthWorkout';
 
 function App() {
   // const [launch_info, setLaunchInfo] = useState([]);
@@ -45,9 +47,13 @@ function App() {
           <Route>
             <Route path="Workouts">
               <Route index element={<WorkoutList/>}/>
-              <Route path=":workoutId">
-                <Route index element={<WorkoutDetail/>}/>
+              <Route path="Cardio/:workoutId">
+                <Route index element={<CardioWorkoutDetail/>}/>
                 <Route path="Update" element={<UpdateCardioWorkout/>}/>
+              </Route>
+              <Route path="Strength/:workoutId">
+                <Route index element={<StrengthWorkoutDetail/>}/>
+                <Route path="Update" element={<UpdateStrengthWorkout/>}/>
               </Route>
               <Route path="CardioForm" element={<CardioWorkoutForm/>}/>
               <Route path="StrengthForm" element={<StrengthWorkoutForm/>}/>
