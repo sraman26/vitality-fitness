@@ -31,3 +31,11 @@ helps me use this for recruiters
 4.6.23: finished coding the signup front-end and verified that login, logout, and signup are working properly. Coded the front page of our website, picked a main image, added cards, and styled our nav bar with a site icon. Tahmid was our coder.
 
 4.7.23: Continued working on main landing page for our website; coded the 'workouts list' page to show completed and upcoming workouts in two side-0by-side tables; created a page to create new cardio workouts
+
+4.10.23 - 4.14.23: Spring Break
+
+4.17.23: Finished cardio CRUD functionality on the front-end website side. I was our group coder.
+
+4.18.23: Finished strength workout list and workout form page. Aaron was our coder.
+
+4.19.23: Finished out front-end CRUD functionality and now have all pages working as expected; Tahmid was our coder today.
