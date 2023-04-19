@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from "react-router-dom"
+import { NavDropdown } from 'react-bootstrap'
 import { useLogoutMutation } from "../services/workout"
 import '../App.css'
 
@@ -17,24 +18,28 @@ function Nav() {
             </div>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li className="nav-item">
-                        <NavLink className="nav-link active" aria-current="page" to="/Login">Login</NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink className="nav-link active" onClick={logout} exact="true" to="/">Logout</NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink className="nav-link active" aria-current="page" to="/Signup">Sign Up!</NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink className="nav-link active" aria-current="page" to="/Workouts">My Workouts</NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink className="nav-link active" aria-current="page" to="Workouts/CardioForm">New Cardio Workout</NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink className="nav-link active" aria-current="page" to="Workouts/StrengthForm">New Strength Workout</NavLink>
-                    </li>
+                    <NavDropdown className="navhead" title="Account" id="nav-dropdown">
+                            <NavDropdown.Item eventKey="4.1">
+                                <NavLink className="nav-link active dropdown-potato" aria-current="page" to="/Login">Login</NavLink>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item eventKey="4.2">
+                                <NavLink className="nav-link active dropdown-potato" onClick={logout} exact="true" to="/">Logout</NavLink>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item eventKey="4.3">
+                                <NavLink className="nav-link active dropdown-potato" aria-current="page" to="/Signup">Sign Up</NavLink>
+                            </NavDropdown.Item>
+                    </NavDropdown>
+                    <NavDropdown className="navhead" title="Workouts" id="nav-dropdown">
+                            <NavDropdown.Item eventKey="4.1">
+                                <NavLink className="nav-link active dropdown-potato" aria-current="page" to="/Workouts">My Workouts</NavLink>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item eventKey="4.2">
+                                <NavLink className="nav-link active dropdown-potato" aria-current="page" to="Workouts/CardioForm">New Cardio Workout</NavLink>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item eventKey="4.3">
+                                <NavLink className="nav-link active dropdown-potato" aria-current="page" to="Workouts/StrengthForm">New Strength Workout</NavLink>
+                            </NavDropdown.Item>
+                    </NavDropdown>
                 </ul>
             </div>
         </div>
@@ -43,3 +48,10 @@ function Nav() {
     }
 
 export default Nav
+
+                    // <li className="nav-item">
+                    //     <NavLink className="nav-link active" aria-current="page" to="Workouts/CardioForm">New Cardio Workout</NavLink>
+                    // </li>
+                    // <li className="nav-item">
+                    //     <NavLink className="nav-link active" aria-current="page" to="Workouts/StrengthForm">New Strength Workout</NavLink>
+                    // </li>
