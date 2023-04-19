@@ -35,7 +35,7 @@ export const workoutApi = createApi({
                     credentials: "include"
                 }
             },
-            invalidatesTags: ["Account", { type: "Accounts", id: "LIST" }]
+            invalidatesTags: ["Account", { type: "Accounts", id: "LIST" }, "Incompleted", "Completed"]
         }),
         logout: builder.mutation({
             query: () => ({

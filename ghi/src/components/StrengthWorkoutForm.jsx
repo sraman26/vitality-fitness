@@ -10,6 +10,7 @@ import {
 }
 from '../features/strength/CreateStrengthWorkoutSlice'
 import { useCreateStrengthWorkoutsMutation } from '../services/workout'
+import { useNavigate } from 'react-router-dom'
 
 
 const StrengthWorkoutForm = () =>
@@ -40,6 +41,7 @@ const StrengthWorkoutForm = () =>
 // ################################DYNAMIC ROWS ABOVE###################################
 
     const dispatch = useDispatch()
+    let navigate = useNavigate()
     const [strengthworkoutform] = useCreateStrengthWorkoutsMutation()
     const {fields} = useSelector(state => state.strengthForm)
 
@@ -49,6 +51,7 @@ const StrengthWorkoutForm = () =>
         console.log(update)
         strengthworkoutform(update)
         dispatch(reset())
+        navigate("/Workouts")
     }
 
     return (

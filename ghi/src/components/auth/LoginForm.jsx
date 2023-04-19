@@ -5,6 +5,7 @@ import { useLoginMutation } from '../../services/workout'
 import { useNavigate } from 'react-router-dom'
 
 
+
 function LoginForm() {
     let navigate = useNavigate()
     const dispatch = useDispatch()
@@ -13,9 +14,14 @@ function LoginForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log({fields})
-        login(fields)
-        dispatch(reset())
+        login(fields).unwrap()
+        .then((e)=> {
+            dispatch(reset())
+            navigate("/")
+        })
+        .catch((e) => {
+            alert("Incorrect Username or Password")
+        })
     }
 
     return (

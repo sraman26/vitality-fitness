@@ -4,16 +4,17 @@ import {
     handleEmailChange
     , handlePasswordChange
     , handleFullNameChange
-    , error
     , reset
 } from '../../features/auth/signupSlice'
 import { useSignupMutation } from '../../services/workout'
+import { useNavigate } from 'react-router-dom'
 
-// Check error message import that Riley had
+
 
 
 
 const Signup = () => {
+    let navigate = useNavigate()
     const dispatch = useDispatch()
     const [signup] = useSignupMutation()
     const {fields} = useSelector(state => state.signup)
@@ -21,10 +22,9 @@ const Signup = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        // const {email, password, full_name} = fields
-        console.log({fields})
         signup(fields)
         dispatch(reset())
+        navigate("/")
     }
     return (
         <div className="card">
