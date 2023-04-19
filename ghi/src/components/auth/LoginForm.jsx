@@ -2,9 +2,11 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { handlePasswordChange, handleUsernameChange, reset } from '../../features/auth/loginSlice'
 import { useLoginMutation } from '../../services/workout'
+import { useNavigate } from 'react-router-dom'
 
 
 function LoginForm() {
+    let navigate = useNavigate()
     const dispatch = useDispatch()
     const [login] = useLoginMutation()
     const {fields} = useSelector(state => state.login)

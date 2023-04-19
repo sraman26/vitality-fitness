@@ -11,25 +11,40 @@ import {
     reset
 }
 from '../features/cardio/CreateCardioWorkoutSlice'
-import { useUpdateCardioWorkoutsMutation} from '../services/workout'
+import { useUpdateCardioWorkoutsMutation, useGetCardioWorkoutDetailsQuery} from '../services/workout'
 import { useParams, useNavigate} from 'react-router-dom'
 
 const UpdateCardioWorkout = () =>
 {
     let {workoutId} = useParams()
-
     let navigate = useNavigate()
 
     const dispatch = useDispatch()
+    const {data:details, isLoading:Loading} = useGetCardioWorkoutDetailsQuery(workoutId);
     const [cardioworkoutform] = useUpdateCardioWorkoutsMutation()
+
+
     const {fields} = useSelector(state => state.cardioForm)
+
+    if(Loading) return <div>Loading the page--just a moment</div>
+    if(details?.length===0) return <div>This workout does not exist</div>
+
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log({fields})
-        cardioworkoutform({workoutId, fields})
+        const update = {}
+        for (let key in fields){
+            if (fields[key] === ""){
+                update[key] = details[key]
+            } else{
+                update[key] = fields[key]
+            }
+        }
+
+        cardioworkoutform({workoutId, update})
         dispatch(reset())
-        navigate(`/Workouts/${workoutId}/`)
+        navigate(`/Workouts/Cardio/${workoutId}/`)
     }
 
     return (
@@ -42,18 +57,18 @@ const UpdateCardioWorkout = () =>
                         <label htmlFor="workout_name" className='form-label'>
                             Workout Name:
                         </label>
-                        <input placeholder="clever workout name"
+                        <input placeholder={details.workout_name}
                         className="form-control form-control-sm"
                         type={`text`}
                         id='workoutName'
                         value={fields.workout_name}
-                        onChange={e => dispatch(handleWorkoutNameChange(e.target.value))} />
+                        onChange={e => dispatch(handleWorkoutNameChange(e.target.value))}/>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="exercise" className='form-label'>
                             Exercise:
                         </label>
-                        <input placeholder="Running"
+                        <input placeholder={details.exercise}
                         className="form-control form-control-sm"
                         type={`text`}
                         id='exercise'
@@ -75,7 +90,7 @@ const UpdateCardioWorkout = () =>
                         <label htmlFor="duration" className='form-label'>
                             Duration:
                         </label>
-                        <input placeholder="45 minutes"
+                        <input placeholder={details.duration}
                         className="form-control form-control-sm"
                         type={`text`}
                         id='duration'
@@ -91,18 +106,18 @@ const UpdateCardioWorkout = () =>
                         type={`text`}
                         id='notes'
                         value={fields.notes}
+                        placeholder={details.notes}
                         onChange={e => dispatch(handleNotesChange(e.target.value))}  />
                     </div>
-                        <div className="mb-3">
-                        <label htmlFor="status" className='form-label'>
-                            Status:
-                        </label>
-                        <input placeholder="Complete"
-                        className="form-control form-control-sm"
-                        type={`text`}
-                        id='status'
-                        value={fields.status}
-                        onChange={e => dispatch(handleStatusChange(e.target.value))}  />
+                    <div className="mb-3">
+                        <select value={fields.status} onChange={e => dispatch(handleStatusChange(e.target.value))} required name="status" id="status" className="form-select">
+                            <option key="Incomplete">
+                                Incomplete
+                            </option>
+                            <option key="Complete">
+                                Complete
+                            </option>
+                        </select>
                     </div>
                     <button type="submit" className="btn btn-success">Update</button>
                 </form>
@@ -111,3 +126,11 @@ const UpdateCardioWorkout = () =>
     )
 }
 export default UpdateCardioWorkout
+
+
+
+
+{/* <option>{details.status}</option>
+<option key={details.status === 'Incomplete'? "Complete":"Incomplete"}>
+    {details.status === 'Incomplete'? "Complete":"Incomplete"}
+</option> */}

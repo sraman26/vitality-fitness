@@ -45,3 +45,10 @@ img {
 .NavSpacing{
   margin-top: 66px !important;
 }
+
+.workoutLink{
+  text-decoration: none !important;
+  color: black;
+  font-weight: 500;
+}
+

@@ -11,9 +11,9 @@ function Nav() {
     <nav className="navbar fixed-top navbar-expand-lg navbar-dark navgradient" style={{ backgroundColor: "#FFA624"}}>
         <div className="container-fluid">
             <div id="logo">
-                    <NavLink aria-current="page" to="/">
-                        <img src={require('../images/turtleicon.png')} style={{width: "50px", height: "50px"}}/>
-                    </NavLink>
+                <NavLink aria-current="page" to="/">
+                    <img src={require('../images/turtleicon.png')} style={{width: "50px", height: "50px"}}/>
+                </NavLink>
             </div>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0">

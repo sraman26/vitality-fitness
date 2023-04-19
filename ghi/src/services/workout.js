@@ -80,7 +80,7 @@ export const workoutApi = createApi({
                 return {
                 url: `/api/workouts/cardio/${data.workoutId}`,
                 method: "PUT",
-                body: data.fields,
+                body: data.update,
                 }
             },
             invalidatesTags: ["Incompleted", "Completed", "Details"]
@@ -95,6 +95,27 @@ export const workoutApi = createApi({
                 }
             },
             invalidatesTags: ["Incompleted", "Completed"]
+        }),
+        getStrengthWorkoutDetails: builder.query({
+            query: (id) => `/api/workouts/strength/${id}/`,
+            providesTags: ["Details"]
+        }),
+        deleteStrengthWorkout: builder.mutation({
+            query: (id) => ({
+                url: `/api/workouts/strength/${id}/`,
+                method: 'DELETE'
+            }),
+            invalidatesTags: ["Incompleted", "Completed"]
+        }),
+        updateStrengthWorkouts:builder.mutation({
+            query: (data) => {
+                return {
+                    url:`/api/workouts/strength/${data.workoutId}`,
+                    method: "PUT",
+                    body: data.newData,
+                }
+            },
+            invalidatesTags: ["Incompleted", "Completed", "Details"]
         })
     })
 })
@@ -110,5 +131,8 @@ useGetIncompletedWorkoutsQuery,
 useGetCardioWorkoutDetailsQuery,
 useDeleteCardioWorkoutMutation,
 useUpdateCardioWorkoutsMutation,
-useCreateStrengthWorkoutsMutation
+useCreateStrengthWorkoutsMutation,
+useGetStrengthWorkoutDetailsQuery,
+useDeleteStrengthWorkoutMutation,
+useUpdateStrengthWorkoutsMutation
 } = workoutApi;
