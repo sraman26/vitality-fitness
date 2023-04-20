@@ -43,3 +43,18 @@ Created Signup page and redesigned backend to have single workout query. Also cr
 
 4/7
 Merge RTKQueries into one file and created Workout Cardio Form. Sitara was the coder.
+
+Spring Break
+
+4/17
+Completed CARDIO Crud methods on front end. Mike was the coder.
+
+4/18
+Completed StrengthWorkout Form. Aaron was the coder.
+
+4/19
+Completed rest of the CRUD methods. Completed error handling for login form. I was the coder.
+
+4/20
+Continued error handling and fixed Signup BackEnd catch which wasn't working. Navbar is now protected, and error page created for unexpected URL paths. Sitara was the coder
+
