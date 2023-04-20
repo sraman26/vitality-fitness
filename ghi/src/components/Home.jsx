@@ -9,6 +9,7 @@ function Home() {
             <img src={require("../images/splash.png")}></img>
         </div>
         <div className="container-fluid">
+
             <div className="row row-cols-3 d-flex mt-5 justify-content-center">
                 <div className="card" >
                     <div className="card-body">

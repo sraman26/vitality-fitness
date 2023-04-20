@@ -22,9 +22,14 @@ const Signup = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        signup(fields)
-        dispatch(reset())
-        navigate("/")
+        signup(fields).unwrap()
+        .then((e) => {
+            dispatch(reset())
+            navigate("/")
+        })
+        .catch((e) => {
+            alert("Account already exists")
+        })
     }
     return (
         <div className="card">

@@ -35,12 +35,9 @@ class AccountQueries(Queries):
 
     def create(self, info: AccountIn, hash_password: str) -> AccountOutWithPassword:
         props = info.dict()
-        print("props:", props)
-        props["hash_password"] = hash_password
-        try:
-            self.collection.insert_one(props)
-        except DuplicateKeyError:
+        if self.get(props["email"]) is not None:
             raise DuplicateAccountError()
+        props["hash_password"] = hash_password
+        self.collection.insert_one(props)
         props["id"] = str(props["_id"])
-        print("props:", props)
         return AccountOutWithPassword(**props)
