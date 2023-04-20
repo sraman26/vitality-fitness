@@ -1,13 +1,10 @@
 import React from 'react'
 import { useGetCompletedWorkoutsQuery, useGetIncompletedWorkoutsQuery } from '../services/workout'
 import { NavLink } from 'react-router-dom'
-import '../App.css'
-
-// function WorkoutList()
+import '../App.css'// function WorkoutList()
 const Workouts = () => {
     const { data:incompleted_workouts, isLoading:IncompleteLoading } = useGetIncompletedWorkoutsQuery()
     const { data:completed_workouts, isLoading:CompleteLoading } = useGetCompletedWorkoutsQuery()
-
     if (IncompleteLoading) return <div>Loading...</div>
     if (incompleted_workouts?.length === 0) return <div>No things</div>
     if (CompleteLoading) return <div>Loading...</div>
@@ -63,7 +60,7 @@ const Workouts = () => {
                                 completed_workouts.workouts.map(workout => {
                                     if (workout.type === "Cardio"){
                                         var path = `Cardio/${workout.id}`
-                                    }else{
+                                    } else {
                                         path = `Strength/${workout.id}`
                                     }
                                     return (
@@ -81,9 +78,6 @@ const Workouts = () => {
             </div>
         </div>
         </>
-
     )
 }
-
-
 export default Workouts

@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import LoginForm from './components/auth/LoginForm.jsx';
 import SignupForm from './components/auth/SignupForm.jsx';
 import WorkoutList from './components/WorkoutList.jsx';
@@ -11,29 +11,15 @@ import UpdateCardioWorkout from './components/UpdateCardioWorkout';
 import StrengthWorkoutForm from './components/StrengthWorkoutForm';
 import StrengthWorkoutDetail from './components/StrengthWorkoutDetails';
 import UpdateStrengthWorkout from './components/UpdateStrengthWorkout';
+import ErrorPage from './components/ErrorPage';
+import { useGetAccountQuery } from './services/workout';
 
 function App() {
-  // const [launch_info, setLaunchInfo] = useState([]);
-  // const [error, setError] = useState(null);
-
-  // useEffect(() => {
-  //   async function getData() {
-  //     let url = `${process.env.REACT_APP_SAMPLE_SERVICE_API_HOST}/api/launch-details`;
-  //     console.log('fastapi url: ', url);
-  //     let response = await fetch(url);
-  //     console.log("------- hello? -------");
-  //     let data = await response.json();
-
-  //     if (response.ok) {
-  //       console.log("got launch data!");
-  //       setLaunchInfo(data.launch_details);
-  //     } else {
-  //       console.log("drat! something happened");
-  //       setError(data.message);
-  //     }
-  //   }
-  //   getData();
-  // }, [])
+  const {data:account, isLoading} = useGetAccountQuery()
+  if(isLoading)
+  {
+      return
+  }
 
 
   return (
@@ -44,21 +30,45 @@ function App() {
           <Route index element={<Home />} />
           <Route path="Login" element={<LoginForm />}/>
           <Route path="Signup" element={<SignupForm/>}/>
-          <Route>
-            <Route path="Workouts">
-              <Route index element={<WorkoutList/>}/>
-              <Route path="Cardio/:workoutId">
-                <Route index element={<CardioWorkoutDetail/>}/>
-                <Route path="Update" element={<UpdateCardioWorkout/>}/>
+          {(account) ? (
+            <>
+              <Route>
+                <Route path="Workouts">
+                  <Route index element={<WorkoutList/>}/>
+                  <Route path="Cardio/:workoutId">
+                    <Route index element={<CardioWorkoutDetail/>}/>
+                    <Route path="Update" element={<UpdateCardioWorkout/>}/>
+                  </Route>
+                  <Route path="Strength/:workoutId">
+                    <Route index element={<StrengthWorkoutDetail/>}/>
+                    <Route path="Update" element={<UpdateStrengthWorkout/>}/>
+                  </Route>
+                  <Route path="CardioForm" element={<CardioWorkoutForm/>}/>
+                  <Route path="StrengthForm" element={<StrengthWorkoutForm/>}/>
+                </Route>
               </Route>
-              <Route path="Strength/:workoutId">
-                <Route index element={<StrengthWorkoutDetail/>}/>
-                <Route path="Update" element={<UpdateStrengthWorkout/>}/>
+              <Route path=":404" element={<ErrorPage />}/>
+            </>
+          ) : (
+            <>
+             <Route>
+                <Route path="Workouts">
+                  <Route index element={<ErrorPage/>}/>
+                  <Route path="Cardio/:workoutId">
+                    <Route index element={<ErrorPage/>}/>
+                    <Route path="Update" element={<ErrorPage/>}/>
+                  </Route>
+                  <Route path="Strength/:workoutId">
+                    <Route index element={<ErrorPage/>}/>
+                    <Route path="Update" element={<ErrorPage/>}/>
+                  </Route>
+                  <Route path="CardioForm" element={<ErrorPage/>}/>
+                  <Route path="StrengthForm" element={<ErrorPage/>}/>
+                </Route>
               </Route>
-              <Route path="CardioForm" element={<CardioWorkoutForm/>}/>
-              <Route path="StrengthForm" element={<StrengthWorkoutForm/>}/>
-            </Route>
-          </Route>
+            <Route path=":404" element={<ErrorPage />}/>
+            </>
+          )}
         </Routes>
       </div>
     </BrowserRouter>

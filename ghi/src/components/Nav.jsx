@@ -1,6 +1,6 @@
 import React from 'react'
-import { NavLink } from "react-router-dom"
-import { NavDropdown } from 'react-bootstrap'
+import { NavLink, Link } from "react-router-dom"
+import { NavDropdown} from 'react-bootstrap'
 import { useLogoutMutation, useGetAccountQuery } from "../services/workout"
 import '../App.css'
 
@@ -29,31 +29,19 @@ function Nav() {
                     (
                         <>
                             <NavDropdown className="navhead" title="Account" id="nav-dropdown">
-                                <NavDropdown.Item eventKey="4.1">
-                                    <NavLink className="nav-link active dropdown-potato" onClick={logout} exact="true" to="/">Logout</NavLink>
-                                </NavDropdown.Item>
+                                <NavDropdown.Item eventKey="4.1" className="nav-link active dropdown-Nav" onClick={logout} exact="true" as={Link} to="/">Logout</NavDropdown.Item>
                             </NavDropdown>
                             <NavDropdown className="navhead" title="Workouts" id="nav-dropdown">
-                                <NavDropdown.Item eventKey="4.1">
-                                    <NavLink className="nav-link active dropdown-potato" aria-current="page" to="/Workouts">My Workouts</NavLink>
-                                </NavDropdown.Item>
-                                <NavDropdown.Item eventKey="4.2">
-                                    <NavLink className="nav-link active dropdown-potato" aria-current="page" to="Workouts/CardioForm">New Cardio Workout</NavLink>
-                                </NavDropdown.Item>
-                                <NavDropdown.Item eventKey="4.3">
-                                    <NavLink className="nav-link active dropdown-potato" aria-current="page" to="Workouts/StrengthForm">New Strength Workout</NavLink>
-                                </NavDropdown.Item>
+                                <NavDropdown.Item eventKey="4.1" className="nav-link active dropdown-Nav" aria-current="page" as={Link} to="/Workouts">My Workouts</NavDropdown.Item>
+                                <NavDropdown.Item eventKey="4.2" className="nav-link active dropdown-Nav" aria-current="page" as={Link} to="Workouts/CardioForm">New Cardio Workout</NavDropdown.Item>
+                                <NavDropdown.Item eventKey="4.3" className="nav-link active dropdown-Nav" aria-current="page" as={Link} to="Workouts/StrengthForm">New Strength Workout</NavDropdown.Item>
                             </NavDropdown>
                         </>
                     ) :
                     (
                         <NavDropdown className="navhead" title="Account" id="nav-dropdown">
-                            <NavDropdown.Item eventKey="4.1">
-                                <NavLink className="nav-link active dropdown-potato" aria-current="page" to="/Login">Login</NavLink>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item eventKey="4.2">
-                                <NavLink className="nav-link active dropdown-potato" aria-current="page" to="/Signup">Sign Up</NavLink>
-                            </NavDropdown.Item>
+                            <NavDropdown.Item eventKey="4.1" className="nav-link active dropdown-Nav" aria-current="page" as={Link} to="/Login">Login</NavDropdown.Item>
+                            <NavDropdown.Item eventKey="4.2" className="nav-link active dropdown-Nav" aria-current="page" as={Link} to="/Signup">Sign Up</NavDropdown.Item>
                         </NavDropdown>
                     )}
                 </ul>

@@ -53,10 +53,21 @@ img {
 }
 
 
-.dropdown-potato{
-  color: black !important
+.dropdown-Nav{
+  color: black !important;
+  background-color: transparent !important
 }
 
 .navhead{
   color: white !important
+}
+.error-img {
+  display: block;
+  width: auto;
+  height: 80vh;
+  margin: auto;
+
+}.error-background {
+  background-color: #FFD554;
+  padding-bottom: 20%;
 }
