@@ -74,3 +74,23 @@ Cardio detail page
 Cardio delete buttons
 Cardio update form
 (Mike in chair)
+
+4/18/23:
+Create Strength Form
+List Strength Workout Form
+(Aaron in chair)
+
+4/19/23:
+Update Strength workout
+Strength detail page
+Strength delete buttons
+Dropdown menu
+(Tahmid in chair)
+
+4/20/23:
+Login and signup error handling
+Protect navlinks in menu bar
+Error page
+Redirect to error page when logged out
+Redirect to error page when URL does not exist
+(Sitara in chair)

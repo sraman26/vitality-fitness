@@ -1,4 +1,4 @@
-import './App.css';
+ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import LoginForm from './components/auth/LoginForm.jsx';
 import SignupForm from './components/auth/SignupForm.jsx';
@@ -47,6 +47,7 @@ function App() {
                     <Route path="CardioForm" element={<CardioWorkoutForm/>}/>
                     <Route path="StrengthForm" element={<StrengthWorkoutForm/>}/>
                   </Route>
+                  <Route path="/*" element={<ErrorPage />} />
                 </Route>
               </>
             ) : (
