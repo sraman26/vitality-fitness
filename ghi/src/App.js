@@ -27,49 +27,33 @@ function App() {
       <Nav />
       <div className=" NavSpacing">
         <Routes>
-          <Route index element={<Home />} />
-          <Route path="Login" element={<LoginForm />}/>
-          <Route path="Signup" element={<SignupForm/>}/>
-          {(account) ? (
-            <>
-              <Route>
-                <Route path="Workouts">
-                  <Route index element={<WorkoutList/>}/>
-                  <Route path="Cardio/:workoutId">
-                    <Route index element={<CardioWorkoutDetail/>}/>
-                    <Route path="Update" element={<UpdateCardioWorkout/>}/>
+          <Route>
+          <Route index element={<Home />}></Route>
+            <Route path="Login" element={<LoginForm />}/>
+            <Route path="Signup" element={<SignupForm/>}/>
+            {(account) ? (
+              <>
+                <Route>
+                  <Route path="Workouts">
+                    <Route index element={<WorkoutList/>}/>
+                    <Route path="Cardio/:workoutId">
+                      <Route index element={<CardioWorkoutDetail/>}/>
+                      <Route path="Update" element={<UpdateCardioWorkout/>}/>
+                    </Route>
+                    <Route path="Strength/:workoutId">
+                      <Route index element={<StrengthWorkoutDetail/>}/>
+                      <Route path="Update" element={<UpdateStrengthWorkout/>}/>
+                    </Route>
+                    <Route path="CardioForm" element={<CardioWorkoutForm/>}/>
+                    <Route path="StrengthForm" element={<StrengthWorkoutForm/>}/>
                   </Route>
-                  <Route path="Strength/:workoutId">
-                    <Route index element={<StrengthWorkoutDetail/>}/>
-                    <Route path="Update" element={<UpdateStrengthWorkout/>}/>
-                  </Route>
-                  <Route path="CardioForm" element={<CardioWorkoutForm/>}/>
-                  <Route path="StrengthForm" element={<StrengthWorkoutForm/>}/>
                 </Route>
-              </Route>
-              <Route path=":404" element={<ErrorPage />}/>
-            </>
-          ) : (
-            <>
-             <Route>
-                <Route path="Workouts">
-                  <Route index element={<ErrorPage/>}/>
-                  <Route path="Cardio/:workoutId">
-                    <Route index element={<ErrorPage/>}/>
-                    <Route path="Update" element={<ErrorPage/>}/>
-                  </Route>
-                  <Route path="Strength/:workoutId">
-                    <Route index element={<ErrorPage/>}/>
-                    <Route path="Update" element={<ErrorPage/>}/>
-                  </Route>
-                  <Route path="CardioForm" element={<ErrorPage/>}/>
-                  <Route path="StrengthForm" element={<ErrorPage/>}/>
-                </Route>
-              </Route>
-            <Route path=":404" element={<ErrorPage />}/>
-            </>
-          )}
-        </Routes>
+              </>
+            ) : (
+              <Route path="/*" element={<ErrorPage />} />
+            )}
+        </Route>
+      </Routes>
       </div>
     </BrowserRouter>
   );

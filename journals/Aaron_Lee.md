@@ -38,4 +38,16 @@ April 6th, 2023:
     Touched up HTML/CSS for front-end design and added cards, main image, and nav bar with icon and styling.
 
 April 7th, 2023:
-    Created a page for our create cardio workout
+    Created a page for our create cardio workout.
+
+April 17th, 2023:
+    Created Cardio detail page, cardio delete buttons, cardio update form.
+
+April 18th, 2023:
+    Created strength create form made.
+
+April 19th, 2023:
+    Created strength detail, and update form.
+
+April 20th, 2023:
+    Login and signup error handling made, protected NavLinks in nav bar.  Made an Error page with redirections
