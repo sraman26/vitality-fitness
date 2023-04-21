@@ -27,13 +27,11 @@ function App() {
       <Nav />
       <div className=" NavSpacing">
         <Routes>
-          <Route>
           <Route index element={<Home />}></Route>
             <Route path="Login" element={<LoginForm />}/>
             <Route path="Signup" element={<SignupForm/>}/>
-            {(account) ? (
+            {(account) && (
               <>
-                <Route>
                   <Route path="Workouts">
                     <Route index element={<WorkoutList/>}/>
                     <Route path="Cardio/:workoutId">
@@ -47,13 +45,8 @@ function App() {
                     <Route path="CardioForm" element={<CardioWorkoutForm/>}/>
                     <Route path="StrengthForm" element={<StrengthWorkoutForm/>}/>
                   </Route>
-                  <Route path="/*" element={<ErrorPage />} />
-                </Route>
-              </>
-            ) : (
-              <Route path="/*" element={<ErrorPage />} />
-            )}
-        </Route>
+              </>)}
+              <Route path="*" element={<ErrorPage />} />
       </Routes>
       </div>
     </BrowserRouter>

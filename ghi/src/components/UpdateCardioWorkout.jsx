@@ -13,6 +13,7 @@ import {
 from '../features/cardio/CreateCardioWorkoutSlice'
 import { useUpdateCardioWorkoutsMutation, useGetCardioWorkoutDetailsQuery} from '../services/workout'
 import { useParams, useNavigate} from 'react-router-dom'
+import ErrorPage from './ErrorPage'
 
 const UpdateCardioWorkout = () =>
 {
@@ -29,7 +30,7 @@ const UpdateCardioWorkout = () =>
     if(Loading) return <div>Loading the page--just a moment</div>
     if(details?.length===0) return <div>This workout does not exist</div>
 
-
+    console.log('these are details', details)
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -48,6 +49,14 @@ const UpdateCardioWorkout = () =>
     }
 
     return (
+        <>{(!details)
+            ?
+            (
+            <><ErrorPage/></>
+            )
+            :
+            (
+            <>
         <div className="card">
             <div className="card-body">
                 <h5 className="card-title">Update Cardio Workout</h5>
@@ -123,6 +132,8 @@ const UpdateCardioWorkout = () =>
                 </form>
             </div>
         </div>
+        </>
+    )}</>
     )
 }
 export default UpdateCardioWorkout

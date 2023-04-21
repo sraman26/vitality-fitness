@@ -11,6 +11,7 @@ import {
     reset
 }
 from '../features/strength/CreateStrengthWorkoutSlice'
+import ErrorPage from './ErrorPage'
 
 
 const UpdateStrengthWorkout = () =>{
@@ -69,7 +70,14 @@ const UpdateStrengthWorkout = () =>{
     }
 
     return(
-        <>
+        <>{(!details)
+            ?
+            (
+            <><ErrorPage/></>
+            )
+            :
+            (
+            <>
         <div className="card">
             <div className="card-body">
                 <h5 className="card-title">Update Strength Workout</h5>
@@ -152,6 +160,7 @@ const UpdateStrengthWorkout = () =>{
             </div>
         </div>
         </>
+    )}</>
     )
 }
 

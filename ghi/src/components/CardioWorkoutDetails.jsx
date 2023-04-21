@@ -1,6 +1,7 @@
 import React from 'react'
 import { useGetCardioWorkoutDetailsQuery, useDeleteCardioWorkoutMutation } from '../services/workout'
 import { useParams, useNavigate } from 'react-router-dom'
+import ErrorPage from './ErrorPage'
 
 const CardioWorkoutDetail = () => {
 
@@ -27,6 +28,11 @@ const CardioWorkoutDetail = () => {
 
 
     return (
+        <>{(!details)
+            ?
+            (<ErrorPage/>)
+            :
+            (
         <div className="container">
             <div>
                 <div className="shadow p-4 mt-4">
@@ -54,6 +60,7 @@ const CardioWorkoutDetail = () => {
                 </div>
             </div>
         </div>
+        )}</>
     )
 }
 
