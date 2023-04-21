@@ -37,7 +37,8 @@ class CardioWorkoutOut(CardioWorkoutIn):
 
 
 class CardioWorkoutList(BaseModel):
-    workouts : list[CardioWorkoutOut]
+    workouts: list[CardioWorkoutOut]
+
 
 class StrengthExerciseOut(BaseModel):
     exercises: List
@@ -49,6 +50,7 @@ class StrengthExercise(BaseModel):
     notes: Optional[str]
     reps: str
 
+
 class StrengthWorkoutIn(BaseModel):
     workout_name: str
     exercises: list[StrengthExercise]
@@ -56,9 +58,11 @@ class StrengthWorkoutIn(BaseModel):
     type: str
     status: Optional[str] = "Incomplete"
 
+
 class StrengthWorkoutOut(StrengthWorkoutIn):
     id: str
     user_id: str
+
 
 class StrengthWorkoutReduce(BaseModel):
     id: str
@@ -67,8 +71,10 @@ class StrengthWorkoutReduce(BaseModel):
     type: str
     status: str
 
+
 class StrengthWorkoutList(BaseModel):
     workouts: list[StrengthWorkoutReduce]
+
 
 class Workouts(BaseModel):
     workout_name: str
@@ -77,6 +83,7 @@ class Workouts(BaseModel):
     id: str
     user_id: str
     status: str
+
 
 class WorkoutList(BaseModel):
     workouts: List

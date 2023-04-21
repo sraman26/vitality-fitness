@@ -152,6 +152,5 @@ class WorkoutQueries(Queries):
         ).sort("date", -1):
             workout["id"] = str(workout["_id"])
             workout["date"] = str(workout["date"])
-            print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", workout)
             Workout_List.append(Workouts(**workout))
         return Workout_List
