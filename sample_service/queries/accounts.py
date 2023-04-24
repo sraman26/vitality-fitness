@@ -1,5 +1,4 @@
 from pydantic import BaseModel
-from pymongo.errors import DuplicateKeyError
 from .client import Queries
 
 
@@ -27,13 +26,15 @@ class AccountQueries(Queries):
     COLLECTION = "mongo-data"
 
     def get(self, email: str) -> AccountOutWithPassword:
-        props= self.collection.find_one({"email": email})
+        props = self.collection.find_one({"email": email})
         if not props:
             return None
         props["id"] = str(props["_id"])
         return AccountOutWithPassword(**props)
 
-    def create(self, info: AccountIn, hash_password: str) -> AccountOutWithPassword:
+    def create(
+        self, info: AccountIn, hash_password: str
+    ) -> AccountOutWithPassword:
         props = info.dict()
         if self.get(props["email"]) is not None:
             raise DuplicateAccountError()

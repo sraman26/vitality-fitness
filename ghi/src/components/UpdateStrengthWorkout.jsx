@@ -1,168 +1,179 @@
-import React from 'react'
-import '../App.css'
-import { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { useUpdateStrengthWorkoutsMutation, useGetStrengthWorkoutDetailsQuery} from '../services/workout'
-import { useParams, useNavigate} from 'react-router-dom'
+import React from "react";
+import "../App.css";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
-    handleWorkoutNameChange,
-    handleDateChange,
-    handleStatusChange,
-    reset
-}
-from '../features/strength/CreateStrengthWorkoutSlice'
-import ErrorPage from './ErrorPage'
+  useUpdateStrengthWorkoutsMutation,
+  useGetStrengthWorkoutDetailsQuery,
+} from "../services/workout";
+import { useParams, useNavigate } from "react-router-dom";
+import {
+  handleWorkoutNameChange,
+  handleDateChange,
+  handleStatusChange,
+  reset,
+} from "../features/strength/CreateStrengthWorkoutSlice";
+import ErrorPage from "./ErrorPage";
 
+const UpdateStrengthWorkout = () => {
+  let { workoutId } = useParams();
+  let navigate = useNavigate();
 
-const UpdateStrengthWorkout = () =>{
+  const [inputFields, setInputFields] = useState([]);
 
-    let {workoutId} = useParams()
-    let navigate = useNavigate()
+  const addFields = (e) => {
+    let newfield = { muscle: "", name: "", reps: "", notes: "" };
 
-    const [inputFields, setInputFields] = useState([])
+    setInputFields([...inputFields, newfield]);
+    e.preventDefault();
+  };
 
-    const addFields = (e) => {
-        let newfield = { muscle: "", name: "", reps: "", notes: "" }
+  const handleFormChange = (index, event) => {
+    let data = [...inputFields];
+    data[index][event.target.name] = event.target.value;
+    setInputFields(data);
+  };
 
-        setInputFields([...inputFields, newfield])
-        e.preventDefault()
+  const removeFields = (index) => {
+    let data = [...inputFields];
+    data.splice(index, 1);
+    setInputFields(data);
+  };
+
+  // ################################DYNAMIC ROWS ABOVE###################################
+
+  const dispatch = useDispatch();
+  const { data: details, isLoading: Loading } =
+    useGetStrengthWorkoutDetailsQuery(workoutId);
+  const [strengthworkoutform] = useUpdateStrengthWorkoutsMutation();
+  const { fields } = useSelector((state) => state.strengthForm);
+
+  if (Loading) return <div>Loading the page--just a moment</div>;
+  if (details?.length === 0) return <div>This workout does not exist</div>;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let update = { ...fields, ...{ exercises: inputFields } };
+
+    const newData = {};
+    for (let key in update) {
+      if (update[key] === "" || update[key].length === 0) {
+        newData[key] = details[key];
+      } else {
+        newData[key] = update[key];
+      }
     }
 
-    const handleFormChange = (index, event) => {
-        let data = [...inputFields];
-        data[index][event.target.name] = event.target.value;
-        setInputFields(data);
-    }
+    strengthworkoutform({ newData, workoutId });
+    dispatch(reset());
+    navigate(`/Workouts/Strength/${workoutId}/`);
+  };
 
-    const removeFields = (index) => {
-        let data = [...inputFields];
-        data.splice(index, 1)
-        setInputFields(data)
-    }
-
-// ################################DYNAMIC ROWS ABOVE###################################
-
-    const dispatch = useDispatch()
-    const {data:details, isLoading:Loading} = useGetStrengthWorkoutDetailsQuery(workoutId)
-    const [strengthworkoutform] = useUpdateStrengthWorkoutsMutation()
-    const {fields} = useSelector(state => state.strengthForm)
-
-    if(Loading) return <div>Loading the page--just a moment</div>
-    if(details?.length===0) return <div>This workout does not exist</div>
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        let update = {...fields, ...{exercises: inputFields}}
-
-        const newData = {}
-        for (let key in update){
-            if (update[key] === "" || update[key].length === 0){
-                newData[key] = details[key]
-            } else{
-                newData[key] = update[key]
-            }
-        }
-
-
-        strengthworkoutform({newData, workoutId})
-        dispatch(reset())
-        navigate(`/Workouts/Strength/${workoutId}/`)
-    }
-
-    return(
-        <>{(!details)
-            ?
-            (
-            <><ErrorPage/></>
-            )
-            :
-            (
-            <>
-        <div className="card">
-            <div className="card-body">
-                <h5 className="card-title">Update Strength Workout</h5>
-                <hr />
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                        <label htmlFor="workout_name" className='form-label'>
-                            Workout Name:
-                        </label>
-                        <input
-                        className="form-control form-control-sm"
-                        type={`text`}
-                        id='workoutName'
-                        value={fields.workout_name}
-                        placeholder={details.workout_name}
-                        onChange={e => dispatch(handleWorkoutNameChange(e.target.value))}/>
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="date" className='form-label'>
-                            Date:
-                        </label>
-                        <input
-                        className="form-control form-control-sm"
-                        type={`date`}
-                        id='date'
-                        value={fields.date}
-                        onChange={e => dispatch(handleDateChange(e.target.value))}  />
-                    </div>
-                    <div className="mb-3">
-                        <select value={fields.status} onChange={e => dispatch(handleStatusChange(e.target.value))} required name="status" id="status" className="form-select">
-                            <option key="Complete">
-                                Complete
-                            </option>
-                            <option key="Incomplete">
-                                Incomplete
-                            </option>
-
-                        </select>
-                    </div>
-                    <div className="App">
-                {inputFields.map((input, index) => {
-                return (
-                    <div key={index}>
-                    <input
-                        name='muscle'
-                        placeholder='Muscle'
-                        value={input.muscle}
-                        required={true}
-                        onChange={event => handleFormChange(index, event)}
-                    />
-                    <input
-                        name='name'
-                        placeholder='Exercise Name'
-                        value={input.name}
-                        required={true}
-                        onChange={event => handleFormChange(index, event)}
-                    />
-                    <input
-                        name='reps'
-                        placeholder='Reps'
-                        value={input.reps}
-                        required={true}
-                        onChange={event => handleFormChange(index, event)}
-                    />
-                    <input
-                        name='notes'
-                        placeholder='Notes'
-                        value={input.notes}
-                        required={true}
-                        onChange={event => handleFormChange(index, event)}
-                    />
-                    <button onClick={() => removeFields(index)}>Remove</button>
-                    </div>
-                )
-                })}
-                <button onClick={addFields}>Add More..</button>
-                </div>
-                    <button type="submit" className="btn btn-success">Update</button>
-                </form>
-            </div>
-        </div>
+  return (
+    <>
+      {!details ? (
+        <>
+          <ErrorPage />
         </>
-    )}</>
-    )
-}
+      ) : (
+        <>
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title">Update Strength Workout</h5>
+              <hr />
+              <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                  <label htmlFor="workout_name" className="form-label">
+                    Workout Name:
+                  </label>
+                  <input
+                    className="form-control form-control-sm"
+                    type={`text`}
+                    id="workoutName"
+                    value={fields.workout_name}
+                    placeholder={details.workout_name}
+                    onChange={(e) =>
+                      dispatch(handleWorkoutNameChange(e.target.value))
+                    }
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="date" className="form-label">
+                    Date:
+                  </label>
+                  <input
+                    className="form-control form-control-sm"
+                    type={`date`}
+                    id="date"
+                    value={fields.date}
+                    onChange={(e) => dispatch(handleDateChange(e.target.value))}
+                  />
+                </div>
+                <div className="mb-3">
+                  <select
+                    value={fields.status}
+                    onChange={(e) =>
+                      dispatch(handleStatusChange(e.target.value))
+                    }
+                    required
+                    name="status"
+                    id="status"
+                    className="form-select"
+                  >
+                    <option key="Complete">Complete</option>
+                    <option key="Incomplete">Incomplete</option>
+                  </select>
+                </div>
+                <div className="App">
+                  {inputFields.map((input, index) => {
+                    return (
+                      <div key={index}>
+                        <input
+                          name="muscle"
+                          placeholder="Muscle"
+                          value={input.muscle}
+                          required={true}
+                          onChange={(event) => handleFormChange(index, event)}
+                        />
+                        <input
+                          name="name"
+                          placeholder="Exercise Name"
+                          value={input.name}
+                          required={true}
+                          onChange={(event) => handleFormChange(index, event)}
+                        />
+                        <input
+                          name="reps"
+                          placeholder="Reps"
+                          value={input.reps}
+                          required={true}
+                          onChange={(event) => handleFormChange(index, event)}
+                        />
+                        <input
+                          name="notes"
+                          placeholder="Notes"
+                          value={input.notes}
+                          required={true}
+                          onChange={(event) => handleFormChange(index, event)}
+                        />
+                        <button onClick={() => removeFields(index)}>
+                          Remove
+                        </button>
+                      </div>
+                    );
+                  })}
+                  <button onClick={addFields}>Add More..</button>
+                </div>
+                <button type="submit" className="btn btn-success">
+                  Update
+                </button>
+              </form>
+            </div>
+          </div>
+        </>
+      )}
+    </>
+  );
+};
 
-
-export default UpdateStrengthWorkout
+export default UpdateStrengthWorkout;

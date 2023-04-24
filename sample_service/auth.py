@@ -2,7 +2,11 @@
 import os
 from fastapi import Depends
 from jwtdown_fastapi.authentication import Authenticator
-from queries.accounts import AccountQueries, AccountIn, AccountOut, AccountOutWithPassword
+from queries.accounts import (
+    AccountQueries,
+    AccountOut,
+    AccountOutWithPassword,
+)
 
 
 class VitalityAuthenticator(Authenticator):

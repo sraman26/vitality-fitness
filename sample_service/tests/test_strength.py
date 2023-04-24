@@ -6,8 +6,10 @@ from queries.workouts import WorkoutQueries
 
 client = TestClient(app)
 
+
 def fake_get_current_account_data():
     return {"id": "fakeuser"}
+
 
 class FakeStrengthQueries:
     def get_all_strength_workouts(self, user_id: str):
@@ -24,12 +26,16 @@ class FakeStrengthQueries:
                 "user_id": user_id,
             },
         ]
-    def create_strength_workout(self, params: StrengthWorkoutIn, user_id: str) -> StrengthWorkoutOut:
+
+    def create_strength_workout(
+        self, params: StrengthWorkoutIn, user_id: str
+    ) -> StrengthWorkoutOut:
         props = params.dict()
         props["id"] = "fake_object_id"
         props["user_id"] = user_id
         props["date"] = "2023-04-24"
         return StrengthWorkoutOut(**props)
+
 
 def test_get_all_strength_workouts():
     # Arrange
@@ -42,7 +48,6 @@ def test_get_all_strength_workouts():
     # Act
     res = client.get("/api/workouts/strength")
     data = res.json()
-    print(data)
 
     # Assert
     assert res.status_code == 200
@@ -50,6 +55,7 @@ def test_get_all_strength_workouts():
     # assert data["workouts"][0]["user_id"] == "fakeuser"
     assert data["workouts"][0]["type"] == "Strength"
     app.dependency_overrides = {}
+
 
 def test_create_strength_workout():
     overrides = {
@@ -62,8 +68,8 @@ def test_create_strength_workout():
         "exercises": [],
         "date": "2023-04-24",
         "type": "strength",
-        "status": "Incomplete"
-        }
+        "status": "Incomplete",
+    }
     res = client.post("api/workouts/strength/", json=input)
     data = res.json()
 

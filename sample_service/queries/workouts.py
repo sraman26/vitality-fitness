@@ -11,7 +11,6 @@ from models import (
     CardioWorkoutIn,
     CardioWorkoutOut,
     Workouts,
-    WorkoutList,
 )
 
 
@@ -19,8 +18,8 @@ class WorkoutQueries(Queries):
     COLLECTION = "Workouts"
 
     def create_strength_workout(
-        self, params: StrengthWorkoutIn, user_id: str
-    ) -> StrengthWorkoutOut:
+            self, params: StrengthWorkoutIn, user_id: str
+            ) -> StrengthWorkoutOut:
         workout = params.dict()
         workout["user_id"] = user_id
         workout["date"] = str(workout["date"])
@@ -30,31 +29,31 @@ class WorkoutQueries(Queries):
         return StrengthWorkoutOut(**workout)
 
     def get_all_strength_workouts(
-        self, user_id: str
-    ) -> list[StrengthWorkoutList]:
+            self, user_id: str
+            ) -> list[StrengthWorkoutList]:
         StrengthWorkouts = []
         for workout in self.collection.find(
-            {"user_id": user_id, "type": "Strength"}
-        ):
+                {"user_id": user_id, "type": "Strength"}
+                ):
             workout["id"] = str(workout["_id"])
             StrengthWorkouts.append(StrengthWorkoutReduce(**workout))
         return StrengthWorkouts
 
     def get_one_strength_workout(
-        self, id: str, user_id: str
-    ) -> Union[StrengthWorkoutOut, Error]:
+            self, id: str, user_id: str
+            ) -> Union[StrengthWorkoutOut, Error]:
         result = self.collection.find_one(
-            {"_id": ObjectId(id), "user_id": user_id}
-        )
+                {"_id": ObjectId(id), "user_id": user_id}
+            )
         result["id"] = str(result["_id"])
         return result
 
     def update_strength_workout(
-        self, id: str, workout: StrengthWorkoutIn, user_id: str
-    ) -> Union[StrengthWorkoutOut, Error]:
+            self, id: str, workout: StrengthWorkoutIn, user_id: str
+            ) -> Union[StrengthWorkoutOut, Error]:
         result = self.collection.find_one(
             {"_id": ObjectId(id), "user_id": user_id}
-        )
+            )
         temp = workout.dict()
         for key, value in temp.items():
             result[key] = value
@@ -62,24 +61,24 @@ class WorkoutQueries(Queries):
         result["id"] = str(result["_id"])
         newvalues = {"$set": result}
         self.collection.update_one({"_id": ObjectId(id)}, newvalues)
-        output = self.collection.find_one(
-            {"_id": ObjectId(id), "user_id": user_id}
-        )
+        output = self.collection.find_one({
+            "_id": ObjectId(id), "user_id": user_id
+            })
         return output
 
     def delete_strength_workout(
-        self, id: str, user_id: str
-    ) -> Union[bool, Error]:
-        result = self.collection.delete_one(
-            {"_id": ObjectId(id), "user_id": user_id}
-        )
+            self, id: str, user_id: str
+            ) -> Union[bool, Error]:
+        result = self.collection.delete_one({
+            "_id": ObjectId(id), "user_id": user_id
+            })
         return result.deleted_count == 1
 
     # ________________________________________________________________________________________________________________________________________________________________
 
     def create_cardio_workout(
-        self, params: CardioWorkoutIn, user_id: str
-    ) -> CardioWorkoutOut:
+            self, params: CardioWorkoutIn, user_id: str
+            ) -> CardioWorkoutOut:
         workout = params.dict()
         workout["user_id"] = user_id
         workout["date"] = str(workout["date"])
@@ -90,8 +89,8 @@ class WorkoutQueries(Queries):
     def get_all_cardio_workouts(self, user_id: str) -> list[CardioWorkoutOut]:
         CardioWorkouts = []
         for workout in self.collection.find(
-            {"user_id": user_id, "type": "Cardio"}
-        ):
+                {"user_id": user_id, "type": "Cardio"}
+                ):
             workout["id"] = str(workout["_id"])
             CardioWorkouts.append(CardioWorkoutOut(**workout))
         return CardioWorkouts
@@ -100,8 +99,8 @@ class WorkoutQueries(Queries):
         self, id: str, user_id: str
     ) -> Union[CardioWorkoutOut, Error]:
         result = self.collection.find_one(
-            {"_id": ObjectId(id), "user_id": user_id}
-        )
+                {"_id": ObjectId(id), "user_id": user_id}
+            )
         result["id"] = str(result["_id"])
         return result
 
@@ -109,8 +108,8 @@ class WorkoutQueries(Queries):
         self, id: str, workout: CardioWorkoutIn, user_id: str
     ) -> Union[CardioWorkoutOut, Error]:
         result = self.collection.find_one(
-            {"_id": ObjectId(id), "user_id": user_id}
-        )
+                {"_id": ObjectId(id), "user_id": user_id}
+            )
         temp = workout.dict()
         for key, value in temp.items():
             result[key] = value
@@ -120,16 +119,16 @@ class WorkoutQueries(Queries):
         newvalues = {"$set": result}
         self.collection.update_one({"_id": ObjectId(id)}, newvalues)
         output = self.collection.find_one(
-            {"_id": ObjectId(id), "user_id": user_id}
-        )
+                {"_id": ObjectId(id), "user_id": user_id}
+            )
         return output
 
     def delete_cardio_workout(
-        self, id: str, user_id: str
-    ) -> Union[bool, Error]:
+            self, id: str, user_id: str
+            ) -> Union[bool, Error]:
         result = self.collection.delete_one(
-            {"_id": ObjectId(id), "user_id": user_id}
-        )
+                {"_id": ObjectId(id), "user_id": user_id}
+            )
         return result.deleted_count == 1
 
     # ________________________________________________________________________________________________________________________________________________________________
@@ -141,7 +140,6 @@ class WorkoutQueries(Queries):
         ).sort("date"):
             workout["id"] = str(workout["_id"])
             workout["date"] = str(workout["date"])
-            print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", workout)
             Workout_List.append(Workouts(**workout))
         return Workout_List
 

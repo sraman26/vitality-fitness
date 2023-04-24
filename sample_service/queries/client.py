@@ -4,6 +4,8 @@ import pymongo
 
 MONGO_URL = os.environ.get("MONGO_URL", "TESTS")
 client = pymongo.MongoClient(MONGO_URL)
+
+
 class Queries:
     @property
     def collection(self):

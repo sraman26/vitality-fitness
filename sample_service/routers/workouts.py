@@ -37,11 +37,8 @@ def get_all_strength_workouts(
     queries: WorkoutQueries = Depends(),
     account_data: dict = Depends(authenticator.get_current_account_data),
 ):
-    return {
-        "workouts": queries.get_all_strength_workouts(
-            user_id=account_data["id"]
-        )
-    }
+    return {"workouts":
+            queries.get_all_strength_workouts(user_id=account_data["id"])}
 
 
 @router.get(
@@ -56,7 +53,7 @@ def get_one_strength_workout(
 ):
     try:
         return queries.get_one_strength_workout(id, user_id=account_data["id"])
-    except Exception as e:
+    except Exception:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Bad request, could not find Workout ID",
@@ -77,8 +74,8 @@ def update_strength_workout(
     try:
         return queries.update_strength_workout(
             id, workout, user_id=account_data["id"]
-        )
-    except Exception as e:
+            )
+    except Exception:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Bad Request, could not find Workout ID.",
@@ -97,7 +94,7 @@ def delete_strength_workout(
 ):
     try:
         return queries.delete_strength_workout(id, user_id=account_data["id"])
-    except Exception as e:
+    except Exception:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Bad Request, could not find Workout ID.",
@@ -116,16 +113,16 @@ def create_cardio_workout(
     return queries.create_cardio_workout(params, user_id=account_data["id"])
 
 
-@router.get(
-    "/api/workouts/cardio/", tags=["Cardio"], response_model=CardioWorkoutList
-)
+@router.get("/api/workouts/cardio/",
+            tags=["Cardio"], response_model=CardioWorkoutList
+            )
 def get_all_cardio_workouts(
     queries: WorkoutQueries = Depends(),
     account_data: dict = Depends(authenticator.get_current_account_data),
 ):
-    return {
-        "workouts": queries.get_all_cardio_workouts(user_id=account_data["id"])
-    }
+    return {"workouts":
+            queries.get_all_cardio_workouts(user_id=account_data["id"])
+            }
 
 
 @router.get(
@@ -140,7 +137,7 @@ def get_one_cardio_workout(
 ):
     try:
         return queries.get_one_cardio_workout(id, user_id=account_data["id"])
-    except Exception as e:
+    except Exception:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Bad Request, could not find Workout ID",
@@ -161,8 +158,8 @@ def update_cardio_workout(
     try:
         return queries.update_cardio_workout(
             id, workout, user_id=account_data["id"]
-        )
-    except Exception as e:
+            )
+    except Exception:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Bad Request, could not find Workout ID.",
@@ -180,8 +177,10 @@ def delete_cardio_workout(
     account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     try:
-        return queries.delete_cardio_workout(id, user_id=account_data["id"])
-    except Exception as e:
+        return queries.delete_cardio_workout(
+            id, user_id=account_data["id"]
+            )
+    except Exception:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Bad Request, could not find Workout ID.",
@@ -191,29 +190,27 @@ def delete_cardio_workout(
 # ______________________________________________________________________________________________________________
 
 
-@router.get(
-    "/api/workouts/incompleted", tags=["Workouts"], response_model=WorkoutList
-)
+@router.get("/api/workouts/incompleted",
+            tags=["Workouts"], response_model=WorkoutList
+            )
 def get_all_incompleted_workouts(
     queries: WorkoutQueries = Depends(),
     account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     return {
-        "workouts": queries.get_all_incompleted_workouts(
-            user_id=account_data["id"]
-        )
+        "workouts":
+        queries.get_all_incompleted_workouts(user_id=account_data["id"]
+                                             )
     }
 
 
-@router.get(
-    "/api/workouts/completed/", tags=["Workouts"], response_model=WorkoutList
-)
+@router.get("/api/workouts/completed/",
+            tags=["Workouts"], response_model=WorkoutList
+            )
 def get_all_completed_workouts(
     queries: WorkoutQueries = Depends(),
     account_data: dict = Depends(authenticator.get_current_account_data),
 ):
-    return {
-        "workouts": queries.get_all_completed_workouts(
-            user_id=account_data["id"]
-        )
-    }
+    return {"workouts":
+            queries.get_all_completed_workouts(user_id=account_data["id"])
+            }

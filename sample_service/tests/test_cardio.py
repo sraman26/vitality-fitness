@@ -6,6 +6,7 @@ from queries.cardio_exercises import CardioQueries
 
 client = TestClient(app)
 
+
 def fake_get_current_account_data():
     return {"id": "fakeuser"}
 
@@ -17,11 +18,12 @@ class FakeCardioQueries:
                 "name": "run",
                 "id": "64460b61117c1ccb4e48882d",
                 "user_id": user_id
-            }
-        ]
+             }
+            ]
 
-
-    def create(self, params: CardioExerciseIn, user_id: str) -> CardioExerciseOut:
+    def create(
+            self, params: CardioExerciseIn, user_id: str
+            ) -> CardioExerciseOut:
         props = params.dict()
         props["id"] = "fake_object_id"
         props["user_id"] = user_id
@@ -50,9 +52,7 @@ def test_create_cardio_exercise():
         authenticator.get_current_account_data: fake_get_current_account_data,
     }
     app.dependency_overrides = overrides
-    input = {
-        "name": "running"
-    }
+    input = {"name": "running"}
     res = client.post("/api/exercise/cardio/", json=input)
     data = res.json()
 
