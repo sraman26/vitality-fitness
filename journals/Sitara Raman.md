@@ -77,7 +77,7 @@ Cardio update form
 
 4/18/23:
 Create Strength Form
-List Strength Workout Form
+List Strength Workout
 (Aaron in chair)
 
 4/19/23:
