@@ -128,6 +128,10 @@ export const workoutApi = createApi({
       },
       invalidatesTags: ["Incompleted", "Completed", "Details"],
     }),
+    fetchStrengthApi: builder.query({
+      query: (muscle) => `/api/exercise/strength/${muscle}`,
+      providesTags: ["Exercises"],
+    }),
   }),
 });
 
@@ -146,4 +150,5 @@ export const {
   useGetStrengthWorkoutDetailsQuery,
   useDeleteStrengthWorkoutMutation,
   useUpdateStrengthWorkoutsMutation,
+  useFetchStrengthApiQuery
 } = workoutApi;
