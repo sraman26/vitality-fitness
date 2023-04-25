@@ -5,13 +5,13 @@ Workout (create/get/delete/update)
 ## Base URL:
 Users:
     POST: /api/accounts/
-    PUT: /api/accounts/<int:id>/
-    DELETE: /api/accounts/<int:id>/
-    LOGIN (POST): /api/accounts/token/
-    LOGOUT (DELETE): /api/accounts/token/
+    LOGIN (POST): /token/
+    LOGOUT (DELETE): /token/
+    GET TOKEN (GET): /token/
 
 Workout:
-    GET ALL (homepage): api/workouts/
+    GET ALL COMPLETED Workouts: api/workouts/completed
+    GET ALL INCOMPLETED Workouts: api/workouts/incompleted
 
     POST: api/workouts/cardio/
     GET: api/workouts/cardio/<int:id>/
@@ -29,59 +29,40 @@ POST: /api/accounts/
     Endpoint method: POST
 
     Request shape (form):
-    username: string
-    password: string
-    confirm_password: string
+        {
+            email: string,
+            password: string,
+            full_name: string
+        }
 
     Response: Account information of new account
     Response shape (JSON):
         {
-            “Success”: “Account created successfully”
+        "access_token": "string",
+        "token_type": "Bearer",
+        "account": {
+            "id": "string",
+            "email": "string",
+            "full_name": "string"
+            }
         }
 
-PUT: /api/accounts/<int:id>/
-    Endpoint path: /api/accounts/<int:id>/
-    Endpoint method: PUT
-
-    Headers:
-        Authorization: Bearer token
-    Request shape (form):
-    username: string
-    password: string
-    confirm_password: string
-    Response: Account information of updated account
-    Response shape (JSON):
-        {
-            “Success”: “Account updated successfully”
-        }
-
-DELETE: /api/accounts/<int:id>/
-    Endpoint path: /api/accounts/<int:id>/
-    Endpoint method: DELETE
-
-    Headers:
-        Authorization: Bearer token
-    Request shape (form):
-    Nothing to be passed in Body
-    Response: Always true
-    Response shape (JSON):
-        {
-            “Success”: “Account deactivated successfully”
-        }
-
-LOGIN (POST): /api/accounts/token/
-    Endpoint path: api/accounts/token/
+LOGIN (POST): /token/
+    Endpoint path: /token/
     Endpoint method: POST
 
     Request shape (form):
-    username: string
-    password: string
+        {
+            username: string,
+            password: string
+        }
 
     Response: Account information and a token
     Response shape:
     Response shape (JSON):
         {
-            "Account": token
+            "access token": string,
+            "token-type": "Bearer"
         }
 
 LOGOUT (DELETE): /api/accounts/token/
@@ -92,7 +73,7 @@ LOGOUT (DELETE): /api/accounts/token/
         Authorization: Bearer token
     Response shape (JSON):
         {
-            True
+            bool
         }
 
 ## Workout (Muscle)
@@ -102,21 +83,43 @@ POST: api/workouts/strength/:
 
     Headers:
         Authorization: Bearer token
+
     Request shape (form):
-        “name": string,
-        “type”: string,
-        “muscle”: string,
-        “equipment": string,
-        “instructions”: string
-        “Date”: string
+        {
+        "workout_name": "string",
+        "exercises": [
+            {
+            "name": "string",
+            "muscle": "string",
+            "notes": "string",
+            "reps": "string"
+            }
+        ],
+        "date": "date",
+        "type": "string",
+        "status": "string"
+        }
 
     Response: Adds to Exercise Database
     Response shape (JSON):
         {
-            True
+        "workout_name": "string",
+        "exercises": [
+            {
+            "name": "string",
+            "muscle": "string",
+            "notes": "string",
+            "reps": "string"
+            }
+        ],
+        "date": "2023-04-25",
+        "type": "string",
+        "status": "Incomplete",
+        "id": "6447f4112e21cec31256b662",
+        "user_id": "642f3815c75141cf40920707"
         }
 
-GET ALL (homepage): api/workouts/
+GET ALL INCOMPLETED WORKOUTS (homepage): api/workouts/incompleted
     Endpoint path: /api/workouts/
     Endpoint method: GET
 
@@ -126,10 +129,36 @@ GET ALL (homepage): api/workouts/
     Response shape (JSON):
         {
         workout: [
-            “name": string,
-            “type”: string,
-            “date”: string,
-            “Id”: int
+            {
+            "workout_name": "string",
+            "type": "string",
+            "date": "string",
+            "id": "string",
+            "user_id": "string",
+            "status": "string"
+            },
+        ]
+    }
+
+GET ALL COMPLETED WORKOUTS (homepage): api/workouts/completed
+    Endpoint path: /api/workouts/
+    Endpoint method: GET
+
+    Headers:
+        Authorization: Bearer token
+
+    Response: Grabs all information to display
+    Response shape (JSON):
+        {
+        workout: [
+            {
+            "workout_name": "string",
+            "type": "string",
+            "date": "string",
+            "id": "string",
+            "user_id": "string",
+            "status": "string"
+            },
         ]
     }
 
@@ -137,44 +166,49 @@ GET: api/workouts/strength/<int:id>/
     Endpoint path: /api/workouts/strength/<int:id>/
     Endpoint method: GET
 
-    Query parameters:
-        Id: identify which workout to update
     Headers:
         Authorization: Bearer token
+
+    Request shape (form):
+        {
+            "id": "string"
+        }
+
     Response: Selects the workout with regard to strength to display
     Response shape (JSON):
         {
-    Workout: [
+        "workout_name": "string",
+        "exercises": [
             {
-            “name": string,
-            “reps”: string,
-            “notes": string,
-            “instructions”: string
-            “Id”: int
-            },
-            {
-            “name": string,
-            “reps”: string,
-            “notes": string,
-            “instructions”: string
-            “Id”: int
-            },
-                id: int, date:string
-            ]
+            "name": "string",
+            "muscle": "string",
+            "notes": "string",
+            "reps": "string"
+            }
+        ],
+        "date": "string",
+        "type": "string",
+        "status": "string",
+        "id": "string",
+        "user_id": "string"
         }
 
 DELETE: api/workouts/strength/<int:id>/
     Endpoint path: api/workouts/strength/<int:id>/
     Endpoint method: DELETE
 
-    Query parameters:
-        Id: identify which workout to update
     Headers:
         Authorization: Bearer token
+
+    Request shape (form):
+        {
+            "id": "string"
+        }
+
     Response: Selects the workout with regard to options of muscle/cardio by id to delete
     Response shape (JSON):
         {
-        “Success”: True
+            bool
         }
 
 
@@ -182,34 +216,42 @@ UPDATE: api/workouts/strength/<int:id>/
     Endpoint path: api/workouts/strength/<int:id>
     Endpoint method: PUT
 
-    Query parameters:
-        Id: identify which workout to update
     Headers:
         Authorization: Bearer token
-    Request shape (JSON):
+
+    Request shape (form):
         {
-        Exercise: [{
-            “name": string,
-            “reps”: string,
-            “notes": string,
-            “instructions”: string
-            “Id”: int
-        },
-        {
-            “name": string,
-            “reps”: string,
-            “notes": string,
-            “instructions”: string
-            “Id”: int
-        },
-        id: int,
-        Date:string
-        ]
-    }
+        "workout_name": "string",
+        "exercises": [
+            {
+            "name": "string",
+            "muscle": "string",
+            "notes": "string",
+            "reps": "string"
+            }
+        ],
+        "date": "date",
+        "type": "string",
+        "status": "string"
+        }
+
     Response: Users will receive a confirmation of their updated workout displayed as a workout details page
     Response shape (JSON):
         {
-        “Success”: True
+        "workout_name": "string",
+        "exercises": [
+            {
+            "name": "string",
+            "muscle": "string",
+            "notes": "string",
+            "reps": "string"
+            }
+        ],
+        "date": "string",
+        "type": "string",
+        "status": "string",
+        "id": "string",
+        "user_id": "string"
         }
 
 ## Workout (Cardio)
@@ -219,41 +261,32 @@ POST: api/workouts/cardio/:
 
     Headers:
         Authorization: Bearer token
-    Response: Adds to Exercise Database
+
     Request shape (form):
-        “name": string,
-        “duration”: string,
-        “instructions”: string
-        “Date”: string
-    Response shape (JSON):
         {
-            “Success”: True
+        "workout_name": "string",
+        "exercise": "string",
+        "date": "date",
+        "type": "string",
+        "duration": "string",
+        "notes": "string",
+        "status": "string"
         }
 
-GET ALL (homepage): api/workouts/
-    Endpoint path: /api/workouts/
-    Endpoint method: GET
-
-    Headers:
-        Authorization: Bearer token
-    Request: Grabs all information to display
+    Response: Adds to Exercise Database
     Response shape (JSON):
         {
-            workout: [
-            {
-                “name": string,
-                “type”: string,
-                “date”: string,
-                “Id”: int
-            },
-            {
-                “name": string,
-                “type”: string,
-                “date”: string,
-                “Id”: int
-            }
-            ]
+        "workout_name": "string",
+        "exercise": "string",
+        "date": "string",
+        "type": "string",
+        "duration": "string",
+        "notes": "string",
+        "status": "string",
+        "id": "string",
+        "user_id": "string"
         }
+
 
 GET: api/workouts/cardio/<int:id>/
     Endpoint path: /api/workouts/cardio/<int:id>/
@@ -261,48 +294,64 @@ GET: api/workouts/cardio/<int:id>/
 
     Headers:
         Authorization: Bearer token
-    Request Shape (JSON):
+
+    Request shape (form):
         {
-            workout: {
-                “name": string,
-                “duration”: string,
-                “instructions”: string
-                “Date”: string
-                },
-            id: int,
-            date:string
+            "id": "string"
+        }
+
+    Response Shape (JSON):
+        {
+        "workout_name": "string",
+        "exercise": "string",
+        "date": "string",
+        "type": "string",
+        "duration": "string",
+        "notes": "string",
+        "status": "string",
+        "id": "string",
+        "user_id": "string"
         }
 
 DELETE: api/workouts/cardio/<int:id>/
     Endpoint path: api/workouts/cardio/<int:id>/
     Endpoint method: DELETE
 
-    Query parameters:
-        Id: identify which workout to update
     Headers:
         Authorization: Bearer token
+
+    Request shape (form):
+        {
+            "id": "string"
+        }
+
     Response shape (JSON):
     {
-        “Success”: True
+        bool
     }
 
 UPDATE: api/workouts/cardio/<int:id>/ (FIX)
     Endpoint path: api/workouts/cardio/<int:id>
     Endpoint method: PUT
 
-    Query parameters:
-        Id: identify which workout to update
+
     Headers:
         Authorization: Bearer token
+
     Request shape (form):
-    {
-        “name": string,
-        “duration”: string,
-        “instructions”: string
-        “Date”: string
-        “Id” : int
-    }
-    Response shape (JSON):
-    {
-        “Success”: True
-    }
+        {
+            "id": "string"
+        }
+
+    Response Shape (JSON):
+        {
+        "workout_name": "string",
+        "exercise": "string",
+        "date": "string",
+        "type": "string",
+        "duration": "string",
+        "notes": "string",
+        "status": "string",
+        "id": "string",
+        "user_id": "string"
+        }

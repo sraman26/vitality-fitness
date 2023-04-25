@@ -58,3 +58,5 @@ Completed rest of the CRUD methods. Completed error handling for login form. I w
 4/20
 Continued error handling and fixed Signup BackEnd catch which wasn't working. Navbar is now protected, and error page created for unexpected URL paths. Sitara was the coder
 
+4/24
+Completed error handling and ran flake8 and black. Project should now be considered as the minimum viable product. Aaron was the coder. Everyone was the in the chair at some point do their unit tests.
