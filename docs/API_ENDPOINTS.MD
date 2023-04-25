@@ -29,59 +29,40 @@ POST: /api/accounts/
     Endpoint method: POST
 
     Request shape (form):
-    username: string
-    password: string
-    confirm_password: string
+        {
+            email: string,
+            password: string,
+            full_name: string
+        }
 
     Response: Account information of new account
     Response shape (JSON):
         {
-            “Success”: “Account created successfully”
+        "access_token": "string",
+        "token_type": "Bearer",
+        "account": {
+            "id": "string",
+            "email": "string",
+            "full_name": "string"
+            }
         }
 
-PUT: /api/accounts/<int:id>/
-    Endpoint path: /api/accounts/<int:id>/
-    Endpoint method: PUT
-
-    Headers:
-        Authorization: Bearer token
-    Request shape (form):
-    username: string
-    password: string
-    confirm_password: string
-    Response: Account information of updated account
-    Response shape (JSON):
-        {
-            “Success”: “Account updated successfully”
-        }
-
-DELETE: /api/accounts/<int:id>/
-    Endpoint path: /api/accounts/<int:id>/
-    Endpoint method: DELETE
-
-    Headers:
-        Authorization: Bearer token
-    Request shape (form):
-    Nothing to be passed in Body
-    Response: Always true
-    Response shape (JSON):
-        {
-            “Success”: “Account deactivated successfully”
-        }
-
-LOGIN (POST): /api/accounts/token/
-    Endpoint path: api/accounts/token/
+LOGIN (POST): /token/
+    Endpoint path: /token/
     Endpoint method: POST
 
     Request shape (form):
-    username: string
-    password: string
+        {
+            username: string,
+            password: string
+        }
 
     Response: Account information and a token
     Response shape:
     Response shape (JSON):
         {
-            "Account": token
+            "access token": string,
+            "token-type": "Bearer"
         }
 
 LOGOUT (DELETE): /api/accounts/token/
@@ -103,20 +84,41 @@ POST: api/workouts/strength/:
     Headers:
         Authorization: Bearer token
     Request shape (form):
-        “name": string,
-        “type”: string,
-        “muscle”: string,
-        “equipment": string,
-        “instructions”: string
-        “Date”: string
+        {
+        "workout_name": "string",
+        "exercises": [
+            {
+            "name": "string",
+            "muscle": "string",
+            "notes": "string",
+            "reps": "string"
+            }
+        ],
+        "date": "date",
+        "type": "string",
+        "status": "string"
+        }
 
     Response: Adds to Exercise Database
     Response shape (JSON):
         {
-            True
+        "workout_name": "string",
+        "exercises": [
+            {
+            "name": "string",
+            "muscle": "string",
+            "notes": "string",
+            "reps": "string"
+            }
+        ],
+        "date": "2023-04-25",
+        "type": "string",
+        "status": "Incomplete",
+        "id": "6447f4112e21cec31256b662",
+        "user_id": "642f3815c75141cf40920707"
         }
 
-GET ALL (homepage): api/workouts/
+GET ALL INCOMPLETED WORKOUTS (homepage): api/workouts/incompleted
     Endpoint path: /api/workouts/
     Endpoint method: GET
 
@@ -126,10 +128,35 @@ GET ALL (homepage): api/workouts/
     Response shape (JSON):
         {
         workout: [
-            “name": string,
-            “type”: string,
-            “date”: string,
-            “Id”: int
+            {
+            "workout_name": "string",
+            "type": "string",
+            "date": "string",
+            "id": "string",
+            "user_id": "string",
+            "status": "string"
+            },
+        ]
+    }
+
+GET ALL COMPLETED WORKOUTS (homepage): api/workouts/completed
+    Endpoint path: /api/workouts/
+    Endpoint method: GET
+
+    Headers:
+        Authorization: Bearer token
+    Response: Grabs all information to display
+    Response shape (JSON):
+        {
+        workout: [
+            {
+            "workout_name": "string",
+            "type": "string",
+            "date": "string",
+            "id": "string",
+            "user_id": "string",
+            "status": "string"
+            },
         ]
     }
 

@@ -1,10 +1,10 @@
 ## Project Documentation
 
 Team Members:
-Aaron Lee
-Mike Mikius
-Sitara Raman
-Tahmid Baro Bhuiyan
+- Aaron Lee
+- Mike Mikius
+- Sitara Raman
+- Tahmid Baro Bhuiyan
 
 Application Name: Vitality
 
