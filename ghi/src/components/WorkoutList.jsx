@@ -6,6 +6,7 @@ import {
 import { NavLink } from "react-router-dom";
 import "../App.css";
 
+
 const Workouts = () => {
   const { data: incompleted_workouts, isLoading: IncompleteLoading } =
     useGetIncompletedWorkoutsQuery();
@@ -37,6 +38,9 @@ const Workouts = () => {
                   } else {
                     path = `Strength/${workout.id}`;
                   }
+
+                  const date = new Date(workout.date)
+
                   return (
                     <tr key={workout.id}>
                       <td>
@@ -50,7 +54,7 @@ const Workouts = () => {
                         </NavLink>
                       </td>
                       <td>{workout.type}</td>
-                      <td>{workout.date}</td>
+                      <td>{date.toDateString()}</td>
                     </tr>
                   );
                 })}
@@ -74,6 +78,9 @@ const Workouts = () => {
                   } else {
                     path = `Strength/${workout.id}`;
                   }
+
+                  const date = new Date(workout.date)
+
                   return (
                     <tr key={workout.id}>
                       <td>
@@ -87,7 +94,7 @@ const Workouts = () => {
                         </NavLink>
                       </td>
                       <td>{workout.type}</td>
-                      <td>{workout.date}</td>
+                      <td>{date.toDateString()}</td>
                     </tr>
                   );
                 })}

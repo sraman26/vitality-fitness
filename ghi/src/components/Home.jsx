@@ -1,15 +1,23 @@
 import React from "react";
 import "../App.css";
 import { NavLink } from "react-router-dom";
+import { useGetAccountQuery } from "../services/workout";
 
 function Home() {
+
+  const { data: account, isLoading } = useGetAccountQuery();
+  if (isLoading) {
+    return;
+  }
+
+
   return (
     <>
       <div className="temp-container">
         <img src={require("../images/splash.png")} alt=""></img>
       </div>
-      <div class="container">
-        <div class="row row-cols-2">
+      <div className="container">
+        <div className="row row-cols-2">
           <div className="col">
             <div className="card card-containers">
               <div className="card-body">
@@ -58,13 +66,17 @@ function Home() {
           </div>
         </div>
       </div>
-      <div class="container text-center">
+      {!account && (
+        <div className="container text-center">
         <NavLink to="/signup">
           <button type="button" className="btn btn-success get-started-button">
             Let's get started!
           </button>
         </NavLink>
       </div>
+      )
+    }
+
     </>
   );
 }

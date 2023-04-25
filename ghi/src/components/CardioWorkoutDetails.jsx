@@ -18,6 +18,8 @@ const CardioWorkoutDetail = () => {
   if (Loading) return <div>Loading the page--just a moment</div>;
   if (details?.length === 0) return <div>This workout does not exist</div>;
 
+  const date = new Date(details.date)
+
   function handleDelete(workoutId) {
     deleteWorkout(workoutId);
     navigate("/Workouts");
@@ -34,7 +36,7 @@ const CardioWorkoutDetail = () => {
         <div className="container">
           <div>
             <div className="shadow p-4 mt-4">
-              <h1>{details.workout_name}</h1>
+              <h1>{details.workout_name} - {date.toDateString()} - {details.status}</h1>
               <table className="table table-striped">
                 <thead>
                   <tr>
