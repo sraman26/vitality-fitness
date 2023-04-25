@@ -80,7 +80,6 @@ const StrengthWorkoutForm = () => {
 
   const handleSuggestionChange = (event) => {
     setSuggestion(!suggestion);
-    console.log(suggestion);
   };
 
   // ############################### API FETCH ABOVE ##################################
