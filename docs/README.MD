@@ -21,9 +21,9 @@ Framework:
 Functionality:
 - Visitors begin on a homepage that provides a general description of the application. Prompts to login or sign up are provided. Every other functionality is protected until user is logged in.
 - After logging in, the navigation bar will contain the following:
--       View user's Workout List Page
--       Add a Cardio Workout
--       Add a Strength Workout
+    - View user's Workout List Page
+    - Add a Cardio Workout
+    - Add a Strength Workout
 - Successfully creating workouts will redirect users back to the Workout List page, which should be dynamically updating.
 - Workouts from the Workout List page can be selected, redirecting users to a detail page for the given workout
 - From the detail page, users can update/delete the workouts. Successful updates redirect the user back to the detail page. Successful deletes redirect them to the Workout List page.
