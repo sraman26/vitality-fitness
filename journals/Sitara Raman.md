@@ -94,3 +94,17 @@ Error page
 Redirect to error page when logged out
 Redirect to error page when URL does not exist
 (Sitara in chair)
+
+4/24/23:
+Unit tests for cardio and strength create and show all queries
+Unit tests for showing common workouts - completed and incompleted
+Error handling and formatting with Black and Flake8
+(Aaron in chair, everyone in chair to do unit tests)
+
+4/25/23:
+3rd party API integration
+Fixed pipeline failure
+Completed final walkthrough with Jimmy
+Fixed homepage UI cards and added content text
+Added carousel in CSS in home page
+(Tahmid in chair)
