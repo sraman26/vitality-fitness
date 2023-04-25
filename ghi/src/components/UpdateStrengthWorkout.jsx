@@ -89,7 +89,6 @@ const UpdateStrengthWorkout = () => {
 
     const handleSuggestionChange = (event) => {
       setSuggestion(!suggestion);
-      console.log(suggestion);
     };
 
   const handleSubmit = (e) => {

@@ -16,7 +16,7 @@ Application backend was created utilizing python in FastAPI, and a Mongo-DB data
 Framework:
 - [Wireframe](docs/Project_Wireframes.png)
 - [Endpoints and Request/Response Shapes](docs/API_ENDPOINTS.MD)
-
+- [Integration](docs/Integrations.md)
 
 Functionality:
 - Visitors begin on a homepage that provides a general description of the application. Prompts to login or sign up are provided. Every other functionality is protected until user is logged in.

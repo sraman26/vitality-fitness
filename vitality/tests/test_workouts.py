@@ -142,3 +142,4 @@ def test_get_one_cardio_workout():
     assert res.status_code == 200
     assert data["id"] == id
     assert data["user_id"] == "fakeuser"
+    app.dependency_overrides = {}

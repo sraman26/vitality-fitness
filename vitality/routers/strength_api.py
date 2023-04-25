@@ -4,12 +4,10 @@ from fastapi import (
 )
 from models import StrengthExerciseOut
 
-# from queries.strength_api import StrengthQueries
 from auth import authenticator
 import os
 import requests
 
-# ---------------------- File is for Stretch Goals -------------------------
 
 router = APIRouter()
 
@@ -28,7 +26,6 @@ def get_exercise_by_muscle(muscle: str, base_url) -> StrengthExerciseOut:
             response_model=StrengthExerciseOut)
 def get_muscle(
     muscle: str,
-    # queries:StrengthQueries=Depends(),
     account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     base_url = "https://api.api-ninjas.com/v1/exercises?"

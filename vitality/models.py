@@ -7,20 +7,6 @@ class Error(BaseModel):
     message: str
 
 
-class CardioExerciseIn(BaseModel):
-    name: str
-
-
-class CardioExerciseOut(BaseModel):
-    name: str
-    id: str
-    user_id: str
-
-
-class CardioList(BaseModel):
-    exercises: list[CardioExerciseOut]
-
-
 class CardioWorkoutIn(BaseModel):
     workout_name: str
     exercise: str
