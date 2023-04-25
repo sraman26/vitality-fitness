@@ -190,7 +190,7 @@ def delete_cardio_workout(
 # ______________________________________________________________________________________________________________
 
 
-@router.get("/api/workouts/incompleted",
+@router.get("/api/workouts/incompleted/",
             tags=["Workouts"], response_model=WorkoutList
             )
 def get_all_incompleted_workouts(

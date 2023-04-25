@@ -5,13 +5,13 @@ Workout (create/get/delete/update)
 ## Base URL:
 Users:
     POST: /api/accounts/
-    PUT: /api/accounts/<int:id>/
-    DELETE: /api/accounts/<int:id>/
-    LOGIN (POST): /api/accounts/token/
-    LOGOUT (DELETE): /api/accounts/token/
+    LOGIN (POST): /token/
+    LOGOUT (DELETE): /token/
+    GET TOKEN (GET): /token/
 
 Workout:
-    GET ALL (homepage): api/workouts/
+    GET ALL COMPLETED Workouts: api/workouts/completed
+    GET ALL INCOMPLETED Workouts: api/workouts/incompleted
 
     POST: api/workouts/cardio/
     GET: api/workouts/cardio/<int:id>/

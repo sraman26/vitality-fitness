@@ -11,12 +11,12 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: password
   fastapi:
     build:
-      context: sample_service
+      context: vitality
       dockerfile: Dockerfile.dev
     ports:
       - 8000:8000
     volumes:
-      - ./sample_service:/app
+      - ./vitality:/app
     environment:
       MONGO_URL: mongodb://admin:password@mongo
       SIGNING_KEY: ${SIGNING_KEY}
@@ -37,4 +37,4 @@ services:
       NODE_ENV: development
       HOST: "0.0.0.0"
       PUBLIC_URL: http://localhost:3000
-      REACT_APP_SAMPLE_SERVICE_API_HOST: http://localhost:8000
+      REACT_APP_VITALITY_API_HOST: http://localhost:8000
