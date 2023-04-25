@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   handleWorkoutNameChange,
