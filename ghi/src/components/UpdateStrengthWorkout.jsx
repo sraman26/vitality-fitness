@@ -77,7 +77,7 @@ const UpdateStrengthWorkout = () => {
         </>
       ) : (
         <>
-          <div className="card">
+          <div className="card form-cards">
             <div className="card-body">
               <h5 className="card-title">Update Strength Workout</h5>
               <hr />
@@ -164,9 +164,11 @@ const UpdateStrengthWorkout = () => {
                   })}
                   <button onClick={addFields}>Add More..</button>
                 </div>
-                <button type="submit" className="btn btn-success">
-                  Update
-                </button>
+                <div className="createorupdate-button-container">
+                  <button type="submit" className="btn btn-success">
+                    Update
+                  </button>
+                </div>
               </form>
             </div>
           </div>

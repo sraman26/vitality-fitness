@@ -28,7 +28,7 @@ const Signup = () => {
       });
   };
   return (
-    <div className="card">
+    <div className="card form-cards">
       <div className="card-body">
         <h5 className="card-title">Signup</h5>
         <hr />
