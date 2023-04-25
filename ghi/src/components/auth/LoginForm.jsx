@@ -28,7 +28,9 @@ function LoginForm() {
   };
 
   return (
-      <div className="card form-cards">
+    <div className="auth-container">
+      <video src={require("../../images/splash.mp4")} autoPlay loop muted />
+      <div className="card auth-form-cards">
         <div className="card-body">
           <h5 className="card-title">Login</h5>
           <hr />
@@ -63,6 +65,7 @@ function LoginForm() {
           </form>
         </div>
       </div>
+    </div>
   );
 }
 

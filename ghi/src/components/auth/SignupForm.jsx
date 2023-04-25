@@ -28,51 +28,54 @@ const Signup = () => {
       });
   };
   return (
-    <div className="card form-cards">
-      <div className="card-body">
-        <h5 className="card-title">Signup</h5>
-        <hr />
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="Signup__email" className="form-label">
-              Email:
-            </label>
-            <input
-              className="form-control form-control-sm"
-              type={`text`}
-              id="Signup__email"
-              value={fields.email}
-              onChange={(e) => dispatch(handleEmailChange(e.target.value))}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="Signup__password" className="form-label">
-              Password:
-            </label>
-            <input
-              className="form-control form-control-sm"
-              type={`password`}
-              id="Signup__password"
-              value={fields.password}
-              onChange={(e) => dispatch(handlePasswordChange(e.target.value))}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="Signup__fullName" className="form-label">
-              Full Name:
-            </label>
-            <input
-              className="form-control form-control-sm"
-              type={`text`}
-              id="Signup__fullName"
-              value={fields.full_name}
-              onChange={(e) => dispatch(handleFullNameChange(e.target.value))}
-            />
-          </div>
-          <button type="submit" className="btn btn-success">
-            Signup
-          </button>
-        </form>
+    <div className="auth-container">
+      <video src={require("../../images/splash.mp4")} autoPlay loop muted />
+      <div className="card auth-form-cards">
+        <div className="card-body">
+          <h5 className="card-title">Signup</h5>
+          <hr />
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label htmlFor="Signup__email" className="form-label">
+                Email:
+              </label>
+              <input
+                className="form-control form-control-sm"
+                type={`text`}
+                id="Signup__email"
+                value={fields.email}
+                onChange={(e) => dispatch(handleEmailChange(e.target.value))}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="Signup__password" className="form-label">
+                Password:
+              </label>
+              <input
+                className="form-control form-control-sm"
+                type={`password`}
+                id="Signup__password"
+                value={fields.password}
+                onChange={(e) => dispatch(handlePasswordChange(e.target.value))}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="Signup__fullName" className="form-label">
+                Full Name:
+              </label>
+              <input
+                className="form-control form-control-sm"
+                type={`text`}
+                id="Signup__fullName"
+                value={fields.full_name}
+                onChange={(e) => dispatch(handleFullNameChange(e.target.value))}
+              />
+            </div>
+            <button type="submit" className="btn btn-success">
+              Signup
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
