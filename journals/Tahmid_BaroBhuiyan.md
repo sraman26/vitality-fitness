@@ -60,3 +60,7 @@ Continued error handling and fixed Signup BackEnd catch which wasn't working. Na
 
 4/24
 Completed error handling and ran flake8 and black. Project should now be considered as the minimum viable product. Aaron was the coder. Everyone was the in the chair at some point do their unit tests.
+
+4/25
+AAAAAAA
+BBBBBBBB
