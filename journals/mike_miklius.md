@@ -42,6 +42,8 @@ helps me use this for recruiters
 
 4.20.23: We fleshed out our error handling so that users who are not logged in will instead be sent to a 404 page. We also handled users trying to access bad url paths with a 404 page. Sitara was our coder today.
 
-4.21.23: Cleaned up some edge cases for error handling; Created four working unit tests.
+4.21.23: Cleaned up some edge cases for error handling; Created four working unit tests. Mike was the coder today.
 
-4.22.23: nonsense
+4.24.23: Completed error handling and ran flake8 and black. Aaron was the coder. Everyone was the in the chair at some point do their unit tests.
+
+4.25.23: Worked on CSS and improving application visuals; Created an image carousel for the main page; Created a background video for login and signup pages; Tahmid was in the chair today coding.
