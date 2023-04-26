@@ -109,4 +109,9 @@ Fixed homepage UI cards and added content text
 Added carousel in CSS in home page
 (Tahmid in chair)
 
-"testing validation"
+4/26/23:
+Youtube API integration
+Added JSX for embedded Youtube videos in Cardio and Strength pages
+Minor CSS fixes
+Changed size of embedded Youtube video
+(Sitara in chair)
