@@ -1,6 +1,8 @@
 from queries.client import Queries
 from typing import Union
 from bson.objectid import ObjectId
+import os
+from serpapi import GoogleSearch
 
 from models import (
     StrengthWorkoutIn,
@@ -13,6 +15,15 @@ from models import (
     Workouts,
 )
 
+youtube_api_key = os.environ["YOUTUBE_VIDEO_API"]
+
+def get_youtube_result_strength(params):
+    search = GoogleSearch(params)
+    results = search.get_dict()
+    video_results = results["video_results"][0]["link"]
+    video_results = video_results.split("=")
+    video_results = video_results[1]
+    return video_results
 
 class WorkoutQueries(Queries):
     COLLECTION = "Workouts"
@@ -152,3 +163,16 @@ class WorkoutQueries(Queries):
             workout["date"] = str(workout["date"])
             Workout_List.append(Workouts(**workout))
         return Workout_List
+
+    def get_youtube_list(self, id:str):
+        embed_list = []
+        result = self.collection.find_one({"_id": ObjectId(id)})
+        for exercise in result["exercises"]:
+            youtube_params = {
+                "engine": "youtube",
+                "search_query": exercise["name"],
+                "api_key": youtube_api_key
+                }
+            strength_res = get_youtube_result_strength(youtube_params)
+            embed_list.append(strength_res)
+        return embed_list

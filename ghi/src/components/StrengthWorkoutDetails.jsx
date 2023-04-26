@@ -2,9 +2,11 @@ import React from "react";
 import {
   useGetStrengthWorkoutDetailsQuery,
   useDeleteStrengthWorkoutMutation,
+  useFetchEmbedListQuery,
 } from "../services/workout";
 import { useParams, useNavigate } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
+import YoutubeEmbed from "./YoutubeEmbed";
 
 const StrengthWorkoutDetail = () => {
   let { workoutId } = useParams();
@@ -13,8 +15,12 @@ const StrengthWorkoutDetail = () => {
 
   const { data: details, isLoading: Loading } =
     useGetStrengthWorkoutDetailsQuery(workoutId);
+  const { data: videos, isLoading: VideoLoading } =
+    useFetchEmbedListQuery(details?.id)
+  console.log(videos)
   const [deleteWorkout] = useDeleteStrengthWorkoutMutation();
 
+  // if (VideoLoading) return<div>Loading the page--just wait a moment</div>
   if (Loading) return <div>Loading the page--just a moment</div>;
   if (details?.length === 0) return <div>This workout does not exist</div>;
 
@@ -63,9 +69,7 @@ const StrengthWorkoutDetail = () => {
                             <td>{exercise.reps}</td>
                             <td>{exercise.notes}</td>
                           <td>
-                            <a href= {`https://www.youtube.com/results?search_query=${exercise.name}`}>
-                              <img className= "video-img" src={require("../images/youtube_logo.png")} alt="youtube logo"></img>
-                            </a>
+                            {<YoutubeEmbed embedId={videos[i]}/>}
                           </td>
                           </tr>
                         );
