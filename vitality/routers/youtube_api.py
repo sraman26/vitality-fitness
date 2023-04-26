@@ -1,7 +1,5 @@
-from fastapi import Depends, APIRouter
-from auth import authenticator
+from fastapi import APIRouter
 import os
-import requests
 from serpapi import GoogleSearch
 
 router = APIRouter()
