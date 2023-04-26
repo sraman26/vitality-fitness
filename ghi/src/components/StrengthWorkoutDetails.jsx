@@ -17,10 +17,9 @@ const StrengthWorkoutDetail = () => {
     useGetStrengthWorkoutDetailsQuery(workoutId);
   const { data: videos, isLoading: VideoLoading } =
     useFetchEmbedListQuery(details?.id)
-  console.log(videos)
   const [deleteWorkout] = useDeleteStrengthWorkoutMutation();
 
-  // if (VideoLoading) return<div>Loading the page--just wait a moment</div>
+  if (VideoLoading) return<div>Loading the page--just wait a moment</div>
   if (Loading) return <div>Loading the page--just a moment</div>;
   if (details?.length === 0) return <div>This workout does not exist</div>;
 
@@ -68,7 +67,7 @@ const StrengthWorkoutDetail = () => {
                             <td>{exercise.muscle}</td>
                             <td>{exercise.reps}</td>
                             <td>{exercise.notes}</td>
-                          <td>
+                          <td className="video-td">
                             {<YoutubeEmbed embedId={videos[i]}/>}
                           </td>
                           </tr>

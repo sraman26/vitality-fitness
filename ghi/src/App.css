@@ -166,15 +166,12 @@ video {
   width: 100%;
 }
 
-.video-img {
-  width: 100px;
-  height: 50px;
-}
 .video-responsive {
   overflow: hidden;
   padding-bottom: 56.25%;
   position: relative;
-  height: 0;
+  width: 100%;
+  height: 150%;
 }
 
 .video-responsive iframe {
@@ -207,4 +204,9 @@ video {
 
 .suggestion-buttons {
   margin-top: 5%;
+}
+
+.video-td
+{
+  width: 300px;
 }

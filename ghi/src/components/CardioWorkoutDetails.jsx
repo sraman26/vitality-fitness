@@ -64,7 +64,7 @@ const CardioWorkoutDetail = () => {
                       <td>{details.exercise}</td>
                       <td>{details.duration}</td>
                       <td>{details.notes}</td>
-                    <td>
+                    <td className="video-td">
                       <YoutubeEmbed embedId={video}/>
                     </td>
                     </tr>
