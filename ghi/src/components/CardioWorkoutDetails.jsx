@@ -2,10 +2,12 @@ import React from "react";
 import {
   useGetCardioWorkoutDetailsQuery,
   useDeleteCardioWorkoutMutation,
+  useFetchYoutubeApiQuery
 } from "../services/workout";
 import { useParams, useNavigate } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
 import YoutubeEmbed from "./YoutubeEmbed";
+
 
 
 
@@ -14,12 +16,27 @@ const CardioWorkoutDetail = () => {
 
   let navigate = useNavigate();
 
-  const { data: details, isLoading: Loading } =
-    useGetCardioWorkoutDetailsQuery(workoutId);
-  const [deleteWorkout] = useDeleteCardioWorkoutMutation();
+  const { data: details, isLoading: Loading } = useGetCardioWorkoutDetailsQuery(workoutId);
 
-  if (Loading) return <div>Loading the page--just a moment</div>;
+  Promise.then((details) => {console.log(details)})
+  const [deleteWorkout] = useDeleteCardioWorkoutMutation();
+  // while(Loading)
+  // {
+
+  // }
+
+  const {data: videos, isLoading: VideoLoading} = useFetchYoutubeApiQuery("potato")
+
+
+  if (Loading) {
+    return <div>Loading the page--just a moment</div>
+  }
   if (details?.length === 0) return <div>This workout does not exist</div>;
+
+
+
+
+
 
   const date = new Date(details.date)
 

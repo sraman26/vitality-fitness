@@ -15,11 +15,11 @@ def get_youtube_result(params):
     return video_results
 
 
-@router.get("/api/youtube/")
+@router.get("/api/youtube/{search}")
 def get_youtube_video(search: str):
     youtube_params = {
         "engine": "youtube",
         "search_query": search,
         "api_key": youtube_api_key,
     }
-    return get_youtube_result(youtube_params)
+    return {"link": get_youtube_result(youtube_params)}
