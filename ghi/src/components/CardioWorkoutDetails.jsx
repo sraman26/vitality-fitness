@@ -33,46 +33,48 @@ const CardioWorkoutDetail = () => {
       {!details ? (
         <ErrorPage />
       ) : (
-        <div className="container">
-          <div>
-            <div className="shadow p-4 mt-4">
-              <h1>
-                {details.workout_name} - {date.toDateString()} -{" "}
-                {details.status}
-              </h1>
-              <table className="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Exercise</th>
-                    <th>Duration/ Distance</th>
-                    <th>Notes</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr key={details.id}>
-                    <td>{details.exercise}</td>
-                    <td>{details.duration}</td>
-                    <td>{details.notes}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div className="detail-button-container">
-                <button
-                  className="btn btn-danger detail-button"
-                  onClick={() => {
-                    handleDelete(workoutId);
-                  }}
-                >
-                  Delete
-                </button>
-                <button
-                  className="btn btn-success detail-button"
-                  onClick={() => {
-                    handleUpdate(workoutId);
-                  }}
-                >
-                  Update
-                </button>
+        <div className="workout-background">
+          <div className="container">
+            <div className="list-container">
+              <div className="shadow p-4 mt-4">
+                <h1>
+                  {details.workout_name} - {date.toDateString()} -{" "}
+                  {details.status}
+                </h1>
+                <table className="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Exercise</th>
+                      <th>Duration/ Distance</th>
+                      <th>Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr key={details.id}>
+                      <td>{details.exercise}</td>
+                      <td>{details.duration}</td>
+                      <td>{details.notes}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div className="detail-button-container">
+                  <button
+                    className="btn btn-danger detail-button"
+                    onClick={() => {
+                      handleDelete(workoutId);
+                    }}
+                  >
+                    Delete
+                  </button>
+                  <button
+                    className="btn btn-success detail-button"
+                    onClick={() => {
+                      handleUpdate(workoutId);
+                    }}
+                  >
+                    Update
+                  </button>
+                </div>
               </div>
             </div>
           </div>
