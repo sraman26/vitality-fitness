@@ -21,6 +21,7 @@ services:
       MONGO_URL: mongodb://admin:password@mongo
       SIGNING_KEY: ${SIGNING_KEY}
       API_KEY: ${API_KEY}
+      YOUTUBE_VIDEO_API: ${YOUTUBE_VIDEO_API}
       WAIT_HOSTS: mongo:27017
       WAIT_BEFORE: 5
       WAIT_TIMEOUT: 60
