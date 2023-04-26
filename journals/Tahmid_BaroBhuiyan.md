@@ -62,5 +62,7 @@ Continued error handling and fixed Signup BackEnd catch which wasn't working. Na
 Completed error handling and ran flake8 and black. Project should now be considered as the minimum viable product. Aaron was the coder. Everyone was the in the chair at some point do their unit tests.
 
 4/25
-AAAAAAA
-BBBBBBBB
+Implemented third party API for strength exercises. Used as suggestions for strengthworkoutform page and strengthworkoutupdate page. Fixed pipeline errors, reviewed code with Jimmy and made CSS changes. I was the coder.
+
+4/26
+Implemented Youtube embedded videos, along with Youtube Search API integration on backend. Modified form and update JSX, made some tags required to prevent breaking of page. CSS changes. Sitara was the coder.
