@@ -50,6 +50,7 @@ const StrengthWorkoutDetail = () => {
                       <th>Muscle</th>
                       <th>Reps</th>
                       <th>Notes</th>
+                      <th>Video</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -60,6 +61,11 @@ const StrengthWorkoutDetail = () => {
                           <td>{exercise.muscle}</td>
                           <td>{exercise.reps}</td>
                           <td>{exercise.notes}</td>
+                          <td>
+                            <a href= {`https://www.youtube.com/results?search_query=${exercise.name}`}>
+                              <img className= "video-img" src={require("../images/youtube_logo.png")} alt="youtube logo"></img>
+                            </a>
+                          </td>
                         </tr>
                       );
                     })}
