@@ -154,6 +154,5 @@ export const {
   useGetStrengthWorkoutDetailsQuery,
   useDeleteStrengthWorkoutMutation,
   useUpdateStrengthWorkoutsMutation,
-  useFetchStrengthApiQuery,
-  useFetchYoutubeApiQuery
+  useFetchStrengthApiQuery
 } = workoutApi;

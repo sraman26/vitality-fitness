@@ -184,3 +184,27 @@ video {
   width: 100%;
   position: absolute;
 }
+
+.workout-background {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-color: #f1eeae;
+  z-index: -1;
+}
+
+.workout-container {
+  background-color: #b9fbb9 !important;
+}
+
+.form-background {
+  background-color: #f1eeae;
+}
+
+.list-container {
+  background-color: white;
+}
+
+.suggestion-buttons {
+  margin-top: 5%;
+}
