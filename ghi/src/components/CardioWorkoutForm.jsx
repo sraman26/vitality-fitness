@@ -41,7 +41,7 @@ const CardioWorkoutForm = () => {
                 <input
                   className="form-control form-control-sm"
                   type={`text`}
-                  id="workoutName"
+                  id="workoutName" required
                   value={fields.workout_name}
                   onChange={(e) =>
                     dispatch(handleWorkoutNameChange(e.target.value))
@@ -55,7 +55,7 @@ const CardioWorkoutForm = () => {
                 <input
                   className="form-control form-control-sm"
                   type={`text`}
-                  id="exercise"
+                  id="exercise" required
                   value={fields.exercise}
                   onChange={(e) =>
                     dispatch(handleExerciseChange(e.target.value))
@@ -69,7 +69,7 @@ const CardioWorkoutForm = () => {
                 <input
                   className="form-control form-control-sm"
                   type={`date`}
-                  id="date"
+                  id="date" required
                   value={fields.date}
                   onChange={(e) => dispatch(handleDateChange(e.target.value))}
                 />
@@ -81,7 +81,7 @@ const CardioWorkoutForm = () => {
                 <input
                   className="form-control form-control-sm"
                   type={`text`}
-                  id="duration"
+                  id="duration" required
                   value={fields.duration}
                   onChange={(e) =>
                     dispatch(handleDurationChange(e.target.value))

@@ -107,7 +107,7 @@ const StrengthWorkoutForm = () => {
                   <input
                     className="form-control form-control-sm"
                     type={`text`}
-                    id="workoutName"
+                    id="workoutName" required
                     value={fields.workout_name}
                     onChange={(e) =>
                       dispatch(handleWorkoutNameChange(e.target.value))
@@ -121,7 +121,7 @@ const StrengthWorkoutForm = () => {
                   <input
                     className="form-control form-control-sm"
                     type={`date`}
-                    id="date"
+                    id="date" required
                     value={fields.date}
                     onChange={(e) => dispatch(handleDateChange(e.target.value))}
                   />
@@ -146,19 +146,19 @@ const StrengthWorkoutForm = () => {
                     return (
                       <div key={index}>
                         <input
-                          name="muscle"
+                          name="muscle" required
                           placeholder="Muscle"
                           value={input.muscle}
                           onChange={(event) => handleFormChange(index, event)}
                         />
                         <input
-                          name="name"
+                          name="name" required
                           placeholder="Exercise Name"
                           value={input.name}
                           onChange={(event) => handleFormChange(index, event)}
                         />
                         <input
-                          name="reps"
+                          name="reps" required
                           placeholder="Reps"
                           value={input.reps}
                           onChange={(event) => handleFormChange(index, event)}
