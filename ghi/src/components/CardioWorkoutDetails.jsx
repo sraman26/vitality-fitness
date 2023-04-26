@@ -2,9 +2,13 @@ import React from "react";
 import {
   useGetCardioWorkoutDetailsQuery,
   useDeleteCardioWorkoutMutation,
+  useFetchYoutubeAPIQuery
 } from "../services/workout";
 import { useParams, useNavigate } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
+import YoutubeEmbed from "./YoutubeEmbed";
+
+
 
 const CardioWorkoutDetail = () => {
   let { workoutId } = useParams();
@@ -15,6 +19,10 @@ const CardioWorkoutDetail = () => {
     useGetCardioWorkoutDetailsQuery(workoutId);
   const [deleteWorkout] = useDeleteCardioWorkoutMutation();
 
+  const { data: video, isLoading: VideoLoading } =
+    useFetchYoutubeAPIQuery(details?.exercise);
+  console.log(video);
+  if (VideoLoading) return <div>Loading the page--just a moment</div>;
   if (Loading) return <div>Loading the page--just a moment</div>;
   if (details?.length === 0) return <div>This workout does not exist</div>;
 
@@ -27,6 +35,8 @@ const CardioWorkoutDetail = () => {
   function handleUpdate(workoutId) {
     navigate(`/Workouts/Cardio/${workoutId}/Update`);
   }
+
+
 
   return (
     <>
@@ -47,6 +57,7 @@ const CardioWorkoutDetail = () => {
                       <th>Exercise</th>
                       <th>Duration/ Distance</th>
                       <th>Notes</th>
+                    <th>Video</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -54,6 +65,10 @@ const CardioWorkoutDetail = () => {
                       <td>{details.exercise}</td>
                       <td>{details.duration}</td>
                       <td>{details.notes}</td>
+                    <td>
+                      <YoutubeEmbed embedId={video}/>
+                        {/* <img className= "video-img" src={require("../images/youtube_logo.png")} alt="youtube logo"></img> */}
+                    </td>
                     </tr>
                   </tbody>
                 </table>

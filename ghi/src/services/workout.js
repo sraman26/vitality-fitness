@@ -132,6 +132,10 @@ export const workoutApi = createApi({
       query: (muscle) => `/api/exercise/strength/${muscle}`,
       providesTags: ["Exercises"],
     }),
+    fetchYoutubeAPI: builder.query({
+      query: (search) => `/api/youtube/${search}`,
+      providesTags: ["Videos"],
+    }),
   }),
 });
 
@@ -150,5 +154,6 @@ export const {
   useGetStrengthWorkoutDetailsQuery,
   useDeleteStrengthWorkoutMutation,
   useUpdateStrengthWorkoutsMutation,
-  useFetchStrengthApiQuery
+  useFetchStrengthApiQuery,
+  useFetchYoutubeAPIQuery
 } = workoutApi;

@@ -244,7 +244,7 @@ const UpdateStrengthWorkout = () => {
               </div>
               {suggestion && (
                 <>
-                  <div className="card form-cards col">
+                  <div className="card form-cards col workout-container">
                     <div className="card-body">
                       <div className="justify-content-center d-flex">
                         <select onChange={handleMuscleChange} value={muscle}>
