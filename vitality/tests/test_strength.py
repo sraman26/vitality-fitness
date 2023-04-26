@@ -20,7 +20,7 @@ class FakeStrengthQueries:
                 "date": "2023-12-31",
                 "type": "Strength",
                 "duration": "30 min",
-                "notes": "gui ehguhreui gher iugheriu",
+                "notes": "gui ehg uhreui gher iughe riu",
                 "status": "Incomplete",
                 "id": "643da6c9242ef82fa0ec1c40",
                 "user_id": user_id,
