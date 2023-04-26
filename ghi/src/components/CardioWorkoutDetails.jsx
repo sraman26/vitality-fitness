@@ -5,6 +5,9 @@ import {
 } from "../services/workout";
 import { useParams, useNavigate } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
+import YoutubeEmbed from "./YoutubeEmbed";
+
+
 
 const CardioWorkoutDetail = () => {
   let { workoutId } = useParams();
@@ -28,6 +31,8 @@ const CardioWorkoutDetail = () => {
     navigate(`/Workouts/Cardio/${workoutId}/Update`);
   }
 
+
+
   return (
     <>
       {!details ? (
@@ -46,6 +51,7 @@ const CardioWorkoutDetail = () => {
                     <th>Exercise</th>
                     <th>Duration/ Distance</th>
                     <th>Notes</th>
+                    <th>Video</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -53,6 +59,10 @@ const CardioWorkoutDetail = () => {
                     <td>{details.exercise}</td>
                     <td>{details.duration}</td>
                     <td>{details.notes}</td>
+                    <td>
+                      <YoutubeEmbed embedId="yYNSSNJ0z_U"/>
+                        {/* <img className= "video-img" src={require("../images/youtube_logo.png")} alt="youtube logo"></img> */}
+                    </td>
                   </tr>
                 </tbody>
               </table>
