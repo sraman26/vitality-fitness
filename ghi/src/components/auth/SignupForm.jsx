@@ -7,7 +7,7 @@ import {
   reset,
 } from "../../features/auth/signupSlice";
 import { useSignupMutation } from "../../services/workout";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 const Signup = () => {
   let navigate = useNavigate();
@@ -29,7 +29,13 @@ const Signup = () => {
   };
   return (
     <div className="auth-container">
-      <video src={require("../../images/splash.mp4")} autoPlay loop muted />
+        <video
+          className="signup-video"
+          src={require("../../images/authsplash.mp4")}
+          autoPlay
+          loop
+          muted
+        />
       <div className="card auth-form-cards">
         <div className="card-body">
           <h5 className="card-title">Signup</h5>
@@ -71,9 +77,19 @@ const Signup = () => {
                 onChange={(e) => dispatch(handleFullNameChange(e.target.value))}
               />
             </div>
-            <button type="submit" className="btn btn-success">
-              Signup
-            </button>
+            <div className="createorupdate-button-container">
+              <button type="submit" className="btn btn-success signup-button">
+                Signup
+              </button>
+            </div>
+            <div className="row existingaccount-container">
+              <p>
+                Already have an account?&nbsp;&nbsp;
+                <NavLink className="existingaccount" to="/login">
+                  Login
+                </NavLink>
+              </p>
+            </div>
           </form>
         </div>
       </div>

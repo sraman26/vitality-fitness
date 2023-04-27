@@ -41,8 +41,10 @@ Please follow the provided steps to clone the repository and run it on your loca
 4. Run docker volume create mongo-data
 5. Run docker compose build
 6. Run docker compose up
-7. Allow some time for React servers to fully boot
-8. Enjoy!
+7. Run docker exec -it module3-project-gamma-fastapi-1 bash
+    - Then run pip install google-search-results
+8. Allow some time for React servers to fully boot
+9. Enjoy!
 
 Future of the Project
 - Workout Cards
