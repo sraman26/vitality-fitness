@@ -115,3 +115,8 @@ Added JSX for embedded Youtube videos in Cardio and Strength pages
 Minor CSS fixes
 Changed size of embedded Youtube video
 (Sitara in chair)
+
+4/27/23
+Made changes to function names in queries and routers for ubiquitous language
+More minor CSS/UI changes with Bootstrap
+(Aaron in chair)
