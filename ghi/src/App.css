@@ -14,7 +14,11 @@
 }
 
 .navgradient {
-  background: linear-gradient(0deg, rgb(245, 203, 16) 0%, rgb(189, 38, 38) 100%);
+  background: linear-gradient(
+    0deg,
+    rgb(245, 203, 16) 0%,
+    rgb(189, 38, 38) 100%
+  );
 }
 
 #logo {
@@ -27,48 +31,47 @@ img {
   width: 100%;
 }
 
-.container-fluid{
+.container-fluid {
   width: fill;
   display: grid;
   justify-content: space-between;
 }
 
-.card{
+.card {
   margin: 20px;
   width: 25%;
 }
 
-.card{
+.card {
   justify-content: space-between;
 }
 
-.NavSpacing{
+.NavSpacing {
   margin-top: 66px !important;
 }
 
-.workoutLink{
+.workoutLink {
   text-decoration: none !important;
   color: black;
   font-weight: 500;
 }
 
-
-.dropdown-Nav{
+.dropdown-Nav {
   color: black !important;
-  background-color: transparent !important
+  background-color: transparent !important;
 }
 
-.navhead{
-  color: white !important
+.navhead {
+  color: white !important;
 }
 .error-img {
   display: block;
   width: auto;
   height: 80vh;
   margin: auto;
-
-}.error-background {
-  background-color: #FFD554;
+}
+.error-background {
+  background-color: #ffd554;
   padding-bottom: 20%;
 }
 
@@ -144,15 +147,15 @@ div > h5 {
 }
 
 video {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    z-index: -1;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: -1;
 }
 
 .auth-container {
-  background: url('./images/splash.mp4') center center/cover no-repeat;
+  background: url("./images/splash.mp4") center center/cover no-repeat;
   height: calc(100vh-66px);
   width: 100%;
   display: flex;
@@ -183,9 +186,9 @@ video {
 }
 
 .workout-background {
-  height: 100%;
+  height: 100vh;
   width: 100%;
-  /* position: fixed; */
+  position: fixed;
   filter: brightness(100%);
   background-image: url("./images/vector.svg");
   z-index: -1;
@@ -211,12 +214,17 @@ video {
   margin-top: 5%;
 }
 
-.video-td
-{
+.video-td {
   width: 300px;
 }
 
-.detail-table{
+.cardio-video {
+  width: 500px;
+  display: block;
+  margin: auto;
+}
+
+.detail-table {
   border-collapse: collapse;
   table-layout: fixed;
   width: 100%;
@@ -240,4 +248,9 @@ video {
 
 .signup-video {
   filter: brightness(60%);
+}
+
+.cardio-workout-title {
+  display: flex;
+  justify-content: center;
 }

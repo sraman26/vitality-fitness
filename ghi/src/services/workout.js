@@ -51,7 +51,8 @@ export const workoutApi = createApi({
         "Account",
         "Incompleted",
         "Completed",
-        "Details",
+        "CardioDetails",
+        "StrengthDetails",
         { type: "Accounts", id: "LIST" },
       ],
     }),
@@ -77,7 +78,7 @@ export const workoutApi = createApi({
     }),
     getCardioWorkoutDetails: builder.query({
       query: (id) => `/api/workouts/cardio/${id}/`,
-      providesTags: ["Details"],
+      providesTags: ["CardioDetails"],
     }),
     deleteCardioWorkout: builder.mutation({
       query: (id) => ({
@@ -94,7 +95,12 @@ export const workoutApi = createApi({
           body: data.update,
         };
       },
-      invalidatesTags: ["Incompleted", "Completed", "Details", "Videos"],
+      invalidatesTags: [
+        "Incompleted",
+        "Completed",
+        "CardioDetails",
+        "CardioVideos",
+      ],
     }),
     // ########################################################################################
     createStrengthWorkouts: builder.mutation({
@@ -109,7 +115,7 @@ export const workoutApi = createApi({
     }),
     getStrengthWorkoutDetails: builder.query({
       query: (id) => `/api/workouts/strength/${id}/`,
-      providesTags: ["Details"],
+      providesTags: ["StrengthDetails"],
     }),
     deleteStrengthWorkout: builder.mutation({
       query: (id) => ({
@@ -126,19 +132,24 @@ export const workoutApi = createApi({
           body: data.newData,
         };
       },
-      invalidatesTags: ["Incompleted", "Completed", "Details", "Videos"],
+      invalidatesTags: [
+        "Incompleted",
+        "Completed",
+        "StrengthDetails",
+        "StrengthVideos",
+      ],
     }),
     fetchStrengthApi: builder.query({
       query: (muscle) => `/api/exercise/strength/${muscle}`,
       providesTags: ["Exercises"],
     }),
-    fetchYoutubeAPI: builder.query({
+    fetchEmbeddedString: builder.query({
       query: (search) => `/api/youtube/cardio/${search}`,
-      providesTags: ["Videos"],
+      providesTags: ["CardioVideos"],
     }),
-    fetchEmbedList: builder.query({
+    fetchEmbeddedList: builder.query({
       query: (search) => `/api/youtube/strength/${search}`,
-      providesTags: ["Videos"],
+      providesTags: ["StrengthVideos"],
     }),
   }),
 });
@@ -159,6 +170,6 @@ export const {
   useDeleteStrengthWorkoutMutation,
   useUpdateStrengthWorkoutsMutation,
   useFetchStrengthApiQuery,
-  useFetchYoutubeAPIQuery,
-  useFetchEmbedListQuery
+  useFetchEmbeddedStringQuery,
+  useFetchEmbeddedListQuery,
 } = workoutApi;
