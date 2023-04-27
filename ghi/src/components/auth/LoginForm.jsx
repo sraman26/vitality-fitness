@@ -59,9 +59,11 @@ function LoginForm() {
                 onChange={(e) => dispatch(handlePasswordChange(e.target.value))}
               />
             </div>
-            <button type="submit" className="btn btn-success">
-              Login
-            </button>
+            <div className="createorupdate-button-container">
+              <button type="submit" className="btn btn-success">
+                Login
+              </button>
+            </div>
           </form>
         </div>
       </div>

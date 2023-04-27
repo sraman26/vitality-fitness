@@ -20,11 +20,11 @@ const Workouts = () => {
   return (
     <>
       <div className="workout-background">
-        <div className="container list-container ">
-          <div className="row row-cols-2">
-            <div className="shadow p-4 mt-4">
+        <div className="container list-container">
+          <div className="row row-cols-2 border border-dark">
+            <div className="shadow p-4 mt-4 workout-list-container">
               <h1>Upcoming Workouts</h1>
-              <table className="table table-striped">
+              <table className="table table-striped ">
                 <thead>
                   <tr>
                     <th>Workout Name</th>
@@ -62,7 +62,7 @@ const Workouts = () => {
                 </tbody>
               </table>
             </div>
-            <div className="shadow p-4 mt-4">
+            <div className="shadow p-4 mt-4 right-list-container">
               <h1>Completed Workouts</h1>
               <table className="table table-striped">
                 <thead>

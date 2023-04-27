@@ -185,8 +185,9 @@ video {
 .workout-background {
   height: 100%;
   width: 100%;
-  position: fixed;
-  background-color: #f1eeae;
+  /* position: fixed; */
+  filter: brightness(100%);
+  background-image: url("./images/vector.svg");
   z-index: -1;
 }
 
@@ -227,4 +228,16 @@ video {
 
 .table-header {
   font-size: 25px;
+}
+
+.existingaccount {
+  font-weight: bold;
+}
+
+.existingaccount-container {
+  margin-top: 3%;
+}
+
+.signup-video {
+  filter: brightness(60%);
 }
