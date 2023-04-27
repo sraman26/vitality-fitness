@@ -10,6 +10,7 @@ import YoutubeEmbed from "./YoutubeEmbed";
 
 
 
+
 const CardioWorkoutDetail = () => {
   let { workoutId } = useParams();
 
@@ -50,26 +51,28 @@ const CardioWorkoutDetail = () => {
                   {details.workout_name} - {date.toDateString()} -{" "}
                   {details.status}
                 </h1>
-                <table className="table table-striped">
+                <hr />
+                <table className="table table-striped detail-table">
                   <thead>
                     <tr>
-                      <th>Exercise</th>
-                      <th>Duration/ Distance</th>
-                      <th>Notes</th>
-                    <th>Video</th>
+                      <th className="table-header">Exercise</th>
+                      <th className="table-header">Duration/ Distance</th>
+                      <th className="table-header">Video</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr key={details.id}>
                       <td>{details.exercise}</td>
                       <td>{details.duration}</td>
-                      <td>{details.notes}</td>
-                    <td className="video-td">
-                      <YoutubeEmbed embedId={video}/>
-                    </td>
+                      <td className="video-td">
+                        <YoutubeEmbed embedId={video} />
+                      </td>
                     </tr>
                   </tbody>
                 </table>
+                <h3>Workout Notes</h3>
+                <p className="detail-notes">{details.notes}</p>
+                <hr />
                 <div className="detail-button-container">
                   <button
                     className="btn btn-danger detail-button"
@@ -80,7 +83,7 @@ const CardioWorkoutDetail = () => {
                     Delete
                   </button>
                   <button
-                    className="btn btn-success detail-button"
+                    className="btn btn-primary detail-button"
                     onClick={() => {
                       handleUpdate(workoutId);
                     }}

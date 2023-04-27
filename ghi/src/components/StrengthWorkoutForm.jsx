@@ -171,7 +171,7 @@ const StrengthWorkoutForm = () => {
                         />
                         <button
                           type="button"
-                          class="btn btn-danger"
+                          className="btn btn-danger"
                           onClick={() => removeFields(index)}
                         >
                           Remove
@@ -181,7 +181,7 @@ const StrengthWorkoutForm = () => {
                   })}
                   <button
                     type="button"
-                    class="btn btn-success"
+                    className="btn btn-success"
                     onClick={addFields}
                   >
                     Add More..

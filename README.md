@@ -1,147 +1,53 @@
-# Module3 Project Gamma
+## Project Documentation
 
-## Getting started
+Team Members:
+- Aaron Lee
+- Mike Mikius
+- Sitara Raman
+- Tahmid Baro Bhuiyan
 
-You have a project repository, now what? The next section
-lists all of the deliverables that are due at the end of the
-week. Below is some guidance for getting started on the
-tasks for this week.
+Application Name: Vitality
 
-## Install Extensions
+Application Description: Vitality is your next  workout app tracker. It displays your list of logged workouts, both completed and incompleted. This way, you can keep track of your completed progress while still looking forward to upcoming workouts. Users have the ability to create distinct workouts that focus on either cardio or strength development. Users also have the ability to view their completed and incompleted workouts side by side, allowing for self-reflection of your progress, while maintaining the ability to modify/delete created workouts and change their status from incomplete to complete.
 
-* Prettier: <https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode>
-* Black Formatter: <https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter>
+Application Design:
+Application backend was created utilizing python in FastAPI, and a Mongo-DB database for flexible data storage. The front-end was built utilizing Javascript in React Redux, with Bootstrap to compliment our CSS design.
 
-## Deliverables
+Framework:
+- [Wireframe](docs/Project_Wireframes.png)
+- [Endpoints and Request/Response Shapes](docs/API_ENDPOINTS.MD)
+- [Integration](docs/Integrations.md)
 
-* [ ] Wire-frame diagrams
-* [ ] API documentation
-* [ ] Project is deployed to Render.com/GitLab-pages
-* [ ] GitLab issue board is setup and in use
-* [ ] Journals
+Functionality:
+- Visitors begin on a homepage that provides a general description of the application. Prompts to login or sign up are provided. Every other functionality is protected until user is logged in.
+- After logging in, the navigation bar will contain the following:
+    - View user's Workout List Page
+    - Add a Cardio Workout
+    - Add a Strength Workout
+- Successfully creating workouts will redirect users back to the Workout List page, which should be dynamically updating.
+- Workouts from the Workout List page can be selected, redirecting users to a detail page for the given workout
+- From the detail page, users can update/delete the workouts. Successful updates redirect the user back to the detail page. Successful deletes redirect them to the Workout List page.
+- Full functionality is limited to strictly the homepage, signup/login page and an error page until user is logged in.
+- Users who attempt to access existing pages via URL will be redirected to the error page until authentication is complete.
 
-## Project layout
+Using our Application
+Please follow the provided steps to clone the repository and run it on your local machine.
+1. Clone the repository down to your local machine
+2. CD into the new project directory
+3. Create .env in parent directory and provide the following variables:
+    - SIGNING_KEY = random ssl key (MacOS: openssl rand hex -32 | Windows: )
+    - API_KEY = taken from API Ninja
+    - YOUTUBE_VIDEO_API = create account with SerpAPI and get API Key
+4. Run docker volume create mongo-data
+5. Run docker compose build
+6. Run docker compose up
+7. Allow some time for React servers to fully boot
+8. Enjoy!
 
-The layout of the project is just like all of the projects
-you did with `docker-compose` in module #2. You will create
-a directory in the root of the repository for each service
-that you add to your project just like those previous
-projects were setup.
-
-### Directories
-
-Several directories have been added to your project. The
-directories `docs` and `journals` are places for you and
-your team-mates to, respectively, put any documentation
-about your project that you create and to put your
-project-journal entries. See the _README.md_ file in each
-directory for more info.
-
-The other directories, `ghi` and `sample_service`, are
-sample services, that you can start building off of or use
-as a reference point.
-
-Inside of `ghi` is a minimal React app that has an "under
-construction" page. It is setup similarly to all of the
-other React projects that you have worked on.
-
-Inside of `sample_service` is a minimal FastAPI application.
-"Where are all the files?" you might ask? Well, the
-`main.py` file is the whole thing, and go take look inside
-of it... There's not even much in there..., hmm? That is
-FastAPI, we'll learn more about it in the coming days. Can
-you figure out what this little web-application does even
-though you haven't learned about FastAPI yet?
-
-Also in `sample_service` is a directory for your migrations.
-If you choose to use PostgreSQL, then you'll want to use
-migrations to control your database. Unlike Django, where
-migrations were automatically created for you, you'll write
-yours by hand using DDL. Don't worry about not knowing what
-DDL means; we have you covered. There's a sample migration
-in there that creates two tables so you can see what they
-look like.
-
-The sample Dockerfile and Dockerfile.dev run your migrations
-for you automatically.
-
-### Other files
-
-The following project files have been created as a minimal
-starting point. Please follow the guidance for each one for
-a most successful project.
-
-* `docker-compose.yaml`: there isn't much in here, just a
-  **really** simple UI and FastAPI service. Add services
-  (like a database) to this file as you did with previous
-  projects in module #2.
-* `.gitlab-ci.yml`: This is your "ci/cd" file where you will
-  configure automated unit tests, code quality checks, and
-  the building and deployment of your production system.
-  Currently, all it does is deploy an "under construction"
-  page to your production UI on GitLab and a sample backend
-  to Render.com. We will learn much more about this file.
-* `.gitignore`: This is a file that prevents unwanted files
-  from getting added to your repository, files like
-  `pyc` files, `__pycache__`, etc. We've set it up so that
-  it has a good default configuration for Python projects.
-
-## How to complete the initial deploy
-
-There will be further guidance on completing the initial
-deployment, but it just consists of these steps:
-
-### Setup GitLab repo/project
-
-* make sure this project is in a group. If it isn't, stop
-  now and move it to a GitLab group
-* remove the fork relationship: In GitLab go to:
-  
-  Settings -> General -> Advanced -> Remove fork relationship
-
-* add these GitLab CI/CD variables:
-  * PUBLIC_URL : this is your gitlab pages URL
-  * SAMPLE_SERVICE_API_HOST: enter "blank" for now
-
-#### Your GitLab pages URL
-
-You can't find this in GitLab until after you've done a deploy
-but you can figure it out yourself from your GitLab project URL.
-
-If this is your project URL
-
-https://gitlab.com/GROUP_NAME/PROJECT_NAME
-
-then your GitLab pages URL will be
-
-https://GROUP_NAME.gitlab.io/PROJECT_NAME
-
-### Create render.com account and application
-
-* create account on render.com
-* one person create a group and invite all other members
-* create a new "Web Service"
-  * authenticate with GitLab and choose your project
-  * Enter fields:
-    * Name: name of your service
-    * Root Directory: the directory of your service in your git repo.
-      For this example use "sample_service".
-    * Environment: Docker
-    * Plan Type: Free
-  * click the "Create Web Service" button to create it
-  * the build will succeed and it will look like the server is running,
-    most likely, in 6-10 minutes, it will fail.
-  * click "Manual Deploy" -> "Deploy latest commit" and the service
-    should deploy successfully.
-
-### Update GitLab CI/CD variables
-
-Copy the service URL for your new render.com service and then paste
-that into the value for the SAMPLE_SERVICE_API_HOST CI/CD variable
-in GitLab.
-
-### Deploy it
-
-Merge a change into main to kick off the initial deploy. Once the build pipeline
-finishes you should be able to see an "under construction" page on your GitLab
-pages site.
+Future of the Project
+- Workout Cards
+- Implementing a Calendar View for the Workout List Page
+- Integrating Youtube instruction videos
+- Allowing for users to select favorite workouts and exercises
+- Integrating API fetches into CRUD methods
+- Implement diet tracking as a core feature
