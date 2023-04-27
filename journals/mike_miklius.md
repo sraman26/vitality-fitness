@@ -26,7 +26,7 @@ helps me use this for recruiters
 
 4.4.23: Brainstormed front-end specific design elements (color palette, font, splash image, logo); fixed try-except formatting (moved it from queries to routers); fixed strength third party API formatting
 
-4.5.23: Worked through front-end authorization (login, logout, started signup); Aaron was our coder. 
+4.5.23: Worked through front-end authorization (login, logout, started signup); Aaron was our coder.
 
 4.6.23: finished coding the signup front-end and verified that login, logout, and signup are working properly. Coded the front page of our website, picked a main image, added cards, and styled our nav bar with a site icon. Tahmid was our coder.
 
@@ -47,3 +47,7 @@ helps me use this for recruiters
 4.24.23: Completed error handling and ran flake8 and black. Aaron was the coder. Everyone was the in the chair at some point do their unit tests.
 
 4.25.23: Worked on CSS and improving application visuals; Created an image carousel for the main page; Created a background video for login and signup pages; Tahmid was in the chair today coding.
+
+4.26.23: Worked on implementing a third-party Youtube embeded video api; modified various JSX files to allow for the youtube implementation; made a new router and query for the youtube funcitonality;
+
+4.27.23: fixed some error handling with the youtube videos; allowed the page to load even if there is no input data for third party youtube api; Aaron was our coder today
