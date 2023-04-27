@@ -4,9 +4,11 @@ import {
   useDeleteStrengthWorkoutMutation,
   useFetchEmbedListQuery,
 } from "../services/workout";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate} from "react-router-dom";
 import ErrorPage from "./ErrorPage";
 import YoutubeEmbed from "./YoutubeEmbed";
+import { skipToken } from "@reduxjs/toolkit/query/react";
+
 
 const StrengthWorkoutDetail = () => {
   let { workoutId } = useParams();
@@ -14,12 +16,17 @@ const StrengthWorkoutDetail = () => {
   let navigate = useNavigate();
 
   const { data: details, isLoading: Loading } =
-    useGetStrengthWorkoutDetailsQuery(workoutId);
-  const { data: videos, isLoading: VideoLoading } =
-    useFetchEmbedListQuery(details?.id)
+    useGetStrengthWorkoutDetailsQuery(workoutId)
+
+  const { data: videos, isLoading: VideoLoading } = useFetchEmbedListQuery(
+    details?.id ?? skipToken
+  );
+
   const [deleteWorkout] = useDeleteStrengthWorkoutMutation();
 
-  if (VideoLoading) return<div>Loading the page--just wait a moment</div>
+  if (VideoLoading) {
+    return <div>Loading the page--just a moment</div>;
+  };
   if (Loading) return <div>Loading the page--just a moment</div>;
   if (details?.length === 0) return <div>This workout does not exist</div>;
 
@@ -85,7 +92,7 @@ const StrengthWorkoutDetail = () => {
                       Delete
                     </button>
                     <button
-                      className="btn btn-success detail-button"
+                      className="btn btn-primary detail-button"
                       onClick={() => {
                         handleUpdate(workoutId);
                       }}

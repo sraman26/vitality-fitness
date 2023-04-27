@@ -56,7 +56,7 @@ const UpdateCardioWorkout = () => {
       ) : (
         <>
           <div className="workout-background form-background">
-            <div className="card form-cards workout-container">
+            <div className="card form-cards updateform-background">
               <div className="card-body">
                 <h5 className="card-title">Update Cardio Workout</h5>
                 <hr />
@@ -151,7 +151,7 @@ const UpdateCardioWorkout = () => {
                     </select>
                   </div>
                   <div className="createorupdate-button-container">
-                    <button type="submit" className="btn btn-success">
+                    <button type="submit" className="btn btn-primary">
                       Update
                     </button>
                   </div>

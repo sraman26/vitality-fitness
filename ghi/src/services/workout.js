@@ -94,7 +94,7 @@ export const workoutApi = createApi({
           body: data.update,
         };
       },
-      invalidatesTags: ["Incompleted", "Completed", "Details"],
+      invalidatesTags: ["Incompleted", "Completed", "Details", "Videos"],
     }),
     // ########################################################################################
     createStrengthWorkouts: builder.mutation({
@@ -126,7 +126,7 @@ export const workoutApi = createApi({
           body: data.newData,
         };
       },
-      invalidatesTags: ["Incompleted", "Completed", "Details"],
+      invalidatesTags: ["Incompleted", "Completed", "Details", "Videos"],
     }),
     fetchStrengthApi: builder.query({
       query: (muscle) => `/api/exercise/strength/${muscle}`,
@@ -139,7 +139,7 @@ export const workoutApi = createApi({
     fetchEmbedList: builder.query({
       query: (search) => `/api/youtube/strength/${search}`,
       providesTags: ["Videos"],
-    })
+    }),
   }),
 });
 

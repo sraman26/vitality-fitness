@@ -119,7 +119,7 @@ const UpdateStrengthWorkout = () => {
         <>
           <div className="workout-background form-background">
             <div className="row row-cols-2">
-              <div className="card form-cards col workout-container">
+              <div className="card form-cards col updateform-background">
                 <div className="card-body">
                   <h5 className="card-title">Update Strength Workout</h5>
                   <hr />
@@ -210,7 +210,7 @@ const UpdateStrengthWorkout = () => {
                             />
                             <button
                               type="button"
-                              class="btn btn-danger"
+                              className="btn btn-danger"
                               onClick={() => removeFields(index)}
                             >
                               Remove
@@ -220,14 +220,14 @@ const UpdateStrengthWorkout = () => {
                       })}
                       <button
                         type="button"
-                        class="btn btn-success"
+                        className="btn btn-success"
                         onClick={addFields}
                       >
                         Add More..
                       </button>
                     </div>
                     <div className="createorupdate-button-container">
-                      <button type="submit" className="btn btn-success">
+                      <button type="submit" className="btn btn-primary">
                         Update
                       </button>
                       <button

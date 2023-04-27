@@ -198,6 +198,10 @@ video {
   background-color: #f1eeae;
 }
 
+.updateform-background {
+  background-color: #90e0ef;
+}
+
 .list-container {
   background-color: white;
 }
@@ -209,4 +213,18 @@ video {
 .video-td
 {
   width: 300px;
+}
+
+.detail-table{
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.detail-notes {
+  word-wrap: break-word;
+}
+
+.table-header {
+  font-size: 25px;
 }
