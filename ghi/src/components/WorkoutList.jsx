@@ -6,7 +6,6 @@ import {
 import { NavLink } from "react-router-dom";
 import "../App.css";
 
-
 const Workouts = () => {
   const { data: incompleted_workouts, isLoading: IncompleteLoading } =
     useGetIncompletedWorkoutsQuery();

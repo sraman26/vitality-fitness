@@ -50,4 +50,17 @@ April 19th, 2023:
     Created strength detail, and update form.
 
 April 20th, 2023:
-    Login and signup error handling made, protected NavLinks in nav bar.  Made an Error page with redirections
+    Login and signup error handling made, protected NavLinks in nav bar.  Made an Error page with redirections.
+
+April 24th, 2023:
+    Made unit tests for project and worked on error handling.
+    Formatting fixed wth flake8 and black.
+
+April 25th, 2023:
+    Integrated 3rd party API and fixed pipeline failure.  Updated UI to homepage cards and added a carousel component.
+
+April 26th, 2023:
+    Youtube API integration to both front-end and back-end.  Minor CSS changes to update sizing of embedded Youtube videos.
+
+April 27th, 2023:
+    Updated naming conventions of our functions and touched up on overall UI with CSS and bootstrap.

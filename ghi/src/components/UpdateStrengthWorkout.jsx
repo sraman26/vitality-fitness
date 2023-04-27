@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   useUpdateStrengthWorkoutsMutation,
   useGetStrengthWorkoutDetailsQuery,
-  useFetchStrengthApiQuery
+  useFetchStrengthApiQuery,
 } from "../services/workout";
 import { useParams, useNavigate } from "react-router-dom";
 import {
@@ -41,7 +41,6 @@ const UpdateStrengthWorkout = () => {
     setInputFields(data);
   };
 
-
   // ################################DYNAMIC ROWS ABOVE###################################
 
   const dispatch = useDispatch();
@@ -50,17 +49,16 @@ const UpdateStrengthWorkout = () => {
   const [strengthworkoutform] = useUpdateStrengthWorkoutsMutation();
   const [muscle, setMuscle] = useState("abdominals");
   const { data: fetch, isLoading: FetchLoading } =
-      useFetchStrengthApiQuery(muscle);
+    useFetchStrengthApiQuery(muscle);
   const { fields } = useSelector((state) => state.strengthForm);
-
 
   const [suggestion, setSuggestion] = useState(false);
 
   if (Loading) return <div>Loading the page--just a moment</div>;
   if (details?.length === 0) return <div>This workout does not exist</div>;
-   if (FetchLoading) {
-     return;
-   }
+  if (FetchLoading) {
+    return;
+  }
 
   let muscles = [
     "abdominals",
@@ -81,15 +79,14 @@ const UpdateStrengthWorkout = () => {
     "triceps",
   ];
 
+  const handleMuscleChange = (event) => {
+    const value = event.target.value;
+    setMuscle(value);
+  };
 
-    const handleMuscleChange = (event) => {
-      const value = event.target.value;
-      setMuscle(value);
-    };
-
-    const handleSuggestionChange = (event) => {
-      setSuggestion(!suggestion);
-    };
+  const handleSuggestionChange = (event) => {
+    setSuggestion(!suggestion);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();

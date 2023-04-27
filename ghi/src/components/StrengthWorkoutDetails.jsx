@@ -2,13 +2,12 @@ import React from "react";
 import {
   useGetStrengthWorkoutDetailsQuery,
   useDeleteStrengthWorkoutMutation,
-  useFetchEmbedListQuery,
+  useFetchEmbeddedListQuery,
 } from "../services/workout";
-import { useParams, useNavigate} from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
 import YoutubeEmbed from "./YoutubeEmbed";
 import { skipToken } from "@reduxjs/toolkit/query/react";
-
 
 const StrengthWorkoutDetail = () => {
   let { workoutId } = useParams();
@@ -16,9 +15,9 @@ const StrengthWorkoutDetail = () => {
   let navigate = useNavigate();
 
   const { data: details, isLoading: Loading } =
-    useGetStrengthWorkoutDetailsQuery(workoutId)
+    useGetStrengthWorkoutDetailsQuery(workoutId);
 
-  const { data: videos, isLoading: VideoLoading } = useFetchEmbedListQuery(
+  const { data: videos, isLoading: VideoLoading } = useFetchEmbeddedListQuery(
     details?.id ?? skipToken
   );
 
@@ -26,11 +25,11 @@ const StrengthWorkoutDetail = () => {
 
   if (VideoLoading) {
     return <div>Loading the page--just a moment</div>;
-  };
+  }
   if (Loading) return <div>Loading the page--just a moment</div>;
   if (details?.length === 0) return <div>This workout does not exist</div>;
 
-  const date = new Date(details.date)
+  const date = new Date(details.date);
 
   function handleDelete(workoutId) {
     deleteWorkout(workoutId);
@@ -63,7 +62,7 @@ const StrengthWorkoutDetail = () => {
                         <th>Muscle</th>
                         <th>Reps</th>
                         <th>Notes</th>
-                      <th>Video</th>
+                        <th>Video</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -74,9 +73,9 @@ const StrengthWorkoutDetail = () => {
                             <td>{exercise.muscle}</td>
                             <td>{exercise.reps}</td>
                             <td>{exercise.notes}</td>
-                          <td className="video-td">
-                            {<YoutubeEmbed embedId={videos[i]}/>}
-                          </td>
+                            <td className="video-td">
+                              {<YoutubeEmbed embedId={videos[i]} />}
+                            </td>
                           </tr>
                         );
                       })}

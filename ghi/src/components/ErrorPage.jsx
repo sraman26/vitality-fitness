@@ -7,7 +7,7 @@ function ErrorPage() {
         <img
           className="error-img"
           src={require("../images/404-turtle.png")}
-          alt=''
+          alt=""
         ></img>
       </div>
     </>

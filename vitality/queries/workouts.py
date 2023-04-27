@@ -17,13 +17,15 @@ from models import (
 
 youtube_api_key = os.environ["YOUTUBE_VIDEO_API"]
 
-def get_youtube_result_strength(params):
+
+def get_embedded_string(params):
     search = GoogleSearch(params)
     results = search.get_dict()
     video_results = results["video_results"][0]["link"]
     video_results = video_results.split("=")
     video_results = video_results[1]
     return video_results
+
 
 class WorkoutQueries(Queries):
     COLLECTION = "Workouts"
@@ -164,7 +166,7 @@ class WorkoutQueries(Queries):
             Workout_List.append(Workouts(**workout))
         return Workout_List
 
-    def get_youtube_list(self, id:str):
+    def get_embedded_list(self, id: str):
         embed_list = []
         result = self.collection.find_one({"_id": ObjectId(id)})
         for exercise in result["exercises"]:
@@ -173,6 +175,6 @@ class WorkoutQueries(Queries):
                 "search_query": exercise["name"],
                 "api_key": youtube_api_key
                 }
-            strength_res = get_youtube_result_strength(youtube_params)
+            strength_res = get_embedded_string(youtube_params)
             embed_list.append(strength_res)
         return embed_list
