@@ -168,43 +168,45 @@ const UpdateStrengthWorkout = () => {
                     <div className="App">
                       {inputFields.map((input, index) => {
                         return (
-                          <div key={index}>
-                            <input
-                              name="muscle"
-                              placeholder="Muscle"
-                              value={input.muscle}
-                              required={true}
-                              onChange={(event) =>
-                                handleFormChange(index, event)
-                              }
-                            />
-                            <input
-                              name="name"
-                              placeholder="Exercise Name"
-                              value={input.name}
-                              required={true}
-                              onChange={(event) =>
-                                handleFormChange(index, event)
-                              }
-                            />
-                            <input
-                              name="reps"
-                              placeholder="Reps"
-                              value={input.reps}
-                              required={true}
-                              onChange={(event) =>
-                                handleFormChange(index, event)
-                              }
-                            />
-                            <input
-                              name="notes"
-                              placeholder="Notes"
-                              value={input.notes}
-                              required={true}
-                              onChange={(event) =>
-                                handleFormChange(index, event)
-                              }
-                            />
+                          <>
+                            <div key={index}>
+                              <input
+                                name="muscle"
+                                placeholder="Muscle"
+                                value={input.muscle}
+                                required={true}
+                                onChange={(event) =>
+                                  handleFormChange(index, event)
+                                }
+                              />
+                              <input
+                                name="name"
+                                placeholder="Exercise Name"
+                                value={input.name}
+                                required={true}
+                                onChange={(event) =>
+                                  handleFormChange(index, event)
+                                }
+                              />
+                              <input
+                                name="reps"
+                                placeholder="Reps"
+                                value={input.reps}
+                                required={true}
+                                onChange={(event) =>
+                                  handleFormChange(index, event)
+                                }
+                              />
+                              <input
+                                name="notes"
+                                placeholder="Notes"
+                                value={input.notes}
+                                required={true}
+                                onChange={(event) =>
+                                  handleFormChange(index, event)
+                                }
+                              />
+                            </div>
                             <button
                               type="button"
                               className="btn btn-danger"
@@ -212,7 +214,7 @@ const UpdateStrengthWorkout = () => {
                             >
                               Remove
                             </button>
-                          </div>
+                          </>
                         );
                       })}
                       <button

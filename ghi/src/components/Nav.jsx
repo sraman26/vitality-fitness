@@ -13,7 +13,7 @@ function Nav() {
 
   return (
     <nav
-      className="navbar fixed-top navbar-expand-lg navbar-dark navgradient"
+      className="navbar navbar-expand-lg navbar-dark navgradient"
       style={{ backgroundColor: "#FFA624" }}
     >
       <div className="container-fluid">

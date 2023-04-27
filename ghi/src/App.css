@@ -207,6 +207,7 @@ video {
 }
 
 .list-container {
+
   background-color: white;
 }
 
@@ -253,4 +254,21 @@ video {
 .cardio-workout-title {
   display: flex;
   justify-content: center;
+}
+
+.workout-background {
+  padding-top: 5%;
+  padding-bottom: 5%;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  filter: brightness(100%);
+  background-image: url("./images/vector.svg");
+  z-index: -1;
+}
+
+.table-responsive {
+  max-height: 700px;
+  overflow-y:scroll;
+  scrollbar-width: 0px;
 }

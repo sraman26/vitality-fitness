@@ -23,7 +23,7 @@ function App() {
   return (
     <BrowserRouter>
       <Nav />
-      <div className=" NavSpacing">
+      <div className="">
         <Routes>
           <Route index element={<Home />}></Route>
           <Route path="Login" element={<LoginForm />} />

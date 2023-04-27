@@ -146,34 +146,36 @@ const StrengthWorkoutForm = () => {
                 <div className="App">
                   {inputFields.map((input, index) => {
                     return (
-                      <div key={index}>
-                        <input
-                          name="muscle"
-                          required
-                          placeholder="Muscle"
-                          value={input.muscle}
-                          onChange={(event) => handleFormChange(index, event)}
-                        />
-                        <input
-                          name="name"
-                          required
-                          placeholder="Exercise Name"
-                          value={input.name}
-                          onChange={(event) => handleFormChange(index, event)}
-                        />
-                        <input
-                          name="reps"
-                          required
-                          placeholder="Reps"
-                          value={input.reps}
-                          onChange={(event) => handleFormChange(index, event)}
-                        />
-                        <input
-                          name="notes"
-                          placeholder="Notes"
-                          value={input.notes}
-                          onChange={(event) => handleFormChange(index, event)}
-                        />
+                      <>
+                        <div key={index}>
+                          <input
+                            name="muscle"
+                            required
+                            placeholder="Muscle"
+                            value={input.muscle}
+                            onChange={(event) => handleFormChange(index, event)}
+                          />
+                          <input
+                            name="name"
+                            required
+                            placeholder="Exercise Name"
+                            value={input.name}
+                            onChange={(event) => handleFormChange(index, event)}
+                          />
+                          <input
+                            name="reps"
+                            required
+                            placeholder="Reps"
+                            value={input.reps}
+                            onChange={(event) => handleFormChange(index, event)}
+                          />
+                          <input
+                            name="notes"
+                            placeholder="Notes"
+                            value={input.notes}
+                            onChange={(event) => handleFormChange(index, event)}
+                          />
+                        </div>
                         <button
                           type="button"
                           className="btn btn-danger"
@@ -181,9 +183,9 @@ const StrengthWorkoutForm = () => {
                         >
                           Remove
                         </button>
-                      </div>
+                      </>
                     );
-                  })}
+                  })} 
                   <button
                     type="button"
                     className="btn btn-success"
