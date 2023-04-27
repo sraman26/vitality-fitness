@@ -35,7 +35,7 @@ Please follow the provided steps to clone the repository and run it on your loca
 1. Clone the repository down to your local machine
 2. CD into the new project directory
 3. Create .env in parent directory and provide the following variables:
-    - SIGNING_KEY = random ssl key (MacOS: openssl rand hex -32 | Windows: )
+    - SIGNING_KEY = generate random ssl key (via local machine terminal or online resources)
     - API_KEY = taken from API Ninja
     - YOUTUBE_VIDEO_API = create account with SerpAPI and get API Key
 4. Run docker volume create mongo-data

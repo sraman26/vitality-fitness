@@ -66,3 +66,6 @@ Implemented third party API for strength exercises. Used as suggestions for stre
 
 4/26
 Implemented Youtube embedded videos, along with Youtube Search API integration on backend. Modified form and update JSX, made some tags required to prevent breaking of page. CSS changes. Sitara was the coder.
+
+4/27
+Continued implementing CSS touches. Modified Youtube fetch on front end to only occur once Detail fetch is not undefined. Moved READMe file from docs directory to parent directory. Aaron was the coder.
