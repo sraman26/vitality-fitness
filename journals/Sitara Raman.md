@@ -95,6 +95,11 @@ Redirect to error page when logged out
 Redirect to error page when URL does not exist
 (Sitara in chair)
 
+4/21/23:
+Unit tests started
+Unit tests for showing common workouts done with errors
+(Mike in chair)
+
 4/24/23:
 Unit tests for cardio and strength create and show all queries
 Unit tests for showing common workouts - completed and incompleted
@@ -120,3 +125,8 @@ Changed size of embedded Youtube video
 Made changes to function names in queries and routers for ubiquitous language
 More minor CSS/UI changes with Bootstrap
 (Aaron in chair)
+
+4/28/23
+Final review and walkthrough of code
+Fixed a warning that occured when adding exercises to strength workout
+(Tahmid in chair)
