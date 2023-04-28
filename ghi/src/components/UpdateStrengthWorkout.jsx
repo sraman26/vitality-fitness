@@ -114,7 +114,7 @@ const UpdateStrengthWorkout = () => {
         </>
       ) : (
         <>
-          <div className="workout-background form-background">
+          <div className="workout-form-background">
             <div className="row row-cols-2">
               <div className="card form-cards col updateform-background">
                 <div className="card-body">
@@ -168,45 +168,43 @@ const UpdateStrengthWorkout = () => {
                     <div className="App">
                       {inputFields.map((input, index) => {
                         return (
-                          <>
-                            <div key={index}>
-                              <input
-                                name="muscle"
-                                placeholder="Muscle"
-                                value={input.muscle}
-                                required={true}
-                                onChange={(event) =>
-                                  handleFormChange(index, event)
-                                }
-                              />
-                              <input
-                                name="name"
-                                placeholder="Exercise Name"
-                                value={input.name}
-                                required={true}
-                                onChange={(event) =>
-                                  handleFormChange(index, event)
-                                }
-                              />
-                              <input
-                                name="reps"
-                                placeholder="Reps"
-                                value={input.reps}
-                                required={true}
-                                onChange={(event) =>
-                                  handleFormChange(index, event)
-                                }
-                              />
-                              <input
-                                name="notes"
-                                placeholder="Notes"
-                                value={input.notes}
-                                required={true}
-                                onChange={(event) =>
-                                  handleFormChange(index, event)
-                                }
-                              />
-                            </div>
+                          <div key={index}>
+                            <input
+                              name="muscle"
+                              placeholder="Muscle"
+                              value={input.muscle}
+                              required={true}
+                              onChange={(event) =>
+                                handleFormChange(index, event)
+                              }
+                            />
+                            <input
+                              name="name"
+                              placeholder="Exercise Name"
+                              value={input.name}
+                              required={true}
+                              onChange={(event) =>
+                                handleFormChange(index, event)
+                              }
+                            />
+                            <input
+                              name="reps"
+                              placeholder="Reps"
+                              value={input.reps}
+                              required={true}
+                              onChange={(event) =>
+                                handleFormChange(index, event)
+                              }
+                            />
+                            <input
+                              name="notes"
+                              placeholder="Notes"
+                              value={input.notes}
+                              required={true}
+                              onChange={(event) =>
+                                handleFormChange(index, event)
+                              }
+                            />
                             <button
                               type="button"
                               className="btn btn-danger"
@@ -214,7 +212,7 @@ const UpdateStrengthWorkout = () => {
                             >
                               Remove
                             </button>
-                          </>
+                          </div>
                         );
                       })}
                       <button
@@ -243,7 +241,7 @@ const UpdateStrengthWorkout = () => {
               </div>
               {suggestion && (
                 <>
-                  <div className="card form-cards col workout-container">
+                  <div className="card form-cards updateform-background col workout-container">
                     <div className="card-body">
                       <div className="justify-content-center d-flex">
                         <select onChange={handleMuscleChange} value={muscle}>

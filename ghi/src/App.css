@@ -198,16 +198,11 @@ video {
   background-color: #b9fbb9 !important;
 }
 
-.form-background {
-  background-color: #f1eeae;
-}
-
 .updateform-background {
-  background-color: #90e0ef;
+  background-color: #90e0ef !important;
 }
 
 .list-container {
-
   background-color: white;
 }
 
@@ -256,8 +251,12 @@ video {
   justify-content: center;
 }
 
+.list-margin {
+  padding-top: 5% !important;
+}
+
 .workout-background {
-  padding-top: 5%;
+  padding-top: 0%;
   padding-bottom: 5%;
   height: 100vh;
   width: 100%;
@@ -267,8 +266,19 @@ video {
   z-index: -1;
 }
 
+.workout-form-background {
+  padding-top: 0%;
+  padding-bottom: 12%;
+  height: 100%;
+  width: 100%;
+  filter: brightness(100%);
+  background-image: url("./images/vector.svg");
+  z-index: -1;
+  overflow-x: hidden;
+}
+
 .table-responsive {
   max-height: 700px;
-  overflow-y:scroll;
+  overflow-y: scroll;
   scrollbar-width: 0px;
 }
