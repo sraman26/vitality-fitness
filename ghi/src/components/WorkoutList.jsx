@@ -18,7 +18,7 @@ const Workouts = () => {
 
   return (
     <>
-      <div className="workout-background">
+      <div className="workout-background list-margin">
         <div className="container list-container">
           <div className="row row-cols-2 border border-dark">
             <div className="shadow p-4 mt-4 workout-list-container">

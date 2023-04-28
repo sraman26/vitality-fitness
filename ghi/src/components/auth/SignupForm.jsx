@@ -29,13 +29,13 @@ const Signup = () => {
   };
   return (
     <div className="auth-container">
-        <video
-          className="signup-video"
-          src={require("../../images/authsplash.mp4")}
-          autoPlay
-          loop
-          muted
-        />
+      <video
+        className="signup-video"
+        src={require("../../images/authsplash.mp4")}
+        autoPlay
+        loop
+        muted
+      />
       <div className="card auth-form-cards">
         <div className="card-body">
           <h5 className="card-title">Signup</h5>
