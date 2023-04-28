@@ -51,3 +51,5 @@ helps me use this for recruiters
 4.26.23: Worked on implementing a third-party Youtube embeded video api; modified various JSX files to allow for the youtube implementation; made a new router and query for the youtube funcitonality;
 
 4.27.23: fixed some error handling with the youtube videos; allowed the page to load even if there is no input data for third party youtube api; Aaron was our coder today
+
+4.28.23: Final check of project and error handling; project ready for submission.

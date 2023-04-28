@@ -64,3 +64,6 @@ April 26th, 2023:
 
 April 27th, 2023:
     Updated naming conventions of our functions and touched up on overall UI with CSS and bootstrap.
+
+April 28th, 2023:
+    Updated UI for form pages and fixed a key error on strength forms
