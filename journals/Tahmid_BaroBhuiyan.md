@@ -69,3 +69,7 @@ Implemented Youtube embedded videos, along with Youtube Search API integration o
 
 4/27
 Continued implementing CSS touches. Modified Youtube fetch on front end to only occur once Detail fetch is not undefined. Moved READMe file from docs directory to parent directory. Aaron was the coder.
+
+4/28
+Fixed Key Error on StrengthworkoutForm and Update page. Button tag was not nested inside div tag containing unique key. Final error handling before submitting gitlab link for instructors'.
+
