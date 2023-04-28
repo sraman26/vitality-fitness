@@ -278,7 +278,7 @@ video {
 }
 
 .table-responsive {
-  max-height: 700px;
+  height: 60vh;
   overflow-y: scroll;
   scrollbar-width: 0px;
 }
