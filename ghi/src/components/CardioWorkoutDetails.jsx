@@ -24,7 +24,10 @@ const CardioWorkoutDetail = () => {
   if (Loading) return <div>Loading the page--just a moment</div>;
   if (details?.length === 0) return <div>This workout does not exist</div>;
 
-  const date = new Date(details.date);
+  if (details !== undefined) {
+    var date = new Date(details.date);
+  }
+
 
   function handleDelete(workoutId) {
     deleteWorkout(workoutId);
