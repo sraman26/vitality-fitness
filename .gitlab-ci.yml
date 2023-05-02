@@ -23,38 +23,64 @@ api-unit-test-job:
     - python -m pytest
 
 # Build the React/JavaScript front-end
-# build-front-end-job:
-#   stage: build
-#   image: node:lts-bullseye
-#   needs:
-#     - lint-test-job
-#   variables:
-#     # If either of these variables is defined in the GitLab
-#     # CI/CD variables, that value will override the value here.
-#     # You need to substitute in your real values for
-#     # GROUP_NAME, PROJECT_NAME, & WEBSERVICE_NAME below.
-#     PUBLIC_URL: https://GROUP_NAME.gitlab.io/PROJECT_NAME/
-#     REACT_APP_VITALITY_API_HOST: https://WEBSERVICE_NAME.onrender.com
-#   script:
-#     - cd ghi
-#     - npm install
-#     - npm run build
-#     - cp build/index.html build/404.html
-#   artifacts:
-#     paths:
-#       - ghi/build/
+build-front-end-job:
+  stage: build
+  image: node:lts-bullseye
+  needs:
+    - lint-test-job
+  variables:
+    # If either of these variables is defined in the GitLab
+    # CI/CD variables, that value will override the value here.
+    # You need to substitute in your real values for
+    # GROUP_NAME, PROJECT_NAME, & WEBSERVICE_NAME below.
+    PUBLIC_URL: https://team01.gitlab.io/vitality-fitness/
+    REACT_APP_VITALITY_API_HOST: https://vitality-fitness-api.dec-ct-1.mod3projects.com
+  script:
+    - cd ghi
+    - npm install
+    - npm run build
+    - cp build/index.html build/404.html
+  artifacts:
+    paths:
+      - ghi/build/
 
 # Deploy the React/JavaScript front-end to GitLab pages
-# pages:
-#   stage: deploy
-#   rules:
-#     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-#   dependencies:
-#     - build-front-end-job
-#   needs:
-#     - build-front-end-job
-#   script:
-#     - mv ghi/build/ public
-#   artifacts:
-#     paths:
-#       - public
+pages:
+  stage: deploy
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  dependencies:
+    - build-front-end-job
+  needs:
+    - build-front-end-job
+  script:
+    - mv ghi/build/ public
+  artifacts:
+    paths:
+      - public
+
+
+build-back-end-job:
+  image: docker:20-dind
+  stage: build
+  services:
+    - docker:20-dind
+  before_script:
+    - export DOCKER_REGISTRY_USER=$CI_REGISTRY_USER
+    - export DOCKER_REGISTRY_PASSWORD=$CI_REGISTRY_PASSWORD
+    - export DOCKER_REGISTRY_URL=$CI_REGISTRY
+    - export COMMIT_HASH=$CI_COMMIT_SHA
+    - export IMAGE_NAME_WITH_REGISTRY_PREFIX=$CI_REGISTRY_IMAGE
+    - docker login -u "$DOCKER_REGISTRY_USER" -p "DOCKER_REGISTRY_PASSWORD" $DOCKER_REGISTRY_URL
+  script:
+  - cd vitality
+  - echo "Building... "
+  - export CONTAINER_FULL_IMAGE_NAME_WITH_TAG=$IMAGE_NAME_WITH_REGISTRY_PREFIX/vitality_image:$COMMIT_HASH
+  - docker build -f ./Dockerfile --pull -t built-vitality .
+  - docker tag built-vitality "$CONTAINER_FULL_IMAGE_NAME_WITH_TAG"
+  - docker push "$"$CONTAINER_FULL_IMAGE_NAME_WITH_TAG"
+  - echo $CONTAINER_FULL_IMAGE_NAME_WITH_TAG
+  - echo "Deploying on CapRover..."
+  - docker run caprover/cli-caprover caprover deploy --caproverUrl $CAPROVER_URL --caproverPassword $CAPROVER_PASSWORD --caproverApp $CAPROVER_APP
+  only:
+    - main
