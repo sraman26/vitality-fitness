@@ -70,7 +70,7 @@ build-back-end-job:
     - export DOCKER_REGISTRY_URL=$CI_REGISTRY
     - export COMMIT_HASH=$CI_COMMIT_SHA
     - export IMAGE_NAME_WITH_REGISTRY_PREFIX=$CI_REGISTRY_IMAGE
-    - docker login -u "$DOCKER_REGISTRY_USER" -p "DOCKER_REGISTRY_PASSWORD" $DOCKER_REGISTRY_URL
+    - docker login -u "$DOCKER_REGISTRY_USER" -p "$DOCKER_REGISTRY_PASSWORD" $DOCKER_REGISTRY_URL
   script:
     - cd vitality
     - echo "Building... "
