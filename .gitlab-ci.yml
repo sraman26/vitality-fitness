@@ -73,7 +73,7 @@ build-back-end-job:
     - docker login -u "$DOCKER_REGISTRY_USER" -p "$DOCKER_REGISTRY_PASSWORD" $DOCKER_REGISTRY_URL
   script:
     - cd vitality
-    - echo "Building... "
+    - echo "Building..."
     - export CONTAINER_FULL_IMAGE_NAME_WITH_TAG=$IMAGE_NAME_WITH_REGISTRY_PREFIX/vitality-image:$COMMIT_HASH
     - docker build -f ./Dockerfile --pull -t built-vitality .
     - docker tag built-vitality "$CONTAINER_FULL_IMAGE_NAME_WITH_TAG"
