@@ -15,13 +15,15 @@ import ErrorPage from "./components/ErrorPage";
 import { useGetAccountQuery } from "./services/workout";
 
 function App() {
+  const domain = /https:\/\/[^/]+/;
+  const basename = process.env.PUBLIC_URL.replace(domain, '');
   const { data: account, isLoading } = useGetAccountQuery();
   if (isLoading) {
     return;
   }
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <Nav />
       <div className="">
         <Routes>
