@@ -12,10 +12,11 @@ app.include_router(strength_api.router, tags=["Strength"])
 app.include_router(workouts.router)
 app.include_router(youtube_api.router, tags=["Video"])
 
+origins = ["http://localhost:3000", os.environ.get("CORS_HOST", None)]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[os.environ.get("CORS_HOST", "http://localhost:3000")],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

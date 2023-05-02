@@ -20,8 +20,11 @@ function App() {
     return;
   }
 
+  const domain = /https:\/\/[^/]+/;
+  const basename = process.env.PUBLIC_URL.replace(domain, '');
+
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <Nav />
       <div className="">
         <Routes>
