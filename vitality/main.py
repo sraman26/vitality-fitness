@@ -12,7 +12,14 @@ app.include_router(strength_api.router, tags=["Strength"])
 app.include_router(workouts.router)
 app.include_router(youtube_api.router, tags=["Video"])
 
-origins = ["http://localhost:3000", os.environ.get("CORS_HOST", None)]
+origins = [
+    "http://localhost:3000",
+    "https://tbb257.gitlab.io/module3-project-gamma",
+    "https://tbb257.gitlab.io",
+    os.environ.get("CORS_HOST", None),
+    os.environ.get("REACT_APP_VITALITY_API_HOST", None),
+    os.environ.get("PUBLIC_URL", None),
+]
 
 app.add_middleware(
     CORSMiddleware,
