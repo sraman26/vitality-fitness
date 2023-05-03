@@ -29,8 +29,8 @@ function App() {
       <div className="">
         <Routes>
           <Route index element={<Home />}></Route>
-          <Route path="/Login" element={<LoginForm />} />
-          <Route path="/Signup" element={<SignupForm />} />
+          <Route path="Login" element={<LoginForm />} />
+          <Route path="Signup" element={<SignupForm />} />
           {account && (
             <>
               <Route path="Workouts">
