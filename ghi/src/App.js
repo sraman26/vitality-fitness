@@ -29,22 +29,22 @@ function App() {
       <div className="">
         <Routes>
           <Route index element={<Home />}></Route>
-          <Route path="Login" element={<LoginForm />} />
-          <Route path="Signup" element={<SignupForm />} />
+          <Route path="/Login" element={<LoginForm />} />
+          <Route path="/Signup" element={<SignupForm />} />
           {account && (
             <>
-              <Route path="Workouts">
+              <Route path="/Workouts">
                 <Route index element={<WorkoutList />} />
-                <Route path="Cardio/:workoutId">
+                <Route path="/Cardio/:workoutId">
                   <Route index element={<CardioWorkoutDetail />} />
-                  <Route path="Update" element={<UpdateCardioWorkout />} />
+                  <Route path="/Update" element={<UpdateCardioWorkout />} />
                 </Route>
-                <Route path="Strength/:workoutId">
+                <Route path="/Strength/:workoutId">
                   <Route index element={<StrengthWorkoutDetail />} />
-                  <Route path="Update" element={<UpdateStrengthWorkout />} />
+                  <Route path="/Update" element={<UpdateStrengthWorkout />} />
                 </Route>
-                <Route path="CardioForm" element={<CardioWorkoutForm />} />
-                <Route path="StrengthForm" element={<StrengthWorkoutForm />} />
+                <Route path="/CardioForm" element={<CardioWorkoutForm />} />
+                <Route path="/StrengthForm" element={<StrengthWorkoutForm />} />
               </Route>
             </>
           )}
