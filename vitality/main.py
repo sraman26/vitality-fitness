@@ -16,6 +16,7 @@ origins = [
     "http://localhost:3000",
     os.environ.get("CORS_HOST", None),
     os.environ.get("REACT_APP_VITALITY_API_HOST", None),
+    os.environ.get("PUBLIC_URL", None),
 ]
 
 app.add_middleware(
