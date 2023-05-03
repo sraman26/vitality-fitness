@@ -32,7 +32,6 @@ function App() {
           <Route path="Login" element={<LoginForm />} />
           <Route path="Signup" element={<SignupForm />} />
           {account && (
-            <>
               <Route path="Workouts">
                 <Route index element={<WorkoutList />} />
                 <Route path="Cardio/:workoutId">
@@ -46,7 +45,6 @@ function App() {
                 <Route path="CardioForm" element={<CardioWorkoutForm />} />
                 <Route path="StrengthForm" element={<StrengthWorkoutForm />} />
               </Route>
-            </>
           )}
           <Route path="*" element={<ErrorPage />} />
         </Routes>
