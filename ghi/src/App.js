@@ -1,5 +1,5 @@
 import "./App.css";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm.jsx";
 import SignupForm from "./components/auth/SignupForm.jsx";
 import WorkoutList from "./components/WorkoutList.jsx";
@@ -24,7 +24,7 @@ function App() {
   const basename = process.env.PUBLIC_URL.replace(domain, '');
 
   return (
-    <HashRouter basename={basename}>
+    <BrowserRouter basename={basename}>
       <Nav />
         <Routes>
           <Route index element={<Home />}></Route>
@@ -47,7 +47,7 @@ function App() {
           )}
           <Route path="*" element={<ErrorPage />} />
         </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
