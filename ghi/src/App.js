@@ -26,7 +26,6 @@ function App() {
   return (
     <BrowserRouter basename={basename}>
       <Nav />
-      <div className="">
         <Routes>
           <Route index element={<Home />}></Route>
           <Route path="Login" element={<LoginForm />} />
@@ -48,7 +47,6 @@ function App() {
           )}
           <Route path="*" element={<ErrorPage />} />
         </Routes>
-      </div>
     </BrowserRouter>
   );
 }
