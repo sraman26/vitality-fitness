@@ -16,7 +16,7 @@ origins = [
     "http://localhost:3000",
     "https://tbb257.gitlab.io/vitality-fitness",
     "https://tbb257.gitlab.io",
-    os.environ.get("CORS_HOST",                                                                                                                                                                                                                                             ),
+    os.environ.get("CORS_HOST", None),
     os.environ.get("REACT_APP_VITALITY_API_HOST", None),
     os.environ.get("PUBLIC_URL", None),
 ]
